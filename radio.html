@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveStream Radio - Musica e Podcast 24/7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff0844, #ffb199, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(78, 205, 196, 0.3));
+            transition: left 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 0 60px;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            animation: fadeInUp 1s ease-out, glow 3s ease-in-out infinite alternate;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* Main Player */
+        .main-player {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.9s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-player::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .player-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 71, 87, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 71, 87, 0.5);
+        }
+
+        .live-dot {
+            width: 15px;
+            height: 15px;
+            background: #ff4757;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px #ff4757;
+        }
+
+        .listeners {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .player-main {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .album-art {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: spin 20s linear infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .play-btn:hover {
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+        }
+
+        .track-info {
+            flex: 1;
+            color: #fff;
+            margin-left: 20px;
+        }
+
+        .track-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #fff, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .track-artist {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .track-type {
+            background: rgba(78, 205, 196, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            border: 1px solid rgba(78, 205, 196, 0.5);
+        }
+
+        .volume-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 20px;
+        }
+
+        .volume-slider {
+            width: 120px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Content Sections */
+        .content-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 60px 0 40px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Music Section */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .music-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            transition: left 0.4s ease;
+        }
+
+        .music-card:hover::before {
+            left: 0;
+        }
+
+        .music-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 107, 107, 0.5);
+        }
+
+        .genre-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .music-card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .music-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-music {
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-music:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
+        }
+
+        /* Podcast Section */
+        .podcast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .podcast-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podcast-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(69, 183, 209, 0.1), rgba(255, 107, 107, 0.1));
+            transition: left 0.4s ease;
+        }
+
+        .podcast-card:hover::before {
+            left: 0;
+        }
+
+        .podcast-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(69, 183, 209, 0.5);
+        }
+
+        .podcast-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .podcast-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .podcast-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .podcast-duration {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .podcast-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 60px rgba(255, 107, 107, 0.8), 0 0 80px rgba(78, 205, 196, 0.6);
+            }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #4ecdc4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .player-main {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .content-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .music-grid, .podcast-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🌊 WaveStream</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#music">Musica</a></li>
+                <li><a href="#podcast">Podcast</a></li>
+                <li><a href="#live">Live</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>WaveStream Radio</h1>
+                    <p class="subtitle">La tua radio digitale 24/7</p>
+                    <p class="tagline">Musica, Podcast, Talk Show e molto altro</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="main-player">
+                <div class="player-content">
+                    <div class="status-bar">
+                        <div class="live-indicator">
+                            <div class="live-dot"></div>
+                            <span>ON AIR</span>
+                        </div>
+                        <div class="listeners">
+                            👥 <span id="listenerCount">2,847</span> ascoltatori
+                        </div>
+                    </div>
+                    
+                    <div class="player-main">
+                        <div class="album-art" id="albumArt">🎵</div>
+                        
+                        <div class="play-controls">
+                            <button class="control-btn" onclick="previousTrack()">⏮️</button>
+                            <button class="play-btn" onclick="togglePlay()">
+                                <span id="playIcon">▶️</span>
+                            </button>
+                            <button class="control-btn" onclick="nextTrack()">⏭️</button>
+                        </div>
+                        
+                        <div class="track-info">
+                            <div class="track-title" id="trackTitle">Indie Rock Hits</div>
+                            <div class="track-artist" id="trackArtist">Arctic Monkeys - Do I Wanna Know?</div>
+                            <div class="track-type" id="trackType">🎵 Musica</div>
+                        </div>
+                        
+                        <div class="volume-section">
+                            <span>🔊</span>
+                            <input type="range" class="volume-slider" min="0" max="100" value="75" onchange="setVolume(this.value)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="content-tabs">
+                <button class="tab-btn active" onclick="showContent('music')">🎵 Musica</button>
+                <button class="tab-btn" onclick="showContent('podcast')">🎙️ Podcast</button>
+                <button class="tab-btn" onclick="showContent('live')">📺 Live</button>
+            </div>
+
+            <div id="music" class="content-section active">
+                <div class="music-grid">
+                    <div class="music-card" onclick="playMusic('rock')">
+                        <span class="genre-icon">🎸</span>
+                        <h3>Rock & Alternative</h3>
+                        <p>Le migliori hit rock e alternative, dai classici ai nuovi talenti emergenti.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('pop')">
+                        <span class="genre-icon">🎤</span>
+                        <h3>Pop & Dance</h3>
+                        <p>Tutti i successi pop e dance per farti ballare e cantare!</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('indie')">
+                        <span class="genre-icon">🎵</span>
+                        <h3>Indie & Elettronica</h3>
+                        <p>Scopri nuovi artisti indie e i migliori brani elettronici del momento.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('chillout')">
+                        <span class="genre-icon">🌙</span>
+                        <h3>Chillout & Lounge</h3>
+                        <p>Musica rilassante per i tuoi momenti di relax e concentrazione.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('hits')">
+                        <span class="genre-icon">🔥</span>
+                        <h3>Top Hits</h3>
+                        <p>Le canzoni più ascoltate del momento, sempre aggiornate!</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('classic')">
+                        <span class="genre-icon">💿</span>
+                        <h3>Classici Intramontabili</h3>
+                        <p>I grandi successi che hanno fatto la storia della musica.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="podcast" class="content-section">
+                <div class="podcast-grid">
+                    <div class="podcast-card" onclick="playPodcast('tech')">
+                        <h3>💻 Tech & Innovation</h3>
+                        <p>Esploriamo il mondo della tecnologia, startup e innovazione digitale con ospiti esperti del settore.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 45 min</span>
+                            <span class="podcast-date">Oggi</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('cultura')">
+                        <h3>🎭 Cultura & Società</h3>
+                        <p>Discussioni approfondite su arte, letteratura, cinema e i temi che muovono la nostra società.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 38 min</span>
+                            <span class="podcast-date">Ieri</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('business')">
+                        <h3>💼 Business & Economia</h3>
+                        <p>Analisi dei mercati, strategie imprenditoriali e consigli per il successo professionale.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 42 min</span>
+                            <span class="podcast-date">2 giorni fa</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('stories')">
+                        <h3>📚 Storie & Interviste</h3>
+                        <p>Racconti di vita, interviste esclusive e storie che vale la pena ascoltare.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 35 min</span>
+                            <span class="podcast-date">3 giorni fa</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('wellness')">
+                        <h3>🧘 Benessere & Lifestyle</h3>
+                        <p>Consigli per vivere meglio, mindfulness, salute e benessere psicofisico.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 28 min</span>
+                            <span class="podcast-date">4 giorni fa</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('news')">
+                        <h3>📰 News & Attualità</h3>
+                        <p>Le notizie del giorno commentate e analizzate dalla nostra redazione.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 22 min</span>
+                            <span class="podcast-date">Ogni giorno</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="live" class="content-section">
+                <div class="music-grid">
+                    <div class="music-card" onclick="playLive('morning')">
+                        <span class="genre-icon">☀️</span>
+       <!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhilAuraStation.it - Musica e Podcast 24/7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc, #667eea, #764ba2, #f093fb);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            transition: left 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 0 60px;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            animation: fadeInUp 1s ease-out, glow 3s ease-in-out infinite alternate;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* Main Player */
+        .main-player {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.9s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-player::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .player-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(118, 75, 162, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(118, 75, 162, 0.5);
+        }
+
+        .live-dot {
+            width: 15px;
+            height: 15px;
+            background: #764ba2;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px #764ba2;
+        }
+
+        .listeners {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .player-main {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .album-art {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: spin 20s linear infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .play-btn:hover {
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .track-info {
+            flex: 1;
+            color: #fff;
+            margin-left: 20px;
+        }
+
+        .track-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #fff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .track-artist {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .track-type {
+            background: rgba(240, 147, 251, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            border: 1px solid rgba(240, 147, 251, 0.5);
+        }
+
+        .volume-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 20px;
+        }
+
+        .volume-slider {
+            width: 120px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Content Sections */
+        .content-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 60px 0 40px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Music Section */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .music-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            transition: left 0.4s ease;
+        }
+
+        .music-card:hover::before {
+            left: 0;
+        }
+
+        .music-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .genre-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .music-card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .music-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-music {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .play-music:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(240, 147, 251, 0.4);
+        }
+
+        /* Podcast Section */
+        .podcast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .podcast-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podcast-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(37, 117, 252, 0.1), rgba(102, 126, 234, 0.1));
+            transition: left 0.4s ease;
+        }
+
+        .podcast-card:hover::before {
+            left: 0;
+        }
+
+        .podcast-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(37, 117, 252, 0.5);
+        }
+
+        .podcast-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .podcast-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .podcast-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .podcast-duration {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .podcast-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 60px rgba(102, 126, 234, 0.8), 0 0 80px rgba(118, 75, 162, 0.6);
+            }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #f093fb;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .player-main {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .content-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .music-grid, .podcast-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🎵 PhilAuraStation</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#music">Musica</a></li>
+                <li><a href="#podcast">Podcast</a></li>
+                <li><a href="#live">Live</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>PhilAuraStation.it</h1>
+                    <p class="subtitle">La tua radio digitale del cuore</p>
+                    <p class="tagline">Musica, emozioni e contenuti che fanno vibrare l'anima</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="main-player">
+                <div class="player-content">
+                    <div class="status-bar">
+                        <div class="live-indicator">
+                            <div class="live-dot"></div>
+                            <span>ON AIR</span>
+                        </div>
+                        <div class="listeners">
+                            👥 <span id="listenerCount">1,523</span> ascoltatori
+                        </div>
+                    </div>
+                    
+                    <div class="player-main">
+                        <div class="album-art" id="albumArt">🎵</div>
+                        
+                        <div class="play-controls">
+                            <button class="control-btn" onclick="previousTrack()"⏮️</button>
+                            <button class="play-btn" onclick="togglePlay()">
+                                <span id="playIcon">▶️</span>
+                            </button>
+                            <button class="control-btn" onclick="nextTrack()">⏭️</button>
+                        </div>
+                        
+                        <div class="track-info">
+                            <div class="track-title" id="trackTitle">Atmosfere Musicali</div>
+                            <div class="track-artist" id="trackArtist">Ludovico Einaudi - Nuvole Bianche</div>
+                            <div class="track-type" id="trackType">🎵 Musica</div>
+                        </div>
+                        
+                        <div class="volume-section">
+                            <span>🔊</span>
+                            <input type="range" class="volume-slider" min="0" max="100" value="75" onchange="setVolume(this.value)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="content-tabs">
+                <button class="tab-btn active" onclick="showContent('music')">🎵 Musica</button>
+                <button class="tab-btn" onclick="showContent('podcast')">🎙️ Podcast</button>
+                <button class="tab-btn" onclick="showContent('live')">📺 Live</button>
+            </div>
+
+            <div id="music" class="content-section active">
+                <div class="music-grid">
+                    <div class="music-card" onclick="playMusic('ambient')">
+                        <span class="genre-icon">🌙</span>
+                        <h3>Ambient & Chillout</h3>
+                        <p>Atmosfere rilassanti e suoni che accarezzano l'anima per i tuoi momenti di pace.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('neoclassical')">
+                        <span class="genre-icon">🎹</span>
+                        <h3>Neoclassico & Pianoforte</h3>
+                        <p>Composizioni moderne che uniscono classico e contemporaneo in perfetta armonia.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('indie')">
+                        <span class="genre-icon">🎸</span>
+                        <h3>Indie & Alternative</h3>
+                        <p>Scopri nuovi artisti emergenti e brani alternativi che toccano il cuore.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('electronic')">
+                        <span class="genre-icon">🎧</span>
+                        <h3>Elettronica & Synthwave</h3>
+                        <p>Viaggi sonori attraverso paesaggi elettronici e atmosfere futuristiche.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('world')">
+                        <span class="genre-icon">🌍</span>
+                        <h3>World Music</h3>
+                        <p>Suoni dal mondo che raccontano culture e tradizioni di ogni angolo del pianeta.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playMusic('soul')">
+                        <span class="genre-icon">💫</span>
+                        <h3>Soul & R&B</h3>
+                        <p>Musica che arriva dritta al cuore con ritmi avvolgenti e voci coinvolgenti.</p>
+                        <button class="play-music">Ascolta Ora</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="podcast" class="content-section">
+                <div class="podcast-grid">
+                    <div class="podcast-card" onclick="playPodcast('filosofia')">
+                        <h3>🧠 Filosofia & Riflessioni</h3>
+                        <p>Esplorazioni profonde sui grandi temi della vita, della coscienza e dell'esistenza umana.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 52 min</span>
+                            <span class="podcast-date">Oggi</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('arte')">
+                        <h3>🎨 Arte & Creatività</h3>
+                        <p>Conversazioni con artisti, musicisti e creativi che ispirano e trasformano il mondo.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 44 min</span>
+                            <span class="podcast-date">Ieri</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('mindfulness')">
+                        <h3>🧘 Mindfulness & Benessere</h3>
+                        <p>Pratiche di consapevolezza, meditazione e tecniche per vivere in armonia con sé stessi.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 36 min</span>
+                            <span class="podcast-date">2 giorni fa</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('storie')">
+                        <h3>📚 Storie & Narrazioni</h3>
+                        <p>Racconti di vita, storie personali e narrazioni che emozionano e ispirano.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 41 min</span>
+                            <span class="podcast-date">3 giorni fa</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('musica')">
+                        <h3>🎼 Dietro la Musica</h3>
+                        <p>Approfondimenti sui brani, gli artisti e le storie che si celano dietro le note.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 48 min</span>
+                            <span class="podcast-date">4 giorni fa</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                    
+                    <div class="podcast-card" onclick="playPodcast('natura')">
+                        <h3>🌱 Natura & Sostenibilità</h3>
+                        <p>Riflessioni sul nostro rapporto con la natura e pratiche per un futuro sostenibile.</p>
+                        <div class="podcast-meta">
+                            <span class="podcast-duration">⏱️ 33 min</span>
+                            <span class="podcast-date">5 giorni fa</span>
+                        </div>
+                        <button class="play-music">Ascolta Episodio</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="live" class="content-section">
+                <div class="music-grid">
+                    <div class="music-card" onclick="playLive('alba')">
+                        <span class="genre-icon">🌅</span>
+                        <h3>Alba con Phil</h3>
+                        <p>Inizia la giornata con dolcezza. Musica rilassante e pensieri positivi dalle 6:00 alle 9:00.</p>
+                        <button class="play-music">Ascolta Live</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playLive('pomeriggio')">
+                        <span class="genre-icon">☀️</span>
+                        <h3>Pomeriggio Musicale</h3>
+                        <p>Compagnia musicale per il tuo pomeriggio con i brani più emozionanti, dalle 14:00 alle 17:00.</p>
+                        <button class="play-music">Ascolta Live</button>
+                    </div>                 <h3>Morning Show</h3>
+                        <p>Inizia la giornata con energia! Musica, news e buonumore dalle 7:00 alle 10:00.</p>
+                        <button class="play-music">Ascolta Live</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playLive('afternoon')">
+                        <span class="genre-icon">🌞</span>
+                        <h3>Pomeriggio in Musica</h3>
+                        <p>Il meglio della musica internazionale per il tuo pomeriggio, dalle 14:00 alle 18:00.</p>
+                        <button class="play-music">Ascolta Live</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playLive('evening')">
+                        <span class="genre-icon">🌙</span>
+                        <h3>Sera Talk</h3>
+                        <p>Discussioni, interviste e musica rilassante per la tua sera, dalle 20:00 alle 24:00.</p>
+                        <button class="play-music">Ascolta Live</button>
+                    </div>
+                    
+                    <div class="music-card" onclick="playLive('night')
