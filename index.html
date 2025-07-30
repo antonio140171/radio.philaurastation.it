@@ -687,20 +687,24 @@
                 <button class="tab-btn" onclick="showContent('podcast')">🎙️ Podcast</button>
                 <button class="tab-btn" onclick="showContent('live')">📺 Live</button>
             </div>
-<!DOCTYPE html>
 
+
+<!DOCTYPE html>
+<html lang="it">
 <head>
+  <meta charset="UTF-8" />
   <title>PhilAura Station</title>
 </head>
-<body style="text-align:center; font-family:sans-serif;">
-  <h1>🎶 Benvenuto su PhilAura Station</h1>
+<body>
+  <h1>Benvenuto su PhilAura Station</h1>
 
-  <audio id="radioPlayer" controls autoplay>
-    <source src="https://a2.asurahosting.com/public/philaurastation.it" type="audio/mpeg">
-    Il tuo browser non supporta l'audio HTML5.
-  </audio>
+  <!-- Qui parte il player -->
+  <iframe src="https://a2.asurahosting.com/public/philaurastation.it/embed" width="100%" height="200" frameborder="0" allowtransparency="true" allow="autoplay"></iframe>
 
+  <!-- Fine player -->
 </body>
+</html>
+
 
 
 
