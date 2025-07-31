@@ -1,137 +1,140 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Radio PhilAura Station</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #3f0d7d, #ffb07c);
-            color: white;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <title>Radio PhilAura Station</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #3f0d7d 0%, #d77a85 40%, #ffb07c 100%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+    }
 
-        .title {
-            font-size: 2em;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+    .title {
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 20px;
+    }
 
-        .volume-control {
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+    .on-air {
+      background-color: deeppink;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 15px;
+      display: inline-block;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
 
-        .cover {
-            width: 200px;
-            height: 200px;
-            margin: 30px auto;
-            background: linear-gradient(145deg, #ffb07c, #d77a85);
-            border-radius: 20px;
-            box-shadow: 0 0 15px #00000050;
-            transform: rotate(10deg);
-            transition: transform 3s linear;
-            animation: rotateImage 10s infinite linear;
-        }
+    .icon {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
 
-        @keyframes rotateImage {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    .cover {
+      width: 200px;
+      height: 200px;
+      margin: 30px auto;
+      background: linear-gradient(145deg, #ffb07c, #d77a85);
+      border-radius: 20px;
+      box-shadow: 0 0 15px #00000050;
+      animation: rotateImage 10s infinite linear;
+    }
 
-        .on-air {
-            background-color: deeppink;
-            color: white;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-top: 15px;
-            display: inline-block;
-            text-decoration: none;
-        }
+    @keyframes rotateImage {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-        .icon {
-            width: 20px;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
+    .volume-control {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
 
-        .podcast {
-            position: absolute;
-            left: 20px;
-            bottom: 20px;
-            background-color: #f3988e;
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #00000050;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-        }
+    .volume-icon {
+      width: 20px;
+    }
 
-        .volume-icon {
-            width: 20px;
-        }
+    .podcast {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      background-color: #f3988e;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00000050;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+    }
 
-        .podcast-icon {
-            width: 25px;
-        }
-    </style>
+    .podcast-icon {
+      width: 25px;
+    }
+  </style>
 </head>
 <body>
-    <div class="title">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="icon"/>
-        Radio PhilAura Station
-    </div>
 
-    <a class="on-air" onclick="toggleRadio()">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/headphones.png" class="icon"/>
-        ON AIR
-    </a>
-
-    <div class="cover" id="cover"></div>
-
-    <div class="volume-control">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="volume-icon"/>
-        <input type="range" min="0" max="1" step="0.01" value="1" id="volumeSlider"/>
-    </div>
-
-    <div class="podcast">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/microphone.png" class="podcast-icon"/>
-        Podcast
-    </div>
-<div class="on-air-container">
-    <button class="on-air-button" onclick="toggleRadio()">
-	</button>
-    <div id="cover-art" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/9/97/TheDarkSideOfTheMoon.png');"></div>
-    <audio id="radioPlayer" preload="none">
-      <source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
-      Il tuo browser non supporta l'audio HTML5.
-    </audio>
+  <div class="title">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="icon"/>
+    Radio PhilAura Station
   </div>
 
-    <script>
-        const radio = document.getElementById('radioPlayer');
-        const volumeSlider = document.getElementById('volumeSlider');
+  <a class="on-air" id="onAirButton" onclick="toggleRadio()">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/headphones.png" class="icon"/>
+    ON AIR
+  </a>
 
-        function toggleRadio() {
-            if (radio.paused) {
-                radio.play();
-            } else {
-                radio.pause();
-            }
-        }
+  <div class="cover"></div>
 
-        volumeSlider.addEventListener('input', function() {
-            radio.volume = this.value;
-        });
-    </script>
+  <div class="volume-control">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="volume-icon"/>
+    <input type="range" min="0" max="1" step="0.01" value="1" id="volumeSlider"/>
+  </div>
+
+  <div class="podcast">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/microphone.png" class="podcast-icon"/>
+    Podcast
+  </div>
+
+<div id="cover-art" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/9/97/TheDarkSideOfTheMoon.png');"></div>
+  <audio id="radioPlayer" preload="none">
+  
+    <source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
+    Il tuo browser non supporta l'audio HTML5.
+  </audio>
+
+  <script>
+    const radio = document.getElementById('radioPlayer');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const onAirButton = document.getElementById('onAirButton');
+
+    function toggleRadio() {
+      if (radio.paused) {
+        radio.play();
+        onAirButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="icon"/> LIVE NOW';
+      } else {
+        radio.pause();
+        onAirButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/headphones.png" class="icon"/> ON AIR';
+      }
+    }
+
+    volumeSlider.addEventListener('input', function() {
+      radio.volume = this.value;
+    });
+  </script>
+
 </body>
 </html>
