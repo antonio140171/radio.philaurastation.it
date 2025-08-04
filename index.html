@@ -11,18 +11,11 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      min-height: 100vh;
       text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
     }
 
     .title {
-      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-size: 2em;
       font-weight: bold;
       margin-top: 20px;
     }
@@ -50,7 +43,7 @@
       width: 200px;
       height: 200px;
       margin: 30px auto;
-      background: linear-gradient(145deg, #ffb07c, #d77a85);
+      background: url('cover.jpg') center/cover no-repeat;
       border-radius: 20px;
       box-shadow: 0 0 15px #00000050;
       animation: rotateImage 10s infinite linear;
@@ -74,33 +67,49 @@
     }
 
     .podcast {
-      position: absolute;
-      left: 20px;
-      bottom: 20px;
+      margin: 50px auto;
       background-color: #f3988e;
-      padding: 10px 20px;
+      padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px #00000050;
+      width: 80%;
+      max-width: 500px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      color: white;
+      box-shadow: 0 0 10px #00000050;
     }
 
     .podcast-icon {
       width: 25px;
     }
 
-    #cover-art {
-      background-image: url('cover.jpg');
-      background-size: cover;
-      background-position: center;
-      width: 200px;
-      height: 200px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px #00000050;
-      animation: rotateImage 10s infinite linear;
-      margin: 20px auto;
+    .podcast a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* DJ Image */
+    .dj-photo-container {
+      position: fixed;
+      top: 60px;
+      right: 30px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .dj-photo {
+      max-width: 220px;
+      height: auto;
+      opacity: 0.25;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+    }
+
+    @media (max-width: 768px) {
+      .dj-photo-container {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -116,7 +125,7 @@
     ON AIR
   </a>
 
-  <div id="cover-art"></div>
+  <div class="cover"></div>
 
   <div class="volume-control">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="volume-icon"/>
@@ -125,7 +134,12 @@
 
   <div class="podcast">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/microphone.png" class="podcast-icon"/>
-    Podcast
+    <a href="https://a2.asurahosting.com/public/philaurastation.it/podcasts" target="_blank">Ascolta i Podcast</a>
+  </div>
+
+  <!-- Immagine DJ -->
+  <div class="dj-photo-container">
+    <img src="dj-transparent.png" alt="DJ" class="dj-photo">
   </div>
 
   <audio id="radioPlayer" preload="none">
