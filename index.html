@@ -1,180 +1,182 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Radio PhilAura Station</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #fff;
-      color: #000;
-    }
+<meta charset="UTF-8">
+<title>Radio PhilAura Station</title>
+<style>
+body {
+background-color: #ffffff;
+color: #000000;
+font-family: sans-serif;
+margin: 0;
+padding: 0;
+}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1em 2em;
-      border-bottom: 1px solid #ccc;
-    }
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1em 2em;
+border-bottom: 1px solid #ccc;
+background-color: #fff;
+color: #000;
+}
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
+.logo-container {
+display: flex;
+align-items: center;
+}
 
-    .logo {
-      width: 50px;
-      height: 50px;
-      margin-right: 1em;
-      animation: rotateLogo 10s linear infinite;
-    }
+.logo {
+width: 50px;
+height: 50px;
+margin-right: 1em;
+animation: rotateLogo 10s linear infinite;
+}
 
-    @keyframes rotateLogo {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+@keyframes rotateLogo {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
 
-    .site-title {
-      font-weight: bold;
-      font-size: 1.2em;
-    }
+.site-title {
+font-weight: bold;
+font-size: 1.2em;
+}
 
-    .site-subtitle {
-      font-size: 0.9em;
-      color: #333;
-    }
+.site-subtitle {
+font-size: 0.9em;
+color: #333;
+}
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #000;
-    }
+.on-air-wrapper {
+display: flex;
+justify-content: center;
+margin-top: 1em;
+}
 
-    main {
-      padding: 3em 2em;
-      display: flex;
-      justify-content: space-between;
-    }
+.on-air {
+display: flex;
+align-items: center;
+background-color: #e91e63;
+padding: 1em 2em;
+border-radius: 30px;
+font-weight: bold;
+font-size: 1.2em;
+cursor: pointer;
+text-decoration: none;
+color: white;
+gap: 1em;
+}
 
-    .dj-section {
-      flex: 1;
-      text-align: center;
-    }
+.icon {
+width: 30px;
+height: 30px;
+}
 
-    .dj-section img {
-      width: 200px;
-      border-radius: 50%;
-      border: 3px solid #000;
-    }
+main {
+padding: 3em 2em;
+display: flex;
+justify-content: space-between;
+}
 
-    .dj-section h2 {
-      margin: 0.5em 0 0;
-    }
+.dj-section {
+flex: 1;
+text-align: center;
+}
 
-    .content-section {
-      flex: 2;
-      padding-left: 2em;
-    }
+.dj-section img {
+width: 200px;
+border-radius: 50%;
+border: 3px solid #000;
+}
 
-    .onair-button {
-      background-color: black;
-      color: white;
-      padding: 0.5em 1em;
-      border: none;
-      font-weight: bold;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      cursor: pointer;
-    }
+.dj-section h2 {
+margin: 0.5em 0 0;
+}
 
-    .streaming-link {
-      color: #0078D4;
-      font-weight: bold;
-      text-decoration: none;
-      display: block;
-      margin: 1em 0;
-    }
+.news-section {
+flex: 2;
+padding-left: 2em;
+background-color: #f9f9f9;
+padding: 1.5em;
+border-left: 5px solid #0078D4;
+color: #000;
+}
 
-    .podcast-section {
-      margin-top: 2em;
-    }
+.news-section img {
+max-width: 100%;
+border-radius: 8px;
+margin-bottom: 1em;
+}
 
-    .podcast-button {
-      background-color: #F44336;
-      color: white;
-      padding: 0.7em 1.2em;
-      border: none;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .news-section {
-      margin-top: 3em;
-      background-color: #f9f9f9;
-      padding: 1.5em;
-      border-left: 5px solid #0078D4;
-    }
-
-    .news-section img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 1em;
-    }
-
-    footer {
-      margin-top: 4em;
-      padding: 2em;
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
-      border-top: 1px solid #ccc;
-    }
-
-  </style>
+footer {
+margin-top: 4em;
+padding: 2em;
+text-align: center;
+font-size: 0.9em;
+color: #666;
+border-top: 1px solid #ccc;
+background-color: #fff;
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <div class="logo-container">
-      <img src="logo-rfa.png" alt="Logo" class="logo">
-      <div>
-        <div class="site-title">Radio PhilAura Station</div>   <time></time>
-        <div class="site-subtitle">Musica senza confini. Emozioni senza limiti.</div>
-      </div>
-    </div>
-    <nav>
-      <a href="https://radio.philaurastation.it/public/radio_philaura_station">🎧 ON AIR</a>
-      <a href="https://radio.philaurastation.it/public/radio_philaura_station/podcasts">Podcast</a>
-      <a href="#">News</a>
-    </nav>
-  
-      
+<header>
+<div class="logo-container">
+<img src="logo-rfa.png" alt="Logo" class="logo">
+<div>
+<div class="site-title">Radio PhilAura Station</div>
+<div class="site-subtitle">Musica senza confini. Emozioni senza limiti.</div>
+</div>
+</div>
 </header>
 
-  <main>
-    <div class="dj-section">
-      <img src="dj-transparent.png" alt="transparent">
-      <h2>ORA IN 🎧<br>ANTONIO</h2>
-    </div>
-    
-      <div class="news-section">
-        <h3>Notizia del giorno</h3>
-        <img src="news.jpg" alt="Notizia immagine">
-        <p><strong>Ultim'ora:</strong> La Radio PhilAura annuncia una nuova collaborazione internazionale con DJ di fama mondiale. Dettagli in arrivo!</p>
-      </div>
-    </div>
-  </main>
+<div class="on-air-wrapper">
+<a class="on-air" id="onAirButton" onclick="toggleRadio()">
+<img src="https://img.icons8.com/ios-filled/50/ffffff/headphones.png" class="icon"/>
+ON AIR
+</a>
+</div>
 
-  <footer>
-    © 2025 Radio PhilAura Station – Tutti i diritti riservati
-  </footer>
+<audio id="radioPlayer" preload="none">
+<source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
+Il tuo browser non supporta l'audio HTML5.
+</audio>
+
+<main>
+<div class="dj-section">
+<img src="dj-transparent.png" alt="transparent">
+<h2>ORA IN 🎧<br>ANTONIO</h2>
+</div>
+
+<div class="news-section">
+<h3>Notizia del giorno</h3>
+<img src="news.jpg" alt="Notizia immagine">
+<p><strong>Ultim'ora:</strong> La Radio PhilAura annuncia una nuova collaborazione internazionale con DJ di fama mondiale. Dettagli in arrivo!</p>
+</div>
+</main>
+
+<footer>
+© 2025 Radio PhilAura Station – Tutti i diritti riservati
+</footer>
+
+<script>
+const radio = document.getElementById('radioPlayer');
+const onAirButton = document.getElementById('onAirButton');
+
+function toggleRadio() {
+if (radio.paused) {
+radio.play();
+onAirButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="icon"/> LIVE NOW';
+} else {
+radio.pause();
+onAirButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/headphones.png" class="icon"/> ON AIR';
+}
+}
+</script>
 
 </body>
 </html>
