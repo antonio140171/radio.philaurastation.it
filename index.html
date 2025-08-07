@@ -34,14 +34,17 @@
       flex-direction: column;
     }
     .site-title {
-      font-size: 2em;
+      font-size: 2.2em;
       font-weight: bold;
       color: #d41b66;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
     .site-subtitle {
       font-size: 1em;
       color: #5c5c5c;
       font-style: italic;
+      margin-top: 4px;
     }
     nav {
       display: flex;
@@ -53,6 +56,7 @@
       text-decoration: none;
       color: #d41b66;
       font-weight: bold;
+      font-size: 1em;
     }
     .main-content {
       display: flex;
@@ -76,7 +80,7 @@
       margin-bottom: 1em;
     }
     .on-air-btn {
-      background-color: #d41b66;
+      background-color: #e0913e;
       color: white;
       border: none;
       border-radius: 20px;
@@ -143,8 +147,8 @@
   <div class="logo-container">
     <img alt="Logo" class="logo" src="logo-rfa.png"/>
     <div class="titles">
-      <div class="site-title">Radio PhilAura Station</div>
-      <div class="site-subtitle">Musica senza confini. Emozioni senza limiti.</div>
+      <div class="site-title">🎧 PhilAura FM</div>
+      <div class="site-subtitle">Soundtrack of your moments</div>
     </div>
   </div>
   <nav>
@@ -154,7 +158,7 @@
 </header>
 <div class="main-content">
   <div class="onair-card">
-    <img id="albumCover" alt="Copertina in onda" src="https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art" />
+    <img id="albumCover" alt="Copertina in onda" src="https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art?cachebust=1" />
     <div class="track-info" id="trackInfo">Caricamento brano...</div>
     <button class="on-air-btn" id="onAirBtn">🔴 ON AIR</button>
   </div>
@@ -184,7 +188,7 @@
   </div>
 </div>
 <footer>
-  © 2025 Radio PhilAura Station – Tutti i diritti riservati
+  © 2025 PhilAura FM – Powered by Passion & Frequencies
 </footer>
 <audio id="radioPlayer" preload="none">
   <source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
@@ -212,7 +216,7 @@
       const data = await response.json();
       const currentSong = data.now_playing.song;
       trackInfo.innerHTML = `${currentSong.artist} - ${currentSong.title}`;
-      album.src = `${data.now_playing.song.art}?cache=${new Date().getTime()}`;
+      album.src = `${data.now_playing.art}?cachebust=${new Date().getTime()}`;
     } catch (err) {
       console.error("Errore nel recupero now playing:", err);
     }
