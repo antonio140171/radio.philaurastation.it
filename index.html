@@ -1,229 +1,225 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Radio PhilAura Station</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5efe4;
-      color: #1a1a1a;
-    }
-    header {
-      background-color: #fffaf0;
-      padding: 1em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      border-bottom: 2px solid #d41b66;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 1em;
-    }
-    .logo {
-      width: 80px;
-      height: 80px;
-    }
-    .titles {
-      display: flex;
-      flex-direction: column;
-    }
-    .site-title {
-      font-size: 2.2em;
-      font-weight: bold;
-      color: #d41b66;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .site-subtitle {
-      font-size: 1em;
-      color: #5c5c5c;
-      font-style: italic;
-      margin-top: 4px;
-    }
-    nav {
-      display: flex;
-      gap: 1.5em;
-      margin-top: 0.5em;
-      flex-wrap: wrap;
-    }
-    nav a {
-      text-decoration: none;
-      color: #d41b66;
-      font-weight: bold;
-      font-size: 1em;
-    }
-    .main-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2em;
-      padding: 2em;
-    }
-    .onair-card {
-      background-color: #fffaf0;
-      border: 1px solid #d41b66;
-      border-radius: 10px;
-      padding: 1em;
-      text-align: center;
-      flex: 1 1 300px;
-      max-width: 400px;
-    }
-    .onair-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1em;
-    }
-    .on-air-btn {
-      background-color: #e0913e;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      padding: 0.8em 2em;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1.1em;
-    }
-    .track-info {
-      margin-top: 1em;
-      font-weight: bold;
-      color: #d41b66;
-    }
-    .dj-card, .news-card {
-      background-color: #fffaf0;
-      border-radius: 10px;
-      padding: 1em;
-      flex: 1 1 300px;
-      max-width: 400px;
-      text-align: center;
-    }
-    .dj-card img, .news-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1em;
-    }
-    .dj-card h2, .news-card h3 {
-      margin: 0.5em 0;
-      color: #d41b66;
-    }
-    footer {
-      background-color: #fffaf0;
-      color: #777;
-      text-align: center;
-      padding: 1.5em;
-      margin-top: 2em;
-      font-size: 0.9em;
-      border-top: 1px solid #d0c4ac;
-    }
-    .equalizer {
-      width: 40px;
-      height: 30px;
-      margin: 0 auto;
-    }
-    @media screen and (max-width: 768px) {
-      nav {
-        justify-content: center;
-        width: 100%;
-        margin-top: 1em;
-      }
-      header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .main-content {
-        padding: 1em;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>PhilAura FM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+margin: 0;
+font-family: 'Segoe UI', sans-serif;
+background-color: #f5efe4;
+color: #1a1a1a;
+}
+header {
+background-color: #fffaf0;
+padding: 1em;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+border-bottom: 2px solid #d41b66;
+}
+.logo-container {
+display: flex;
+align-items: center;
+gap: 1em;
+}
+.logo {
+width: 80px;
+height: 80px;
+}
+.titles {
+display: flex;
+flex-direction: column;
+}
+.site-title {
+font-size: 2em;
+font-weight: bold;
+color: #d41b66;
+}
+.site-subtitle {
+font-size: 1em;
+color: #5c5c5c;
+font-style: italic;
+}
+nav {
+display: flex;
+gap: 1.5em;
+margin-top: 0.5em;
+flex-wrap: wrap;
+}
+nav a {
+text-decoration: none;
+color: #d41b66;
+font-weight: bold;
+}
+.main-content {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 2em;
+padding: 2em;
+}
+.onair-card {
+background-color: #fffaf0;
+border: 1px solid #d41b66;
+border-radius: 10px;
+padding: 1em;
+text-align: center;
+flex: 1 1 300px;
+max-width: 400px;
+}
+.onair-card img {
+width: 100%;
+border-radius: 10px;
+margin-bottom: 1em;
+}
+.on-air-btn {
+background-color: #d41b66;
+color: white;
+border: none;
+border-radius: 20px;
+padding: 0.8em 2em;
+font-weight: bold;
+cursor: pointer;
+font-size: 1.1em;
+}
+.track-info {
+margin-top: 1em;
+font-weight: bold;
+color: #d41b66;
+}
+.dj-card, .news-card {
+background-color: #fffaf0;
+border-radius: 10px;
+padding: 1em;
+flex: 1 1 300px;
+max-width: 400px;
+text-align: center;
+}
+.dj-card img, .news-card img {
+width: 100%;
+border-radius: 10px;
+margin-bottom: 1em;
+}
+.dj-card h2, .news-card h3 {
+margin: 0.5em 0;
+color: #d41b66;
+}
+footer {
+background-color: #fffaf0;
+color: #777;
+text-align: center;
+padding: 1.5em;
+margin-top: 2em;
+font-size: 0.9em;
+border-top: 1px solid #d0c4ac;
+}
+.equalizer {
+width: 40px;
+height: 30px;
+margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+nav {
+justify-content: center;
+width: 100%;
+margin-top: 1em;
+}
+header {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+.main-content {
+padding: 1em;
+}
+}
+</style>
 </head>
 <body>
 <header>
-  <div class="logo-container">
-    <img alt="Logo" class="logo" src="logo-rfa.png"/>
-    <div class="titles">
-      <div class="site-title">🎧 PhilAura FM</div>
-      <div class="site-subtitle">Soundtrack of your moments</div>
-    </div>
-  </div>
-  <nav>
-    <a href="#">🎙️ Podcast</a>
-    <a href="#">🗞️ News</a>
-  </nav>
+<div class="logo-container">
+<img alt="Logo" class="logo" src="logo-rfa.png"/>
+<div class="titles">
+<div class="site-title">PhilAura FM</div>
+<div class="site-subtitle">Soundtrack of Your Moments</div>
+</div>
+</div>
+<nav>
+<a href="#">🎙️ Podcast</a>
+<a href="#">🗞️ News</a>
+</nav>
 </header>
 <div class="main-content">
-  <div class="onair-card">
-    <img id="albumCover" alt="Copertina in onda" src="https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art?cachebust=1" />
-    <div class="track-info" id="trackInfo">Caricamento brano...</div>
-    <button class="on-air-btn" id="onAirBtn">🔴 ON AIR</button>
-  </div>
-  <div class="dj-card">
-    <img src="dj-transparent.png" alt="DJ Antonio" />
-    <h2>ORA IN 🎧<br/>ANTONIO</h2>
-    <svg class="equalizer" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-      <rect x="15" width="10" height="20" fill="#e0913e">
-        <animate attributeName="height" values="20;60;20" dur="0.9s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="35" width="10" height="60" fill="#d41b66">
-        <animate attributeName="height" values="60;20;60" dur="0.9s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="55" width="10" height="30" fill="#e0913e">
-        <animate attributeName="height" values="30;70;30" dur="0.9s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="75" width="10" height="40" fill="#d41b66">
-        <animate attributeName="height" values="40;10;40" dur="0.9s" repeatCount="indefinite"/>
-      </rect>
-    </svg>
-  </div>
-  <div class="news-card">
-    <img src="news.jpg" alt="Notizia">
-    <h3>Notizia del giorno</h3>
-    <p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br>
-    Premio Oscar nel 2004 per Monster e regina dei film d'azione. <a href="#">Leggi di più</a></p>
-  </div>
+<div class="onair-card">
+<img id="albumCover" alt="Copertina in onda" src="https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art?cachebust=1" />
+<div class="track-info" id="trackInfo">Caricamento brano...</div>
+<button class="on-air-btn" id="onAirBtn">🔴 ON AIR</button>
+</div>
+<div class="dj-card">
+<img src="dj-transparent.png" alt="DJ Antonio" />
+<h2>ORA IN 🎧<br/>ANTONIO</h2>
+<svg class="equalizer" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+<rect x="15" width="10" height="20" fill="#e0913e">
+<animate attributeName="height" values="20;60;20" dur="0.9s" repeatCount="indefinite"/>
+</rect>
+<rect x="35" width="10" height="60" fill="#d41b66">
+<animate attributeName="height" values="60;20;60" dur="0.9s" repeatCount="indefinite"/>
+</rect>
+<rect x="55" width="10" height="30" fill="#e0913e">
+<animate attributeName="height" values="30;70;30" dur="0.9s" repeatCount="indefinite"/>
+</rect>
+<rect x="75" width="10" height="40" fill="#d41b66">
+<animate attributeName="height" values="40;10;40" dur="0.9s" repeatCount="indefinite"/>
+</rect>
+</svg>
+</div>
+<div class="news-card">
+<img src="news.jpg" alt="Notizia">
+<h3>Notizia del giorno</h3>
+<p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br>
+Premio Oscar nel 2004 per Monster e regina dei film d'azione. <a href="#">Leggi di più</a></p>
+</div>
 </div>
 <footer>
-  © 2025 PhilAura FM – Powered by Passion & Frequencies
+© 2025 PhilAura FM – Tutti i diritti riservati
 </footer>
 <audio id="radioPlayer" preload="none">
-  <source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
-  Il tuo browser non supporta l'audio HTML5.
+<source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
+Il tuo browser non supporta l'audio HTML5.
 </audio>
 <script>
-  const radio = document.getElementById('radioPlayer');
-  const onAirButton = document.getElementById('onAirBtn');
-  const trackInfo = document.getElementById('trackInfo');
-  const album = document.getElementById('albumCover');
+const radio = document.getElementById('radioPlayer');
+const onAirButton = document.getElementById('onAirBtn');
+const trackInfo = document.getElementById('trackInfo');
+const album = document.getElementById('albumCover');
 
-  onAirButton.addEventListener('click', () => {
-    if (radio.paused) {
-      radio.play();
-      onAirButton.textContent = '🔊 LIVE NOW';
-    } else {
-      radio.pause();
-      onAirButton.textContent = '🔴 ON AIR';
-    }
-  });
+onAirButton.addEventListener('click', () => {
+if (radio.paused) {
+radio.play();
+onAirButton.textContent = '🔊 LIVE NOW';
+} else {
+radio.pause();
+onAirButton.textContent = '🔴 ON AIR';
+}
+});
 
-  async function updateNowPlaying() {
-    try {
-      const response = await fetch("https://a2.asurahosting.com/api/nowplaying/philaurastation.it");
-      const data = await response.json();
-      const currentSong = data.now_playing.song;
-      trackInfo.innerHTML = `${currentSong.artist} - ${currentSong.title}`;
-      album.src = `${data.now_playing.art}?cachebust=${new Date().getTime()}`;
-    } catch (err) {
-      console.error("Errore nel recupero now playing:", err);
-    }
-  }
+async function updateNowPlaying() {
+try {
+const response = await fetch("https://a2.asurahosting.com/api/nowplaying/philaurastation.it");
+const data = await response.json();
+const currentSong = data.now_playing.song;
+trackInfo.innerHTML = `${currentSong.artist} - ${currentSong.title}`;
+album.src = `${data.now_playing.art}?cachebust=${new Date().getTime()}`;
+} catch (err) {
+console.error("Errore nel recupero now playing:", err);
+}
+}
 
-  updateNowPlaying();
-  setInterval(updateNowPlaying, 10000);
+updateNowPlaying();
+setInterval(updateNowPlaying, 10000);
 </script>
 </body>
 </html>
