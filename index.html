@@ -8,18 +8,19 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
-      background-color: #f7f1e3;
-      color: #3e2723;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5efe4;
+      color: #1a1a1a;
     }
 
     header {
-      background-color: #fff8e1;
-      padding: 1em 2em;
+      background-color: #fffaf0;
+      padding: 1em;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #e91e63;
     }
 
     .logo-container {
@@ -29,124 +30,118 @@
     }
 
     .logo {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+
+    .titles {
+      display: flex;
+      flex-direction: column;
     }
 
     .site-title {
-      font-size: 1.8em;
+      font-size: 1.5em;
       font-weight: bold;
     }
 
     .site-subtitle {
-      font-size: 1em;
-      color: #5d4037;
-      margin-top: -0.5em;
+      font-size: 0.9em;
+      color: #5c5c5c;
     }
 
     nav {
-      margin-top: 1em;
       display: flex;
-      gap: 2em;
+      gap: 1.5em;
+      margin-top: 0.5em;
     }
 
     nav a {
       text-decoration: none;
-      color: #5d4037;
+      color: #e91e63;
       font-weight: bold;
     }
 
-    .on-air-wrapper {
-      margin: 2em auto;
-      text-align: center;
-    }
-
-    .on-air {
-      background-color: #d32f2f;
-      color: white;
-      padding: 0.7em 2em;
-      border: none;
-      border-radius: 25px;
-      font-size: 1.2em;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .main-grid {
+    .main-content {
       display: flex;
-      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 2em;
       padding: 2em;
-      flex-wrap: wrap;
     }
 
-    .dj-section, .news-section {
-      flex: 1 1 300px;
-      max-width: 500px;
-    }
-
-    .dj-section {
+    .onair-card {
+      background-color: #fffaf0;
+      border: 1px solid #e91e63;
+      border-radius: 10px;
+      padding: 1em;
       text-align: center;
+      flex: 1 1 300px;
+      max-width: 400px;
     }
 
-    .dj-section img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #6d4c41;
-    }
-
-    .dj-section h2 {
-      margin-top: 0.5em;
-      font-size: 1.2em;
-    }
-
-    .news-section {
-      background-color: #fff;
-      border-left: 6px solid #d32f2f;
-      padding: 1.5em;
-      border-radius: 8px;
-    }
-
-    .news-section img {
+    .onair-card img {
       width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      border-radius: 5px;
+      border-radius: 10px;
       margin-bottom: 1em;
     }
 
+    .on-air-btn {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.8em 2em;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+
+    .dj-card, .news-card {
+      background-color: #fffaf0;
+      border-radius: 10px;
+      padding: 1em;
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+
+    .dj-card img, .news-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1em;
+    }
+
+    .dj-card h2, .news-card h3 {
+      margin: 0.5em 0;
+      color: #e91e63;
+    }
+
     footer {
+      background-color: #fffaf0;
+      color: #777;
       text-align: center;
-      padding: 2em;
-      font-size: 0.9em;
-      color: #6d4c41;
-      border-top: 1px solid #ccc;
-      background-color: #fff8e1;
+      padding: 1.5em;
       margin-top: 2em;
+      font-size: 0.9em;
+      border-top: 1px solid #d0c4ac;
     }
 
     @media screen and (max-width: 768px) {
       nav {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 1em;
       }
 
-      .on-air {
-        width: 80%;
-      }
-
-      .main-grid {
+      header {
         flex-direction: column;
         align-items: center;
+        text-align: center;
+      }
+
+      .main-content {
         padding: 1em;
-      }
-
-      .dj-section img {
-        width: 140px;
-        height: 140px;
       }
     }
   </style>
@@ -155,7 +150,7 @@
   <header>
     <div class="logo-container">
       <img src="logo-rfa.png" alt="Logo" class="logo">
-      <div>
+      <div class="titles">
         <div class="site-title">Radio PhilAura Station</div>
         <div class="site-subtitle">Musica senza confini. Emozioni senza limiti.</div>
       </div>
@@ -166,23 +161,24 @@
     </nav>
   </header>
 
-  <div class="on-air-wrapper">
-    <button class="on-air">🔴 ON AIR</button>
-  </div>
+  <div class="main-content">
+    <div class="onair-card">
+      <img src="cover.jpg" alt="Copertina in onda">
+      <button class="on-air-btn" id="onAirBtn">🔴 ON AIR</button>
+    </div>
 
-  <main class="main-grid">
-    <div class="dj-section">
-      <img src="dj-transparent.png" alt="DJ in onda">
+    <div class="dj-card">
+      <img src="dj-transparent.png" alt="DJ">
       <h2>ORA IN 🎧<br>ANTONIO</h2>
     </div>
 
-    <div class="news-section">
+    <div class="news-card">
+      <img src="news.jpg" alt="Notizia">
       <h3>Notizia del giorno</h3>
-      <img src="news.jpg" alt="Notizia immagine">
       <p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br>
-      Premio Oscar nel 2004 per Monster e regina dei film d'azione <a href="#">Leggi di più</a></p>
+      Premio Oscar nel 2004 per Monster e regina dei film d'azione. <a href="#">Leggi di più</a></p>
     </div>
-  </main>
+  </div>
 
   <footer>
     © 2025 Radio PhilAura Station – Tutti i diritti riservati
@@ -195,7 +191,7 @@
 
   <script>
     const radio = document.getElementById('radioPlayer');
-    const onAirButton = document.querySelector('.on-air');
+    const onAirButton = document.getElementById('onAirBtn');
 
     onAirButton.addEventListener('click', () => {
       if (radio.paused) {
