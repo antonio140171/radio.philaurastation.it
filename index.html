@@ -1,195 +1,211 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Radio PhilAura Station</title>
-<style>
-body {
-background-color: #ffffff;
-color: #000000;
-font-family: sans-serif;
-margin: 0;
-padding: 0;
-}
+  <meta charset="UTF-8">
+  <title>Radio PhilAura Station</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #f7f1e3;
+      color: #3e2723;
+    }
 
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1em 2em;
-border-bottom: 1px solid #ccc;
-background-color: #fff;
-color: #000;
-}
+    header {
+      background-color: #fff8e1;
+      padding: 1em 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
 
-.logo-container {
-display: flex;
-align-items: center;
-}
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
 
-.logo {
-width: 50px;
-height: 50px;
-margin-right: 1em;
-animation: rotateLogo 10s linear infinite;
-}
+    .logo {
+      width: 80px;
+      height: 80px;
+    }
 
-@keyframes rotateLogo {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
+    .site-title {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
 
-.site-title {
-font-weight: bold;
-font-size: 1.2em;
-}
+    .site-subtitle {
+      font-size: 1em;
+      color: #5d4037;
+      margin-top: -0.5em;
+    }
 
-.site-subtitle {
-font-size: 0.9em;
-color: #333;
-}
+    nav {
+      margin-top: 1em;
+      display: flex;
+      gap: 2em;
+    }
 
-.on-air-wrapper {
-display: flex;
-justify-content: center;
-margin-top: 1em;
-}
+    nav a {
+      text-decoration: none;
+      color: #5d4037;
+      font-weight: bold;
+    }
 
-.on-air {
-display: flex;
-align-items: center;
-background-color: #e91e63;
-padding: 1em 2em;
-border-radius: 30px;
-font-weight: bold;
-font-size: 1.2em;
-cursor: pointer;
-text-decoration: none;
-color: white;
-gap: 1em;
-}
+    .on-air-wrapper {
+      margin: 2em auto;
+      text-align: center;
+    }
 
-.icon {
-width: 30px;
-height: 30px;
-}
+    .on-air {
+      background-color: #d32f2f;
+      color: white;
+      padding: 0.7em 2em;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-main {
-padding: 3em 2em;
-display: flex;
-justify-content: space-between;
-}
+    .main-grid {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 2em;
+      padding: 2em;
+      flex-wrap: wrap;
+    }
 
-.dj-section {
-flex: 1;
-text-align: center;
-}
+    .dj-section, .news-section {
+      flex: 1 1 300px;
+      max-width: 500px;
+    }
 
-.dj-section img {
-width: 200px;
-border-radius: 50%;
-border: 3px solid #000;
-}
+    .dj-section {
+      text-align: center;
+    }
 
-.dj-section h2 {
-margin: 0.5em 0 0;
-}
+    .dj-section img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #6d4c41;
+    }
 
-.news-section {
-flex: 2;
-padding-left: 2em;
-background-color: #f9f9f9;
-padding: 1.5em;
-border-left: 5px solid #0078D4;
-color: #000;
-}
+    .dj-section h2 {
+      margin-top: 0.5em;
+      font-size: 1.2em;
+    }
 
-.news-section img {
-max-width: 100%;
-border-radius: 8px;
-margin-bottom: 1em;
-}
+    .news-section {
+      background-color: #fff;
+      border-left: 6px solid #d32f2f;
+      padding: 1.5em;
+      border-radius: 8px;
+    }
 
-footer {
-margin-top: 4em;
-padding: 2em;
-text-align: center;
-font-size: 0.9em;
-color: #666;
-border-top: 1px solid #ccc;
-background-color: #fff;
-}
-</style>
+    .news-section img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 1em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2em;
+      font-size: 0.9em;
+      color: #6d4c41;
+      border-top: 1px solid #ccc;
+      background-color: #fff8e1;
+      margin-top: 2em;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .on-air {
+        width: 80%;
+      }
+
+      .main-grid {
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+      }
+
+      .dj-section img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="logo-container">
+      <img src="logo-rfa.png" alt="Logo" class="logo">
+      <div>
+        <div class="site-title">Radio PhilAura Station</div>
+        <div class="site-subtitle">Musica senza confini. Emozioni senza limiti.</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#">🎙️ Podcast</a>
+      <a href="#">🗞️ News</a>
+    </nav>
+  </header>
 
-<header>
-<div class="logo-container">
-<img src="logo-rfa.png" alt="Logo" class="logo">
-<div>
-<div class="site-title">Radio PhilAura Station</div>
-<div class="site-subtitle">Musica senza confini. Emozioni senza limiti.</div>
-</div>
-</div>
-<!-- PODCAST E NEWS CENTRATI -->
-<div style="flex: 1; display: flex; justify-content: center; gap: 3em;">
-<a href="#" style="display: flex; align-items: center; text-decoration: none; color: black; font-weight: bold;">
-<img src="https://img.icons8.com/ios-filled/24/000000/microphone.png" style="margin-right: 0.5em;" />
-Podcast
-</a>
-<a href="#" style="display: flex; align-items: center; text-decoration: none; color: black; font-weight: bold;">
-<img src="https://img.icons8.com/ios-filled/24/000000/news.png" style="margin-right: 0.5em;" />
-News
-</a>
-</div>
-</header>
+  <div class="on-air-wrapper">
+    <button class="on-air">🔴 ON AIR</button>
+  </div>
 
-<div class="on-air-wrapper">
-<a class="on-air" id="onAirButton" onclick="toggleRadio()">
-<img src="https://img.icons8.com/ios-filled/50/ffffff/headphones.png" class="icon"/>
-ON AIR
-</a>
-</div>
+  <main class="main-grid">
+    <div class="dj-section">
+      <img src="dj-transparent.png" alt="DJ in onda">
+      <h2>ORA IN 🎧<br>ANTONIO</h2>
+    </div>
 
-<audio id="radioPlayer" preload="none">
-<source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
-Il tuo browser non supporta l'audio HTML5.
-</audio>
+    <div class="news-section">
+      <h3>Notizia del giorno</h3>
+      <img src="news.jpg" alt="Notizia immagine">
+      <p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br>
+      Premio Oscar nel 2004 per Monster e regina dei film d'azione <a href="#">Leggi di più</a></p>
+    </div>
+  </main>
 
-<main>
-<div class="dj-section">
-<img src="dj-transparent.png" alt="transparent">
-<h2>ORA IN 🎧<br>ANTONIO</h2>
-</div>
+  <footer>
+    © 2025 Radio PhilAura Station – Tutti i diritti riservati
+  </footer>
 
+  <audio id="radioPlayer" preload="none">
+    <source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
+    Il tuo browser non supporta l'audio HTML5.
+  </audio>
 
-<div class="news-section">
-<h3>Notizia del giorno</h3>
-<img src="news.jpg" alt="Notizia immagine">
-<p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br>Premio Oscar nel 2004 per Monster e regina dei film d'azione <a href="https://www.ansa.it/canale_lifestyle/notizie/people/2025/08/06/i-50-anni-di-charlize-theron-non-ho-piu-tempo-per-fingere_397bc308-6692-406f-835e-8ff15d7b2022.html" target="_blank">Leggi di più</a></p>
-</div>
+  <script>
+    const radio = document.getElementById('radioPlayer');
+    const onAirButton = document.querySelector('.on-air');
 
-</main>
-
-<footer>
-© 2025 Radio PhilAura Station – Tutti i diritti riservati
-</footer>
-
-<script>
-const radio = document.getElementById('radioPlayer');
-const onAirButton = document.getElementById('onAirButton');
-
-function toggleRadio() {
-if (radio.paused) {
-radio.play();
-onAirButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/speaker.png" class="icon"/> LIVE NOW';
-} else {
-radio.pause();
-onAirButton.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/headphones.png" class="icon"/> ON AIR';
-}
-}
-</script>
-
+    onAirButton.addEventListener('click', () => {
+      if (radio.paused) {
+        radio.play();
+        onAirButton.textContent = '🔊 LIVE NOW';
+      } else {
+        radio.pause();
+        onAirButton.textContent = '🔴 ON AIR';
+      }
+    });
+  </script>
 </body>
 </html>
