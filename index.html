@@ -53,13 +53,14 @@
             border-radius: 10px;
         }
         .on-air-btn {
-            background-color: #e0913e;
+            background-color: #d41b66;
             border: none;
             color: white;
             padding: 10px 20px;
             font-weight: bold;
             border-radius: 20px;
             margin-top: 10px;
+            cursor: pointer;
         }
         .speaker {
             text-align: center;
@@ -103,7 +104,7 @@
 </head>
 <body>
     <header>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/RFA_Logo_2022.svg/1200px-RFA_Logo_2022.svg.png" alt="RFA Logo" class="logo">
+        <img src="logo-rfa.png" alt="RFA Logo" class="logo">
         <div class="title-section">
             <div class="title">Radio.PhilAuraStation</div>
             <div class="subtitle">Musica senza confini. Emozioni senza limiti.</div>
@@ -112,10 +113,14 @@
     <div class="content">
         <div class="card">
             <img id="albumCover" src="https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art" alt="Copertina in onda">
-            <button class="on-air-btn">🔴 ON AIR</button>
+            <button class="on-air-btn" onclick="toggleRadio()">🔴 ON AIR</button>
+            <audio id="radioPlayer" preload="none">
+                <source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
+                Il tuo browser non supporta l'audio HTML5.
+            </audio>
         </div>
         <div class="card speaker">
-            <img src="https://images.unsplash.com/photo-1590080875962-eafcf82b4d70" alt="Speaker Antonio" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
+            <img src="dj-transparent.png" alt="Speaker Antonio" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
             <h2>ORA IN ONDA</h2>
             <h1>ANTONIO 🎧</h1>
             <svg class="equalizer" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +139,7 @@
             </svg>
         </div>
         <div class="news">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Charlize_Theron_Cannes_2015.jpg/800px-Charlize_Theron_Cannes_2015.jpg" alt="Notizia">
+            <img src="news.jpg" alt="Notizia">
             <h3>Notizia del giorno</h3>
             <p><strong>I 50 anni di Charlize Theron</strong>, 'non ho più tempo per fingere'</p>
             <p>Premio Oscar nel 2004 per Monster e regina dei film d’azione.</p>
@@ -146,12 +151,19 @@
     </div>
 
     <script>
-      setInterval(function () {
-        const album = document.getElementById("albumCover");
-        if (album) {
-          album.src = "https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art?cacheBust=" + new Date().getTime();
+        function toggleRadio() {
+            const radio = document.getElementById('radioPlayer');
+            if (radio.paused) {
+                radio.play();
+            } else {
+                radio.pause();
+            }
         }
-      }, 10000);
+
+        setInterval(() => {
+            const album = document.getElementById("albumCover");
+            album.src = "https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art?cb=" + new Date().getTime();
+        }, 10000);
     </script>
 </body>
 </html>
