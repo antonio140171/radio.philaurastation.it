@@ -1,12 +1,11 @@
 
 <!DOCTYPE html>
-
 <html lang="it">
 <head>
-<meta charset="utf-8"/>
-<title>Radio.PhilAuraStation</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<style>
+  <meta charset="UTF-8">
+  <title>Radio.PhilAuraStation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -148,57 +147,49 @@
   </style>
 </head>
 <body>
-<header>
-<div class="logo-container">
-<img alt="Logo" class="logo" src="logo-rfa.png" style="width:100px;height:100px;background-color:#f5efe4;"/>
-<div class="titles">
-<div class="site-title">Radio.PhilAuraStation</div>
-<div class="site-subtitle">Musica senza confini.Emozioni senza limiti.</div>
-</div>
-</div>
-<nav>
-<a href="#">🎙️ Podcast</a>
-<a href="#">🗞️ News</a>
-</nav>
-</header>
-<div class="main-content">
-<div class="onair-card">
-<img alt="Copertina in onda" src="cover.jpg"/>
-<button class="on-air-btn" id="onAirBtn">🔴 ON AIR</button>
-</div>
-<div class="dj-card">
-<img alt="DJ" src="dj-transparent.png"/>
-<h2>ORA IN 🎧<br/>ANTONIO</h2>
-<svg class="equalizer" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                <rect x="15" width="10" height="20" fill="#e0913e">
-                    <animate attributeName="height" values="20;60;20" dur="0.9s" repeatCount="indefinite"/>
-                </rect>
-                <rect x="35" width="10" height="60" fill="#d41b66">
-                    <animate attributeName="height" values="60;20;60" dur="0.9s" repeatCount="indefinite"/>
-                </rect>
-                <rect x="55" width="10" height="30" fill="#e0913e">
-                    <animate attributeName="height" values="30;70;30" dur="0.9s" repeatCount="indefinite"/>
-                </rect>
-                <rect x="75" width="10" height="40" fill="#d41b66">
-                    <animate attributeName="height" values="40;10;40" dur="0.9s" repeatCount="indefinite"/>
-                </rect>
-            </svg>
-</div>
-<div class="news-card">
-<img alt="Notizia" src="news.jpg"/>
-<h3>Notizia del giorno</h3>
-<p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br/>
+  <header>
+    <div class="logo-container">
+      <img src="logo-rfa.png" alt="Logo" class="logo">
+      <div class="titles">
+        <div class="site-title">Radio.PhilAuraStation</div>
+        <div class="site-subtitle">Musica senza confini.Emozioni senza limiti.</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#">🎙️ Podcast</a>
+      <a href="#">🗞️ News</a>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <div class="onair-card">
+      <img src="cover.jpg" alt="Copertina in onda">
+      <button class="on-air-btn" id="onAirBtn">🔴 ON AIR</button>
+    </div>
+
+    <div class="dj-card">
+      <img src="dj-transparent.png" alt="DJ">
+      <h2>ORA IN 🎧<br>ANTONIO</h2>
+    </div>
+
+    <div class="news-card">
+      <img src="news.jpg" alt="Notizia">
+      <h3>Notizia del giorno</h3>
+      <p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br>
       Premio Oscar nel 2004 per Monster e regina dei film d'azione. <a href="#">Leggi di più</a></p>
-</div>
-</div>
-<footer>
+    </div>
+  </div>
+
+  <footer>
     © 2025 Radio PhilAura Station – Tutti i diritti riservati
   </footer>
-<audio id="radioPlayer" preload="none">
-<source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg"/>
+
+  <audio id="radioPlayer" preload="none">
+    <source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg">
     Il tuo browser non supporta l'audio HTML5.
   </audio>
-<script>
+
+  <script>
     const radio = document.getElementById('radioPlayer');
     const onAirButton = document.getElementById('onAirBtn');
 
@@ -212,5 +203,25 @@
       }
     });
   </script>
+
+<script>
+  async function updateCover() {
+    try {
+      const response = await fetch("https://a2.asurahosting.com/api/nowplaying/philaurastation.it");
+      const data = await response.json();
+      const coverUrl = data.now_playing.art;
+      if (coverUrl) {
+        document.getElementById("dynamic-cover").src = coverUrl;
+      } else {
+        document.getElementById("dynamic-cover").src = "https://philaurastation.it/default-cover.jpg";
+      }
+    } catch (error) {
+      console.error("Errore nel caricamento della copertina:", error);
+    }
+  }
+  setInterval(updateCover, 10000); // ogni 10 secondi
+  document.addEventListener("DOMContentLoaded", updateCover);
+</script>
+
 </body>
 </html>
