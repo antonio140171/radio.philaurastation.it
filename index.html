@@ -1,124 +1,175 @@
 
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio PhilAura Station</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #fdf6ec;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 2px solid #d41b66;
-        }
-        .logo {
-            height: 70px;
-            margin-right: 15px;
-        }
-        .title-section {
-            display: flex;
-            flex-direction: column;
-        }
-        .title {
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-        .subtitle {
-            font-size: 0.9em;
-            color: #555;
-        }
-        .content {
-            display: flex;
-            padding: 20px;
-            justify-content: space-around;
-        }
-        .card {
-            background-color: #fff9f2;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #d41b66;
-            width: 25%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .on-air-btn {
-            background-color: #e0913e;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-weight: bold;
-            border-radius: 20px;
-            margin-top: 10px;
-        }
-        .speaker {
-            text-align: center;
-        }
-        .speaker h2 {
-            margin: 10px 0 0 0;
-            font-size: 1em;
-            color: gray;
-        }
-        .speaker h1 {
-            margin: 5px 0;
-            font-size: 1.5em;
-            color: #d41b66;
-        }
-        .equalizer {
-            width: 40px;
-            height: 30px;
-            margin: 0 auto;
-        }
-        .news {
-            background-color: #fff9f2;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #d41b66;
-            width: 25%;
-        }
-        .news img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .news h3 {
-            color: #d41b66;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.8em;
-            color: #555;
-        }
-    </style>
+<meta charset="utf-8"/>
+<title>Radio.PhilAuraStation</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5efe4;
+      color: #1a1a1a;
+    }
+
+    header {
+      background-color: #fffaf0;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #e91e63;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+
+    .titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-title {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .site-subtitle {
+      font-size: 0.9em;
+      color: #5c5c5c;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5em;
+      margin-top: 0.5em;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      padding: 2em;
+    }
+
+    .onair-card {
+      background-color: #fffaf0;
+      border: 1px solid #e91e63;
+      border-radius: 10px;
+      padding: 1em;
+      text-align: center;
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+
+    .onair-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1em;
+    }
+
+    .on-air-btn {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 0.8em 2em;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+
+    .dj-card, .news-card {
+      background-color: #fffaf0;
+      border-radius: 10px;
+      padding: 1em;
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+
+    .dj-card img, .news-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1em;
+    }
+
+    .dj-card h2, .news-card h3 {
+      margin: 0.5em 0;
+      color: #e91e63;
+    }
+
+    footer {
+      background-color: #fffaf0;
+      color: #777;
+      text-align: center;
+      padding: 1.5em;
+      margin-top: 2em;
+      font-size: 0.9em;
+      border-top: 1px solid #d0c4ac;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        justify-content: center;
+        width: 100%;
+        margin-top: 1em;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .main-content {
+        padding: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/RFA_Logo_2022.svg/1200px-RFA_Logo_2022.svg.png" alt="RFA Logo" class="logo">
-        <div class="title-section">
-            <div class="title">Radio.PhilAuraStation</div>
-            <div class="subtitle">Musica senza confini. Emozioni senza limiti.</div>
-        </div>
-    </header>
-    <div class="content">
-        <div class="card">
-            <img src="copertina.jpg" alt="Copertina in onda">
-            <button class="on-air-btn">🔴 ON AIR</button>
-        </div>
-        <div class="card speaker">
-            <img src="https://images.unsplash.com/photo-1590080875962-eafcf82b4d70" alt="Speaker Antonio" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
-            <h2>ORA IN ONDA</h2>
-            <h1>ANTONIO 🎧</h1>
-            <svg class="equalizer" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+<header>
+<div class="logo-container">
+<img alt="Logo" class="logo" src="logo-rfa.png" style="width:100px;height:100px;background-color:#f5efe4;"/>
+<div class="titles">
+<div class="site-title">Radio.PhilAuraStation</div>
+<div class="site-subtitle">Musica senza confini.Emozioni senza limiti.</div>
+</div>
+</div>
+<nav>
+<a href="#">🎙️ Podcast</a>
+<a href="#">🗞️ News</a>
+</nav>
+</header>
+<div class="main-content">
+<div class="onair-card">
+<img alt="Copertina in onda" src="cover.jpg"/>
+<button class="on-air-btn" id="onAirBtn">🔴 ON AIR</button>
+</div>
+<div class="dj-card">
+<img alt="DJ" src="dj-transparent.png"/>
+<h2>ORA IN 🎧<br/>ANTONIO</h2>
+<svg class="equalizer" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
                 <rect x="15" width="10" height="20" fill="#e0913e">
                     <animate attributeName="height" values="20;60;20" dur="0.9s" repeatCount="indefinite"/>
                 </rect>
@@ -132,17 +183,34 @@
                     <animate attributeName="height" values="40;10;40" dur="0.9s" repeatCount="indefinite"/>
                 </rect>
             </svg>
-        </div>
-        <div class="news">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Charlize_Theron_Cannes_2015.jpg/800px-Charlize_Theron_Cannes_2015.jpg" alt="Notizia">
-            <h3>Notizia del giorno</h3>
-            <p><strong>I 50 anni di Charlize Theron</strong>, 'non ho più tempo per fingere'</p>
-            <p>Premio Oscar nel 2004 per Monster e regina dei film d’azione.</p>
-            <a href="#">Leggi di più</a>
-        </div>
-    </div>
-    <div class="footer">
-        © 2025 Radio PhilAura Station – Tutti i diritti riservati
-    </div>
+</div>
+<div class="news-card">
+<img alt="Notizia" src="news.jpg"/>
+<h3>Notizia del giorno</h3>
+<p><strong>I 50 anni di Charlize Theron, 'non ho più tempo per fingere'</strong><br/>
+      Premio Oscar nel 2004 per Monster e regina dei film d'azione. <a href="#">Leggi di più</a></p>
+</div>
+</div>
+<footer>
+    © 2025 Radio PhilAura Station – Tutti i diritti riservati
+  </footer>
+<audio id="radioPlayer" preload="none">
+<source src="https://a2.asurahosting.com:7680/radio.mp3" type="audio/mpeg"/>
+    Il tuo browser non supporta l'audio HTML5.
+  </audio>
+<script>
+    const radio = document.getElementById('radioPlayer');
+    const onAirButton = document.getElementById('onAirBtn');
+
+    onAirButton.addEventListener('click', () => {
+      if (radio.paused) {
+        radio.play();
+        onAirButton.textContent = '🔊 LIVE NOW';
+      } else {
+        radio.pause();
+        onAirButton.textContent = '🔴 ON AIR';
+      }
+    });
+  </script>
 </body>
 </html>
