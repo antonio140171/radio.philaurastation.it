@@ -167,19 +167,125 @@ Il tuo browser non supporta l'audio HTML5.
 </section>
 
 <!-- News -->
-<!-- FEED RSS WIDGET -->
-<section class="card">
-<h3>Ultime Notizie Online</h3>
-<iframe src="https://rss.app/embed/v1/wall/ozCFVxEl8l9Kzqo0"https://rss.app/feeds/ozCFVxEl8l9Kzqo0.xml
-width="100%"
-height="600"
-frameborder="0"
-sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
-scrolling="yes"
-style="border-radius:10px;">
-</iframe>
+<section class="card" id="news-widget" style="border-radius:10px;">
+  <h3>Ultime Notizie Online</h3>
+  <div id="news-list" style="display:grid; gap:12px;"></div>
 </section>
-</main>
+
+<script>
+  // === CONFIG ===
+  const feedUrl = "https://www.ansa.it/sito/ansait_rss.xml";
+  // Esempi alternativi:
+  // const feedUrl = "https://www.repubblica.it/rss/homepage/rss2.0.xml";
+  // const feedUrl = "https://www.ilsole24ore.com/rss/italia--attualita.xml";
+
+  // Se vuoi unire più feed:
+  // const feeds = [ "https://www.ansa.it/sito/ansait_rss.xml", "https://www.ilsole24ore.com/rss/italia--attualita.xml" ];
+
+  const container = document.getElementById("news-list");
+
+  async function loadFeed(url) {
+    const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url);
+    const res = await fetch(api);
+    if (!res.ok) throw new Error("Errore rete: " + res.status);
+    const data = await res.json();
+    if (!data || !data.items) throw new Error("Feed vuoto o non valido");
+    return data.items;
+  }
+
+  function timeAgo(ts) {
+    const d = new Date(ts);
+    const diff = Math.floor((Date.now() - d.getTime()) / 1000);
+    const units = [
+      ["giorno", 86400],
+      ["ora", 3600],
+      ["minuto", 60]
+    ];
+    for (const [name, sec] of units) {
+      const v = Math.floor(diff / sec);
+      if (v >= 1) return `${v} ${name}${v>1?"i":""} fa`;
+    }
+    return "adesso";
+  }
+
+  function normalizeImage(item) {
+    // Prova a pescare un’immagine dall’item (content/thumbnail/enclosure)
+    if (item.thumbnail) return item.thumbnail;
+    if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+    const m = (item.content || item.description || "").match(/<img[^>]+src="([^"]+)"/i);
+    return m ? m[1] : null;
+  }
+
+  function renderItem(item) {
+    const wrapper = document.createElement("article");
+    wrapper.style.border = "1px solid #e5e7eb";
+    wrapper.style.borderRadius = "12px";
+    wrapper.style.padding = "12px";
+    wrapper.style.display = "grid";
+    wrapper.style.gridTemplateColumns = "120px 1fr";
+    wrapper.style.gap = "12px";
+    wrapper.style.alignItems = "start";
+    wrapper.style.background = "white";
+
+    const imgUrl = normalizeImage(item);
+
+    const img = document.createElement("div");
+    img.style.width = "120px";
+    img.style.height = "80px";
+    img.style.borderRadius = "8px";
+    img.style.overflow = "hidden";
+    img.style.background = "#f3f4f6";
+    if (imgUrl) {
+      img.innerHTML = `<img src="${imgUrl}" alt="" style="width:100%;height:100%;object-fit:cover;">`;
+    } else {
+      img.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#9ca3af;">Nessuna immagine</div>`;
+    }
+
+    const body = document.createElement("div");
+    const title = document.createElement("a");
+    title.href = item.link;
+    title.target = "_blank";
+    title.rel = "noopener";
+    title.textContent = item.title?.trim() || "Senza titolo";
+    title.style.fontWeight = "700";
+    title.style.textDecoration = "none";
+    title.style.color = "#111827";
+
+    const meta = document.createElement("div");
+    meta.textContent = timeAgo(item.pubDate || item.created || Date.now());
+    meta.style.fontSize = "12px";
+    meta.style.color = "#6b7280";
+    meta.style.margin = "4px 0 8px 0";
+
+    const desc = document.createElement("p");
+    const text = (item.description || item.content || "").replace(/<[^>]+>/g, "");
+    desc.textContent = text.length > 200 ? text.slice(0, 200) + "…" : text;
+    desc.style.fontSize = "14px";
+    desc.style.color = "#374151";
+    desc.style.margin = 0;
+
+    body.appendChild(title);
+    body.appendChild(meta);
+    body.appendChild(desc);
+
+    wrapper.appendChild(img);
+    wrapper.appendChild(body);
+    container.appendChild(wrapper);
+  }
+
+  (async () => {
+    try {
+      container.innerHTML = "<div style='color:#6b7280'>Carico le ultime notizie…</div>";
+      const items = await loadFeed(feedUrl);
+      container.innerHTML = "";
+      items.slice(0, 10).forEach(renderItem);
+    } catch (e) {
+      console.error(e);
+      container.innerHTML = "<div style='color:#b91c1c'>Impossibile caricare il feed. Puoi aver superato i limiti gratuiti o il feed non supporta l’accesso.</div>";
+    }
+  })();
+</script>
+
 
 <footer>© 2025 Radio PhilAura Station – Tutti i diritti riservati</footer>
 
