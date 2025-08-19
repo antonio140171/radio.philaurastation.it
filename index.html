@@ -166,9 +166,10 @@ Il tuo browser non supporta l'audio HTML5.
 </svg>
 </section>
 
-<!-- NEWS WIDGET (solo testo) -->
+<!-- NEWS WIDGET (solo testo, con auto-refresh) -->
 <section class="card" id="news-widget" style="border-radius:10px;">
-  <h3 style="margin:0 0 12px 0;">Ultime Notizie Online</h3>
+  <h3 style="margin:0;">Ultime Notizie Online</h3>
+  <div id="news-updated" style="font-size:12px;color:#6b7280;margin:4px 0 12px 0;">Aggiornamento in corso…</div>
   <div id="news-list" style="display:flex; flex-direction:column; gap:12px;"></div>
 </section>
 
@@ -176,70 +177,92 @@ Il tuo browser non supporta l'audio HTML5.
   // === CONFIG ===
   const feedUrl = "https://www.ansa.it/sito/ansait_rss.xml"; // cambia qui se vuoi
   const MAX_ITEMS = 10;
+  const REFRESH_MS = 5 * 60 * 1000; // ogni 5 minuti
 
   const container = document.getElementById("news-list");
+  const updatedEl = document.getElementById("news-updated");
+
+  let lastFirstId = null; // per evitare di ridisegnare se nulla è cambiato
 
   async function loadFeed(url) {
     const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url);
-    const res = await fetch(api);
+    const res = await fetch(api, { cache: "no-store" });
     if (!res.ok) throw new Error("Errore rete: " + res.status);
     const data = await res.json();
     if (!data || !data.items) throw new Error("Feed vuoto o non valido");
-    return data.items;
+    return data.items.slice(0, MAX_ITEMS);
   }
 
   function stripHtml(s="") { return s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(); }
 
-  function renderItem(item) {
-    const art = document.createElement("article");
-    art.style.border = "1px solid #e5e7eb";
-    art.style.borderRadius = "12px";
-    art.style.padding = "12px";
-    art.style.background = "white";
+  function renderList(items) {
+    container.innerHTML = "";
+    items.forEach(item => {
+      const art = document.createElement("article");
+      art.style.border = "1px solid #e5e7eb";
+      art.style.borderRadius = "12px";
+      art.style.padding = "12px";
+      art.style.background = "white";
 
-    const title = document.createElement("a");
-    title.href = item.link;
-    title.target = "_blank";
-    title.rel = "noopener";
-    title.textContent = item.title?.trim() || "Senza titolo";
-    title.style.display = "block";
-    title.style.fontWeight = "700";
-    title.style.textDecoration = "none";
-    title.style.color = "#111827";
-    title.style.marginBottom = "6px";
+      const title = document.createElement("a");
+      title.href = item.link;
+      title.target = "_blank";
+      title.rel = "noopener";
+      title.textContent = item.title?.trim() || "Senza titolo";
+      title.style.display = "block";
+      title.style.fontWeight = "700";
+      title.style.textDecoration = "none";
+      title.style.color = "#111827";
+      title.style.marginBottom = "6px";
 
-    const meta = document.createElement("div");
-    const d = new Date(item.pubDate || item.created || Date.now());
-    meta.textContent = isNaN(d.getTime()) ? "" : d.toLocaleString("it-IT");
-    meta.style.fontSize = "12px";
-    meta.style.color = "#6b7280";
-    meta.style.marginBottom = "6px";
+      const meta = document.createElement("div");
+      const d = new Date(item.pubDate || item.created || Date.now());
+      meta.textContent = isNaN(d.getTime()) ? "" : d.toLocaleString("it-IT");
+      meta.style.fontSize = "12px";
+      meta.style.color = "#6b7280";
+      meta.style.marginBottom = "6px";
 
-    const desc = document.createElement("p");
-    const text = stripHtml(item.description || item.content || "");
-    desc.textContent = text.length > 180 ? text.slice(0, 180) + "…" : text;
-    desc.style.fontSize = "14px";
-    desc.style.color = "#374151";
-    desc.style.margin = 0;
+      const desc = document.createElement("p");
+      const text = stripHtml(item.description || item.content || "");
+      desc.textContent = text.length > 180 ? text.slice(0, 180) + "…" : text;
+      desc.style.fontSize = "14px";
+      desc.style.color = "#374151";
+      desc.style.margin = 0;
 
-    art.appendChild(title);
-    art.appendChild(meta);
-    art.appendChild(desc);
-    container.appendChild(art);
+      art.appendChild(title);
+      art.appendChild(meta);
+      art.appendChild(desc);
+      container.appendChild(art);
+    });
   }
 
-  (async () => {
+  async function refresh() {
     try {
-      container.innerHTML = "<div style='color:#6b7280'>Carico le ultime notizie…</div>";
+      if (!container.innerHTML) {
+        container.innerHTML = "<div style='color:#6b7280'>Carico le ultime notizie…</div>";
+      }
       const items = await loadFeed(feedUrl);
-      container.innerHTML = "";
-      items.slice(0, MAX_ITEMS).forEach(renderItem);
+      const firstId = items[0]?.link || items[0]?.title || "";
+      // evita ridisegno se il primo elemento è invariato
+      if (firstId && firstId === lastFirstId && container.children.length > 0) {
+        updatedEl.textContent = "Aggiornato alle " + new Date().toLocaleTimeString("it-IT");
+        return;
+      }
+      lastFirstId = firstId;
+      renderList(items);
+      updatedEl.textContent = "Aggiornato alle " + new Date().toLocaleTimeString("it-IT");
     } catch (e) {
       console.error(e);
+      updatedEl.textContent = "Errore aggiornamento.";
       container.innerHTML = "<div style='color:#b91c1c'>Impossibile caricare il feed.</div>";
     }
-  })();
+  }
+
+  // primo load + auto-refresh periodico
+  refresh();
+  setInterval(refresh, REFRESH_MS);
 </script>
+
 
 
 
