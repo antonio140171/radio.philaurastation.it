@@ -167,32 +167,38 @@ Il tuo browser non supporta l'audio HTML5.
 </section>
 
 <!-- News -->
+<!-- NEWS WIDGET -->
 <section class="card" id="news-widget" style="border-radius:10px;">
-  <h3>Ultime Notizie Online</h3>
+  <h3 style="margin:0 0 12px 0;">Ultime Notizie Online</h3>
   <div id="news-list" style="display:grid; gap:12px;"></div>
 </section>
 
 <script>
   // ====== CONFIG ======
-  const feedUrl = "https://www.ansa.it/sito/ansait_rss.xml"; // il tuo feed attuale
-  const SHOW_DEBUG = false; // metti true per vedere log in console
+  const feedUrl = "https://www.ansa.it/sito/ansait_rss.xml"; // cambia qui se vuoi
   const PLACEHOLDER = "https://via.placeholder.com/240x160?text=News";
+  const SHOW_DEBUG = false; // true per log console
 
   const container = document.getElementById("news-list");
+  const log = (...a) => SHOW_DEBUG && console.log("[NEWS]", ...a);
 
-  function log(...args){ if(SHOW_DEBUG) console.log("[NEWS]", ...args); }
-
+  // --- Utils ---
   function sanitizeUrl(u) {
     if (!u) return null;
-    // rimuovi spazi/virgolette
     u = String(u).trim().replace(/^['"]|['"]$/g, "");
-    // //example.com → https://example.com
-    if (u.startsWith("//")) return "https:" + u;
-    // http → https (evita contenuti misti)
-    if (u.startsWith("http://")) return "https://" + u.slice(7);
-    // data URI/ blob non sono utili qui
+    if (u.startsWith("//")) return "https:" + u;  // normalizza //example.com
     if (u.startsWith("data:") || u.startsWith("blob:")) return null;
     return u;
+  }
+
+  function toSafeImgSrc(u) {
+    if (!u) return null;
+    if (u.startsWith("https://")) return u;
+    // Proxy https per URL http o senza protocollo (evita mixed content / hotlink)
+    if (u.startsWith("//")) u = u.slice(2);
+    else if (u.startsWith("http://")) u = u.slice(7);
+    else if (u.startsWith("https://")) u = u.slice(8);
+    return "https://images.weserv.nl/?url=" + encodeURIComponent(u);
   }
 
   function getFromEnclosure(enc) {
@@ -206,43 +212,32 @@ Il tuo browser non supporta l'audio HTML5.
 
   function getFromHtml(html) {
     if (!html) return null;
-    // src="..."
     let m = html.match(/<img[^>]+src="([^"]+)"/i);
     if (m) return sanitizeUrl(m[1]);
-    // data-src / data-original
     m = html.match(/<img[^>]+(?:data-src|data-original)="([^"]+)"/i);
     if (m) return sanitizeUrl(m[1]);
-    // srcset → prendi la prima url (prima della virgola o dello spazio)
     m = html.match(/<img[^>]+srcset="([^"]+)"/i);
     if (m) {
       const first = m[1].split(",")[0].trim().split(" ")[0];
       return sanitizeUrl(first);
     }
-    // background-image: url(...)
     m = html.match(/background-image:\s*url\(['"]?([^'")]+)['"]?\)/i);
     if (m) return sanitizeUrl(m[1]);
     return null;
   }
 
   function normalizeImage(item) {
-    // 1) campi tipici rss2json
     const t = sanitizeUrl(item.thumbnail);
     if (t) return t;
-
     const e = getFromEnclosure(item.enclosure);
     if (e) return e;
-
-    // 2) prova dentro content/description
     const html = String(item.content || item.description || "");
     const fromHtml = getFromHtml(html);
     if (fromHtml) return fromHtml;
-
-    // 3) alcuni feed mettono immagini in "content:encoded" (rss2json lo mette in content)
-    // già coperto sopra
-
     return null;
   }
 
+  // --- Data ---
   async function loadFeed(url) {
     const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url);
     const res = await fetch(api);
@@ -253,6 +248,7 @@ Il tuo browser non supporta l'audio HTML5.
     return data.items;
   }
 
+  // --- UI ---
   function renderItem(item) {
     const wrapper = document.createElement("article");
     wrapper.style.border = "1px solid #e5e7eb";
@@ -265,8 +261,8 @@ Il tuo browser non supporta l'audio HTML5.
     wrapper.style.background = "white";
 
     const rawUrl = normalizeImage(item);
-    const imgUrl = rawUrl || PLACEHOLDER;
     if (!rawUrl) log("Nessuna immagine per:", item.title);
+    const imgUrl = rawUrl || PLACEHOLDER;
 
     const img = document.createElement("div");
     img.style.width = "120px";
@@ -274,7 +270,9 @@ Il tuo browser non supporta l'audio HTML5.
     img.style.borderRadius = "8px";
     img.style.overflow = "hidden";
     img.style.background = "#f3f4f6";
-    img.innerHTML = `<img src="${imgUrl}" alt="" style="width:100%;height:100%;object-fit:cover;">`;
+    img.innerHTML = `<img src="${toSafeImgSrc(imgUrl)}" alt=""
+      style="width:100%;height:100%;object-fit:cover;"
+      onerror="this.onerror=null; this.src='${PLACEHOLDER}';">`;
 
     const body = document.createElement("div");
     const title = document.createElement("a");
@@ -321,6 +319,7 @@ Il tuo browser non supporta l'audio HTML5.
     }
   })();
 </script>
+
 
 
 
