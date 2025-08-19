@@ -166,145 +166,66 @@ Il tuo browser non supporta l'audio HTML5.
 </svg>
 </section>
 
-<!-- News -->
-<!-- NEWS WIDGET -->
+<!-- NEWS WIDGET (solo testo) -->
 <section class="card" id="news-widget" style="border-radius:10px;">
   <h3 style="margin:0 0 12px 0;">Ultime Notizie Online</h3>
-  <div id="news-list" style="display:grid; gap:12px;"></div>
+  <div id="news-list" style="display:flex; flex-direction:column; gap:12px;"></div>
 </section>
 
 <script>
-  // ====== CONFIG ======
+  // === CONFIG ===
   const feedUrl = "https://www.ansa.it/sito/ansait_rss.xml"; // cambia qui se vuoi
-  const PLACEHOLDER = "https://via.placeholder.com/240x160?text=News";
-  const SHOW_DEBUG = false; // true per log console
+  const MAX_ITEMS = 10;
 
   const container = document.getElementById("news-list");
-  const log = (...a) => SHOW_DEBUG && console.log("[NEWS]", ...a);
 
-  // --- Utils ---
-  function sanitizeUrl(u) {
-    if (!u) return null;
-    u = String(u).trim().replace(/^['"]|['"]$/g, "");
-    if (u.startsWith("//")) return "https:" + u;  // normalizza //example.com
-    if (u.startsWith("data:") || u.startsWith("blob:")) return null;
-    return u;
-  }
-
-  function toSafeImgSrc(u) {
-    if (!u) return null;
-    if (u.startsWith("https://")) return u;
-    // Proxy https per URL http o senza protocollo (evita mixed content / hotlink)
-    if (u.startsWith("//")) u = u.slice(2);
-    else if (u.startsWith("http://")) u = u.slice(7);
-    else if (u.startsWith("https://")) u = u.slice(8);
-    return "https://images.weserv.nl/?url=" + encodeURIComponent(u);
-  }
-
-  function getFromEnclosure(enc) {
-    if (!enc) return null;
-    if (typeof enc === "string") return sanitizeUrl(enc);
-    if (typeof enc === "object") {
-      return sanitizeUrl(enc.link || enc.url || enc.href);
-    }
-    return null;
-  }
-
-  function getFromHtml(html) {
-    if (!html) return null;
-    let m = html.match(/<img[^>]+src="([^"]+)"/i);
-    if (m) return sanitizeUrl(m[1]);
-    m = html.match(/<img[^>]+(?:data-src|data-original)="([^"]+)"/i);
-    if (m) return sanitizeUrl(m[1]);
-    m = html.match(/<img[^>]+srcset="([^"]+)"/i);
-    if (m) {
-      const first = m[1].split(",")[0].trim().split(" ")[0];
-      return sanitizeUrl(first);
-    }
-    m = html.match(/background-image:\s*url\(['"]?([^'")]+)['"]?\)/i);
-    if (m) return sanitizeUrl(m[1]);
-    return null;
-  }
-
-  function normalizeImage(item) {
-    const t = sanitizeUrl(item.thumbnail);
-    if (t) return t;
-    const e = getFromEnclosure(item.enclosure);
-    if (e) return e;
-    const html = String(item.content || item.description || "");
-    const fromHtml = getFromHtml(html);
-    if (fromHtml) return fromHtml;
-    return null;
-  }
-
-  // --- Data ---
   async function loadFeed(url) {
     const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url);
     const res = await fetch(api);
     if (!res.ok) throw new Error("Errore rete: " + res.status);
     const data = await res.json();
     if (!data || !data.items) throw new Error("Feed vuoto o non valido");
-    log("Esempio item:", data.items[0]);
     return data.items;
   }
 
-  // --- UI ---
+  function stripHtml(s="") { return s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(); }
+
   function renderItem(item) {
-    const wrapper = document.createElement("article");
-    wrapper.style.border = "1px solid #e5e7eb";
-    wrapper.style.borderRadius = "12px";
-    wrapper.style.padding = "12px";
-    wrapper.style.display = "grid";
-    wrapper.style.gridTemplateColumns = "120px 1fr";
-    wrapper.style.gap = "12px";
-    wrapper.style.alignItems = "start";
-    wrapper.style.background = "white";
+    const art = document.createElement("article");
+    art.style.border = "1px solid #e5e7eb";
+    art.style.borderRadius = "12px";
+    art.style.padding = "12px";
+    art.style.background = "white";
 
-    const rawUrl = normalizeImage(item);
-    if (!rawUrl) log("Nessuna immagine per:", item.title);
-    const imgUrl = rawUrl || PLACEHOLDER;
-
-    const img = document.createElement("div");
-    img.style.width = "120px";
-    img.style.height = "80px";
-    img.style.borderRadius = "8px";
-    img.style.overflow = "hidden";
-    img.style.background = "#f3f4f6";
-    img.innerHTML = `<img src="${toSafeImgSrc(imgUrl)}" alt=""
-      style="width:100%;height:100%;object-fit:cover;"
-      onerror="this.onerror=null; this.src='${PLACEHOLDER}';">`;
-
-    const body = document.createElement("div");
     const title = document.createElement("a");
     title.href = item.link;
     title.target = "_blank";
     title.rel = "noopener";
     title.textContent = item.title?.trim() || "Senza titolo";
+    title.style.display = "block";
     title.style.fontWeight = "700";
     title.style.textDecoration = "none";
     title.style.color = "#111827";
+    title.style.marginBottom = "6px";
 
     const meta = document.createElement("div");
     const d = new Date(item.pubDate || item.created || Date.now());
     meta.textContent = isNaN(d.getTime()) ? "" : d.toLocaleString("it-IT");
     meta.style.fontSize = "12px";
     meta.style.color = "#6b7280";
-    meta.style.margin = "4px 0 8px 0";
+    meta.style.marginBottom = "6px";
 
     const desc = document.createElement("p");
-    const text = (item.description || item.content || "").replace(/<[^>]+>/g, "");
-    desc.textContent = text.length > 200 ? text.slice(0, 200) + "…" : text;
+    const text = stripHtml(item.description || item.content || "");
+    desc.textContent = text.length > 180 ? text.slice(0, 180) + "…" : text;
     desc.style.fontSize = "14px";
     desc.style.color = "#374151";
     desc.style.margin = 0;
 
-    body.appendChild(title);
-    body.appendChild(meta);
-    body.appendChild(desc);
-
-    wrapper.appendChild(img);
-    wrapper.appendChild(body);
-    container.appendChild(wrapper);
+    art.appendChild(title);
+    art.appendChild(meta);
+    art.appendChild(desc);
+    container.appendChild(art);
   }
 
   (async () => {
@@ -312,13 +233,14 @@ Il tuo browser non supporta l'audio HTML5.
       container.innerHTML = "<div style='color:#6b7280'>Carico le ultime notizie…</div>";
       const items = await loadFeed(feedUrl);
       container.innerHTML = "";
-      items.slice(0, 10).forEach(renderItem);
+      items.slice(0, MAX_ITEMS).forEach(renderItem);
     } catch (e) {
       console.error(e);
-      container.innerHTML = "<div style='color:#b91c1c'>Impossibile caricare il feed. Forse limiti superati o feed non supportato.</div>";
+      container.innerHTML = "<div style='color:#b91c1c'>Impossibile caricare il feed.</div>";
     }
   })();
 </script>
+
 
 
 
