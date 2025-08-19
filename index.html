@@ -173,16 +173,75 @@ Il tuo browser non supporta l'audio HTML5.
 </section>
 
 <script>
-  // === CONFIG ===
-  const feedUrl = "https://www.ansa.it/sito/ansait_rss.xml";
-  // Esempi alternativi:
-  // const feedUrl = "https://www.repubblica.it/rss/homepage/rss2.0.xml";
-  // const feedUrl = "https://www.ilsole24ore.com/rss/italia--attualita.xml";
-
-  // Se vuoi unire più feed:
-  // const feeds = [ "https://www.ansa.it/sito/ansait_rss.xml", "https://www.ilsole24ore.com/rss/italia--attualita.xml" ];
+  // ====== CONFIG ======
+  const feedUrl = "https://www.ansa.it/sito/ansait_rss.xml"; // il tuo feed attuale
+  const SHOW_DEBUG = false; // metti true per vedere log in console
+  const PLACEHOLDER = "https://via.placeholder.com/240x160?text=News";
 
   const container = document.getElementById("news-list");
+
+  function log(...args){ if(SHOW_DEBUG) console.log("[NEWS]", ...args); }
+
+  function sanitizeUrl(u) {
+    if (!u) return null;
+    // rimuovi spazi/virgolette
+    u = String(u).trim().replace(/^['"]|['"]$/g, "");
+    // //example.com → https://example.com
+    if (u.startsWith("//")) return "https:" + u;
+    // http → https (evita contenuti misti)
+    if (u.startsWith("http://")) return "https://" + u.slice(7);
+    // data URI/ blob non sono utili qui
+    if (u.startsWith("data:") || u.startsWith("blob:")) return null;
+    return u;
+  }
+
+  function getFromEnclosure(enc) {
+    if (!enc) return null;
+    if (typeof enc === "string") return sanitizeUrl(enc);
+    if (typeof enc === "object") {
+      return sanitizeUrl(enc.link || enc.url || enc.href);
+    }
+    return null;
+  }
+
+  function getFromHtml(html) {
+    if (!html) return null;
+    // src="..."
+    let m = html.match(/<img[^>]+src="([^"]+)"/i);
+    if (m) return sanitizeUrl(m[1]);
+    // data-src / data-original
+    m = html.match(/<img[^>]+(?:data-src|data-original)="([^"]+)"/i);
+    if (m) return sanitizeUrl(m[1]);
+    // srcset → prendi la prima url (prima della virgola o dello spazio)
+    m = html.match(/<img[^>]+srcset="([^"]+)"/i);
+    if (m) {
+      const first = m[1].split(",")[0].trim().split(" ")[0];
+      return sanitizeUrl(first);
+    }
+    // background-image: url(...)
+    m = html.match(/background-image:\s*url\(['"]?([^'")]+)['"]?\)/i);
+    if (m) return sanitizeUrl(m[1]);
+    return null;
+  }
+
+  function normalizeImage(item) {
+    // 1) campi tipici rss2json
+    const t = sanitizeUrl(item.thumbnail);
+    if (t) return t;
+
+    const e = getFromEnclosure(item.enclosure);
+    if (e) return e;
+
+    // 2) prova dentro content/description
+    const html = String(item.content || item.description || "");
+    const fromHtml = getFromHtml(html);
+    if (fromHtml) return fromHtml;
+
+    // 3) alcuni feed mettono immagini in "content:encoded" (rss2json lo mette in content)
+    // già coperto sopra
+
+    return null;
+  }
 
   async function loadFeed(url) {
     const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url);
@@ -190,30 +249,8 @@ Il tuo browser non supporta l'audio HTML5.
     if (!res.ok) throw new Error("Errore rete: " + res.status);
     const data = await res.json();
     if (!data || !data.items) throw new Error("Feed vuoto o non valido");
+    log("Esempio item:", data.items[0]);
     return data.items;
-  }
-
-  function timeAgo(ts) {
-    const d = new Date(ts);
-    const diff = Math.floor((Date.now() - d.getTime()) / 1000);
-    const units = [
-      ["giorno", 86400],
-      ["ora", 3600],
-      ["minuto", 60]
-    ];
-    for (const [name, sec] of units) {
-      const v = Math.floor(diff / sec);
-      if (v >= 1) return `${v} ${name}${v>1?"i":""} fa`;
-    }
-    return "adesso";
-  }
-
-  function normalizeImage(item) {
-    // Prova a pescare un’immagine dall’item (content/thumbnail/enclosure)
-    if (item.thumbnail) return item.thumbnail;
-    if (item.enclosure && item.enclosure.link) return item.enclosure.link;
-    const m = (item.content || item.description || "").match(/<img[^>]+src="([^"]+)"/i);
-    return m ? m[1] : null;
   }
 
   function renderItem(item) {
@@ -227,7 +264,9 @@ Il tuo browser non supporta l'audio HTML5.
     wrapper.style.alignItems = "start";
     wrapper.style.background = "white";
 
-    const imgUrl = normalizeImage(item);
+    const rawUrl = normalizeImage(item);
+    const imgUrl = rawUrl || PLACEHOLDER;
+    if (!rawUrl) log("Nessuna immagine per:", item.title);
 
     const img = document.createElement("div");
     img.style.width = "120px";
@@ -235,11 +274,7 @@ Il tuo browser non supporta l'audio HTML5.
     img.style.borderRadius = "8px";
     img.style.overflow = "hidden";
     img.style.background = "#f3f4f6";
-    if (imgUrl) {
-      img.innerHTML = `<img src="${imgUrl}" alt="" style="width:100%;height:100%;object-fit:cover;">`;
-    } else {
-      img.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#9ca3af;">Nessuna immagine</div>`;
-    }
+    img.innerHTML = `<img src="${imgUrl}" alt="" style="width:100%;height:100%;object-fit:cover;">`;
 
     const body = document.createElement("div");
     const title = document.createElement("a");
@@ -252,7 +287,8 @@ Il tuo browser non supporta l'audio HTML5.
     title.style.color = "#111827";
 
     const meta = document.createElement("div");
-    meta.textContent = timeAgo(item.pubDate || item.created || Date.now());
+    const d = new Date(item.pubDate || item.created || Date.now());
+    meta.textContent = isNaN(d.getTime()) ? "" : d.toLocaleString("it-IT");
     meta.style.fontSize = "12px";
     meta.style.color = "#6b7280";
     meta.style.margin = "4px 0 8px 0";
@@ -281,10 +317,11 @@ Il tuo browser non supporta l'audio HTML5.
       items.slice(0, 10).forEach(renderItem);
     } catch (e) {
       console.error(e);
-      container.innerHTML = "<div style='color:#b91c1c'>Impossibile caricare il feed. Puoi aver superato i limiti gratuiti o il feed non supporta l’accesso.</div>";
+      container.innerHTML = "<div style='color:#b91c1c'>Impossibile caricare il feed. Forse limiti superati o feed non supportato.</div>";
     }
   })();
 </script>
+
 
 
 <footer>© 2025 Radio PhilAura Station – Tutti i diritti riservati</footer>
