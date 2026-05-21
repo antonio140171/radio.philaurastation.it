@@ -4,6 +4,10 @@
 <meta charset="UTF-8" />
 <title>Radio PhilAura Station</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="favicon-philaura.svg" />
+<link rel="shortcut icon" href="favicon-philaura.svg" />
+<link rel="apple-touch-icon" href="favicon-philaura.svg" />
+<meta name="theme-color" content="#d41b66" />
 <style>
 :root {
 --primary: #d41b66;
@@ -80,13 +84,65 @@ width: 100%;
 max-width: 380px;
 text-align: center;
 }
-.album-cover {
+.cover-wrap {
+position: relative;
 width: 100%;
-border-radius: 10px;
-aspect-ratio: 1/1; /* quadrata, bella anche su mobile */
-object-fit: cover;
+aspect-ratio: 1/1;
+border-radius: 18px;
+overflow: hidden;
+background: radial-gradient(circle at top, #fff4d8, #f0ddbd 55%, #d41b66 160%);
+box-shadow: inset 0 0 0 1px rgba(212,27,102,.25);
 margin-bottom: 12px;
 }
+.album-cover {
+width: 100%;
+height: 100%;
+display: block;
+border-radius: 18px;
+object-fit: cover;
+}
+.cover-fallback {
+position: absolute;
+inset: 0;
+display: none;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+gap: 10px;
+font-weight: 900;
+color: var(--primary);
+font-size: 1.05rem;
+text-align: center;
+padding: 20px;
+}
+.cover-fallback .big-icon {
+font-size: 4rem;
+line-height: 1;
+filter: drop-shadow(0 6px 12px rgba(0,0,0,.15));
+}
+.cover-wrap.no-cover .album-cover { opacity: 0; }
+.cover-wrap.no-cover .cover-fallback { display: flex; }
+.volume-box {
+margin: 14px auto 0;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-weight: 800;
+color: var(--primary);
+}
+.volume-box .speaker-icon {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background: #fff;
+border: 1px solid rgba(212,27,102,.35);
+box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+.volume-box input { width: 160px; accent-color: var(--primary); }
 .onair-btn {
 background: var(--accent);
 color: #fff;
@@ -135,11 +191,20 @@ font-size: .9rem;
 <main class="main">
 <!-- Player / Cover -->
 <section class="card">
-<img id="albumCover" class="album-cover"
-src="https://a2.asurahosting.com/api/nowplaying/philaurastation.it/art"
-alt="Copertina in onda" />
+<div id="coverWrap" class="cover-wrap no-cover">
+<img id="albumCover" class="album-cover" src="" alt="Copertina in onda" />
+<div class="cover-fallback">
+<div class="big-icon">🎧</div>
+<div>Radio PhilAura Station</div>
+<small>Copertina non disponibile</small>
+</div>
+</div>
 <div id="trackInfo" class="track-info">Caricamento brano...</div>
 <button id="onAirBtn" class="onair-btn">🔴 ON AIR</button>
+<div class="volume-box">
+<span class="speaker-icon" id="volumeIcon">🔊</span>
+<input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.85" aria-label="Volume radio" />
+</div>
 <audio id="radioPlayer" preload="none">
 <source src="https://a7.asurahosting.com:9160/radio.mp3" type="audio/mpeg" />
 Il tuo browser non supporta l'audio HTML5.
@@ -276,42 +341,95 @@ const radio = document.getElementById('radioPlayer');
 const btn = document.getElementById('onAirBtn');
 const info = document.getElementById('trackInfo');
 const cover = document.getElementById('albumCover');
+const coverWrap = document.getElementById('coverWrap');
+const volumeSlider = document.getElementById('volumeSlider');
+const volumeIcon = document.getElementById('volumeIcon');
 
-btn.addEventListener('click', () => {
-if (radio.paused) {
-radio.play();
-btn.textContent = '🔊 LIVE NOW';
-btn.style.background = '#2e7d32';
-} else {
-radio.pause();
-btn.textContent = '🔴 ON AIR';
-btn.style.background = getComputedStyle(document.documentElement).getPropertyValue('--accent');
-}
+// === AZURACAST CONFIG ===
+// Usa lo stesso server dello stream. Se nel tuo AzuraCast lo short name è diverso,
+// cambia SOLO questo valore, per esempio: "radio_philaurastation" oppure "philaurastation".
+const AZURA_NOWPLAYING_URL = 'https://a7.asurahosting.com/api/nowplaying/philaurastation.it';
+const FALLBACK_COVER = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#fff4d8"/>
+<stop offset="0.55" stop-color="#e0913e"/>
+<stop offset="1" stop-color="#d41b66"/>
+</linearGradient>
+</defs>
+<rect width="600" height="600" rx="42" fill="url(#g)"/>
+<circle cx="300" cy="270" r="135" fill="rgba(255,255,255,.28)"/>
+<text x="300" y="300" text-anchor="middle" font-size="120">🎧</text>
+<text x="300" y="420" text-anchor="middle" font-family="Arial" font-size="34" font-weight="800" fill="#ffffff">Radio PhilAura</text>
+<text x="300" y="465" text-anchor="middle" font-family="Arial" font-size="22" fill="#fff7df">LIVE NOW</text>
+</svg>`);
+
+radio.volume = Number(volumeSlider.value);
+
+volumeSlider.addEventListener('input', () => {
+  radio.volume = Number(volumeSlider.value);
+  volumeIcon.textContent = radio.volume === 0 ? '🔇' : (radio.volume < 0.45 ? '🔉' : '🔊');
 });
+
+btn.addEventListener('click', async () => {
+  try {
+    if (radio.paused) {
+      // forza stream live e evita riprese strane da cache
+      radio.load();
+      await radio.play();
+      btn.textContent = '🔊 LIVE NOW';
+      btn.style.background = '#2e7d32';
+    } else {
+      radio.pause();
+      btn.textContent = '🔴 ON AIR';
+      btn.style.background = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+    }
+  } catch (e) {
+    console.error('Errore play radio', e);
+    info.textContent = 'Clicca di nuovo: il browser ha bloccato l’audio.';
+  }
+});
+
+cover.onerror = () => setFallbackCover();
+
+function setFallbackCover() {
+  coverWrap.classList.add('no-cover');
+  cover.src = FALLBACK_COVER;
+}
+
+function setCover(url) {
+  if (!url) return setFallbackCover();
+  coverWrap.classList.remove('no-cover');
+  cover.src = url + (url.includes('?') ? '&' : '?') + 't=' + Date.now();
+}
 
 // Now Playing (titolo/artista + copertina)
 let lastArt = '';
 async function updateNowPlaying(){
-try {
-const r = await fetch('https://a2.asurahosting.com/api/nowplaying/philaurastation.it');
-const data = await r.json();
+  try {
+    const r = await fetch(AZURA_NOWPLAYING_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
 
-// Titolo/Artista
-const song = data?.now_playing?.song || {};
-const artist = song.artist || '';
-const title = song.title || '';
-info.textContent = (artist && title) ? `${artist} - ${title}` : (title || artist || '');
+    const song = data?.now_playing?.song || {};
+    const artist = song.artist || '';
+    const title = song.title || '';
+    info.textContent = (artist && title) ? `${artist} - ${title}` : (title || artist || 'Radio PhilAura Station');
 
-// Copertina (usa song.art con fallback a now_playing.art)
-const artUrl = song.art || data?.now_playing?.art || '';
-if (artUrl && artUrl !== lastArt) {
-cover.src = artUrl + '?cachebust=' + Date.now();
-lastArt = artUrl;
+    // Ordine corretto: copertina estratta dal brano, poi campo art, poi endpoint /art.
+    const artUrl = song.art || data?.now_playing?.art || (AZURA_NOWPLAYING_URL + '/art');
+    if (artUrl && artUrl !== lastArt) {
+      setCover(artUrl);
+      lastArt = artUrl;
+    }
+  } catch (e) {
+    console.error('Errore now playing', e);
+    info.textContent = 'Radio PhilAura Station';
+    setFallbackCover();
+  }
 }
-} catch (e) {
-console.error('Errore now playing', e);
-}
-}
+
 updateNowPlaying();
 setInterval(updateNowPlaying, 10000);
 </script>
