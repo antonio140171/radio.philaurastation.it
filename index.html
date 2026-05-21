@@ -192,7 +192,9 @@ font-size: .9rem;
 <!-- Player / Cover -->
 <section class="card">
 <div id="coverWrap" class="cover-wrap no-cover">
-<img id="albumCover" class="album-cover" src="" alt="Copertina in onda" />
+<img id="albumCover" class="album-cover"
+src="https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it/art"
+alt="Copertina in onda" />
 <div class="cover-fallback">
 <div class="big-icon">🎧</div>
 <div>Radio PhilAura Station</div>
@@ -346,9 +348,8 @@ const volumeSlider = document.getElementById('volumeSlider');
 const volumeIcon = document.getElementById('volumeIcon');
 
 // === AZURACAST CONFIG ===
-// Usa lo stesso server dello stream. Se nel tuo AzuraCast lo short name è diverso,
-// cambia SOLO questo valore, per esempio: "radio_philaurastation" oppure "philaurastation".
-const AZURA_NOWPLAYING_URL = 'https://a7.asurahosting.com/api/nowplaying/philaurastation.it';
+const AZURA_NOWPLAYING_URL = 'https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it';
+
 const FALLBACK_COVER = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
 <defs>
@@ -375,7 +376,6 @@ volumeSlider.addEventListener('input', () => {
 btn.addEventListener('click', async () => {
   try {
     if (radio.paused) {
-      // forza stream live e evita riprese strane da cache
       radio.load();
       await radio.play();
       btn.textContent = '🔊 LIVE NOW';
@@ -404,25 +404,25 @@ function setCover(url) {
   cover.src = url + (url.includes('?') ? '&' : '?') + 't=' + Date.now();
 }
 
-// Now Playing (titolo/artista + copertina)
-let lastArt = '';
+// Now Playing
 async function updateNowPlaying(){
   try {
     const r = await fetch(AZURA_NOWPLAYING_URL + '?t=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) throw new Error('HTTP ' + r.status);
+
     const data = await r.json();
 
     const song = data?.now_playing?.song || {};
     const artist = song.artist || '';
     const title = song.title || '';
-    info.textContent = (artist && title) ? `${artist} - ${title}` : (title || artist || 'Radio PhilAura Station');
 
-    // Ordine corretto: copertina estratta dal brano, poi campo art, poi endpoint /art.
-    const artUrl = song.art || data?.now_playing?.art || (AZURA_NOWPLAYING_URL + '/art');
-    if (artUrl && artUrl !== lastArt) {
-      setCover(artUrl);
-      lastArt = artUrl;
-    }
+    info.textContent = (artist && title)
+      ? `${artist} - ${title}`
+      : (title || artist || 'Radio PhilAura Station');
+
+    // Copertina reale del file MP3 letta da AzuraCast
+    setCover(AZURA_NOWPLAYING_URL + '/art');
+
   } catch (e) {
     console.error('Errore now playing', e);
     info.textContent = 'Radio PhilAura Station';
@@ -433,5 +433,3 @@ async function updateNowPlaying(){
 updateNowPlaying();
 setInterval(updateNowPlaying, 10000);
 </script>
-</body>
-</html>
