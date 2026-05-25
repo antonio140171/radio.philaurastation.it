@@ -158,6 +158,34 @@ cursor: pointer;
 .speaker img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
 .equalizer { width: 48px; height: 40px; margin: 8px auto 0; display: block; }
 .news img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
+.news img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
+
+.book-image-box {
+  height: 560px;
+  background: #f5efe4;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  margin-bottom: 24px;
+}
+
+.book-cover {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+footer {
+text-align: center;
+color: #777;
+
+
+
+
+
 footer {
 text-align: center;
 color: #777;
@@ -362,13 +390,9 @@ box-shadow:0 6px 20px rgba(0,0,0,0.08);
 text-align:center;
 ">
 
-<img src="libro1.jpg"
-style="
-width:100%;
-border-radius:12px;
-margin-bottom:14px;
-"
-alt="Libro 1">
+<div class="book-image-box">
+  <img src="libro1.jpg" class="book-cover" alt="Libro 1">
+</div>
 
 <h3 style="margin:0 0 10px 0;">
 L'Ombra del Vate
@@ -405,13 +429,9 @@ box-shadow:0 6px 20px rgba(0,0,0,0.08);
 text-align:center;
 ">
 
-<img src="libro2.jpg"
-style="
-width:100%;
-border-radius:12px;
-margin-bottom:14px;
-"
-alt="Libro 2">
+<div class="book-image-box">
+  <img src="libro2.jpg" class="book-cover" alt="L'Ultima Eredità">
+</div>
 
 <h3 style="margin:0 0 10px 0;">
 L'Ultima Eredità
@@ -448,13 +468,9 @@ box-shadow:0 6px 20px rgba(0,0,0,0.08);
 text-align:center;
 ">
 
-<img src="libro3.jpg"
-style="
-width:100%;
-border-radius:12px;
-margin-bottom:14px;
-"
-alt="Libro 3">
+<div class="book-image-box">
+  <img src="libro3.jpg" class="book-cover" alt="Il Protocollo Alfa">
+</div>
 
 <h3 style="margin:0 0 10px 0;">
 Il Protocollo Alfa
