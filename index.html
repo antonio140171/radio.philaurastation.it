@@ -180,7 +180,67 @@ cursor: pointer;
 }
 
 
+.podcast-section {
+background: linear-gradient(180deg,#fffaf0,#f5efe4);
+}
 
+.podcast-grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:24px;
+}
+
+.podcast-card {
+background:#111;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.18);
+transition:.3s;
+}
+
+.podcast-card:hover {
+transform:translateY(-6px);
+}
+
+.podcast-cover {
+width:100%;
+height:260px;
+object-fit:cover;
+display:block;
+}
+
+.podcast-content {
+padding:20px;
+}
+
+.podcast-content h3 {
+color:white;
+font-size:1.5rem;
+margin-bottom:12px;
+}
+
+.podcast-content p {
+color:#d0d0d0;
+line-height:1.6;
+font-size:14px;
+}
+
+.podcast-meta {
+margin-top:14px;
+color:#ffb347;
+font-weight:700;
+}
+
+.podcast-btn {
+display:inline-block;
+margin-top:18px;
+background:linear-gradient(90deg,#d41b66,#e0913e);
+padding:12px 22px;
+border-radius:999px;
+color:white;
+text-decoration:none;
+font-weight:800;
+}
 
 
 footer {
@@ -511,7 +571,41 @@ font-weight:800;
 </div>
 </section>
 </section>
+<!-- PODCAST -->
 
+<section class="card podcast-section" style="max-width:1200px;width:100%;flex-basis:100%;">
+
+<h2 style="color:#d41b66;text-align:center;margin-bottom:24px;font-size:2rem;">
+🎙 Podcast PhilAura
+</h2>
+
+<div class="podcast-grid">
+
+<div class="podcast-card">
+<img src="podcast1.jpg" class="podcast-cover" alt="Anime Inquiete">
+
+<div class="podcast-content">
+<h3>Anime Inquiete</h3>
+
+<p>
+Un racconto breve, intenso e notturno: pensieri sospesi,
+emozioni che tornano e parole che restano addosso.
+</p>
+
+<div class="podcast-meta">
+🌙 circa 5 min
+</div>
+
+<a href="podcast-anime-inquiete.mp3" target="_blank" class="podcast-btn">
+▶ Ascolta episodio
+</a>
+</div>
+</div>
+
+</div>
+
+
+</section>
 </main>
 
 <footer>© 2025 Radio PhilAura Station – Tutti i diritti riservati</footer>
