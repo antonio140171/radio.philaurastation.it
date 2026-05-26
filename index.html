@@ -243,7 +243,12 @@ color:white;
 text-decoration:none;
 font-weight:800;
 }
-
+.podcast-audio {
+width:100%;
+margin-top:18px;
+border-radius:999px;
+filter: drop-shadow(0 4px 12px rgba(0,0,0,.25));
+}
 
 footer {
 text-align: center;
@@ -597,9 +602,9 @@ emozioni che tornano e parole che restano addosso.
 🌙 circa 5 min
 </div>
 
-<a href="podcast-anime-inquiete.mp3" target="_blank" class="podcast-btn">
-▶ Ascolta 1° Episodio
-</a>
+<audio controls class="podcast-audio">
+  <source src="podcast-anime-inquiete.mp3" type="audio/mpeg">
+</audio>
 </div>
 </div>
 
