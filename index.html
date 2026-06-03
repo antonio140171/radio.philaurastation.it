@@ -4,38 +4,815 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio PhilAura Station</title>
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:linear-gradient(180deg,#120018,#05000c);font-family:Arial,sans-serif;color:white}a{text-decoration:none;color:inherit}
-.header{position:sticky;top:0;z-index:50;background:rgba(8,0,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(212,27,102,.35)}
-.header-inner{max-width:1600px;margin:auto;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{display:flex;align-items:center;gap:18px}.brand img{width:70px;height:70px;object-fit:contain;border-radius:18px;border:1px solid rgba(212,27,102,.5);background:#080812;padding:8px}.brand-title{font-size:48px;font-weight:900;letter-spacing:4px}.brand-sub{color:#e0913e;font-weight:900;letter-spacing:8px}.nav{display:flex;gap:14px;flex-wrap:wrap}.nav a{padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);font-weight:900}
-.container{max-width:1600px;margin:auto;padding:30px}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.live-card,.hero,.section{border-radius:40px;background:linear-gradient(180deg,#0b0e16,#05050b);border:1px solid rgba(212,27,102,.55);box-shadow:0 0 35px rgba(212,27,102,.25);overflow:hidden}.hero{position:relative;min-height:720px;padding:60px;background:linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),url('dj-transparent.png?v=50') right center/contain no-repeat}.logo{font-size:110px;font-weight:900;line-height:.9}.logo span{display:block;font-size:58px;letter-spacing:10px;color:#ff2d8d;margin-top:10px}.onair{margin-top:70px;font-size:26px;font-weight:900;color:#ff2d8d;text-transform:uppercase}.dj{font-size:92px;font-weight:900;margin-top:10px}.desc{max-width:720px;font-size:26px;line-height:1.5;margin-top:30px}
-.live-card{padding:44px}.cover{width:100%;height:360px;border-radius:30px;background:#111;overflow:hidden;margin-bottom:28px}.cover img{width:100%;height:100%;object-fit:cover}.label{color:#e0913e;font-size:20px;font-weight:900;text-transform:uppercase}.track{font-size:52px;font-weight:900;margin:10px 0 30px}.eq{height:70px;display:flex;align-items:end;gap:12px;margin-bottom:34px}.eq i{display:block;width:18px;border-radius:20px;background:linear-gradient(180deg,#e0913e,#d41b66);animation:eq 1s infinite alternate}.eq i:nth-child(1){height:20px}.eq i:nth-child(2){height:34px;animation-delay:.1s}.eq i:nth-child(3){height:48px;animation-delay:.2s}.eq i:nth-child(4){height:70px;animation-delay:.3s}.eq i:nth-child(5){height:42px;animation-delay:.4s}.eq i:nth-child(6){height:28px;animation-delay:.5s}.eq i:nth-child(7){height:18px;animation-delay:.6s}@keyframes eq{from{transform:scaleY(.45);opacity:.55}to{transform:scaleY(1.1);opacity:1}}.live-btn{border:0;width:100%;border-radius:999px;padding:24px;color:white;font-size:30px;font-weight:900;background:linear-gradient(90deg,#d41b66,#e0913e);cursor:pointer}.volume{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:18px}.volume input{width:65%;accent-color:#d41b66}
-.quick{margin:38px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px}.quick a{min-height:145px;border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);font-size:24px;font-weight:900}.quick span:first-child{font-size:42px}
-.section{margin:50px 0;padding:42px}.section-title{font-size:58px;font-weight:900;margin-bottom:34px;letter-spacing:4px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}.card{background:#060b18;border-radius:32px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}.card img{width:100%;height:240px;object-fit:cover;display:block;background:#120018}.card-content{padding:24px}.card h3{font-size:36px;margin-bottom:12px}.card p{font-size:22px;line-height:1.45;color:#d9d9d9}.badge{margin-top:22px;display:inline-block;font-weight:900;font-size:22px;color:#ffb347}
-.schedule{display:grid;gap:22px}.slot{padding:28px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12)}.slot-time{color:#e0913e;font-size:32px;font-weight:900;margin-bottom:8px}.slot h3{font-size:42px;margin-bottom:8px}.slot p{font-size:24px;line-height:1.45;color:#e2e2e2}.chart{display:grid;gap:18px}.song{display:grid;grid-template-columns:70px 1fr 50px;align-items:center;gap:20px;padding:22px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}.num{color:#e0913e;font-size:46px;font-weight:900}.song h3{font-size:34px}.song p{color:#cfcfcf;font-size:22px}.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.link-card{background:#111827;padding:24px;border-radius:22px;border:1px solid rgba(255,255,255,.08)}.link-card h4{font-size:30px;margin-bottom:10px}.link-card p{font-size:20px;color:#d5d5d5}
-.mini{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(960px,calc(100% - 28px));z-index:80;display:grid;grid-template-columns:70px 1fr 70px;gap:18px;align-items:center;padding:14px 18px;border-radius:26px;background:rgba(5,0,12,.95);border:1px solid rgba(212,27,102,.55);box-shadow:0 0 28px rgba(212,27,102,.35)}.mini img{width:70px;height:70px;border-radius:18px;object-fit:cover}.mini-title{font-size:24px;font-weight:900}.mini-sub{color:#e0913e;font-weight:900}.mini button{border:0;border-radius:50%;width:58px;height:58px;color:white;font-size:24px;background:linear-gradient(90deg,#d41b66,#e0913e)}.footer{margin:80px 0 130px;text-align:center;color:#9f9f9f;font-size:18px}
-@media(max-width:1000px){.hero-grid{grid-template-columns:1fr}.hero{min-height:600px}.logo{font-size:70px}.logo span{font-size:36px}.dj{font-size:58px}.desc{font-size:22px}.section-title{font-size:38px}.header-inner{flex-direction:column;align-items:flex-start}.track{font-size:36px}.live-card{padding:24px}}
-</style></head>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:linear-gradient(180deg,#120018,#05000c);
+  font-family:Arial,sans-serif;
+  color:white;
+}
+a{text-decoration:none;color:inherit}
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(8,0,15,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(212,27,102,.35);
+}
+.header-inner{
+  max-width:1600px;
+  margin:auto;
+  padding:18px 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.brand img{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  border-radius:18px;
+  border:1px solid rgba(212,27,102,.5);
+  background:#080812;
+  padding:8px;
+}
+.brand-title{
+  font-size:48px;
+  font-weight:900;
+  letter-spacing:4px;
+}
+.brand-sub{
+  color:#e0913e;
+  font-weight:900;
+  letter-spacing:8px;
+}
+.nav{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.nav a{
+  padding:12px 20px;
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  font-weight:900;
+}
+.container{
+  max-width:1600px;
+  margin:auto;
+  padding:30px;
+}
+.version{
+  color:#e0913e;
+  font-weight:900;
+  margin:10px 0 20px;
+  opacity:.85;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+.live-card,.hero,.section{
+  border-radius:40px;
+  background:linear-gradient(180deg,#0b0e16,#05050b);
+  border:1px solid rgba(212,27,102,.55);
+  box-shadow:0 0 35px rgba(212,27,102,.25);
+  overflow:hidden;
+}
+.hero{
+  position:relative;
+  min-height:720px;
+  padding:60px;
+  background:
+    linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),
+    url("dj-transparent.png?v=70") right center/contain no-repeat;
+}
+.logo{
+  font-size:110px;
+  font-weight:900;
+  line-height:.9;
+}
+.logo span{
+  display:block;
+  font-size:58px;
+  letter-spacing:10px;
+  color:#ff2d8d;
+  margin-top:10px;
+}
+.onair{
+  margin-top:70px;
+  font-size:26px;
+  font-weight:900;
+  color:#ff2d8d;
+  text-transform:uppercase;
+}
+.dj{
+  font-size:92px;
+  font-weight:900;
+  margin-top:10px;
+}
+.desc{
+  max-width:720px;
+  font-size:26px;
+  line-height:1.5;
+  margin-top:30px;
+}
+.live-card{
+  padding:44px;
+}
+.cover{
+  width:100%;
+  height:360px;
+  border-radius:30px;
+  background:#111;
+  overflow:hidden;
+  margin-bottom:28px;
+}
+.cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.label{
+  color:#e0913e;
+  font-size:20px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.track{
+  font-size:52px;
+  font-weight:900;
+  margin:10px 0 30px;
+}
+.eq{
+  height:70px;
+  display:flex;
+  align-items:end;
+  gap:12px;
+  margin-bottom:34px;
+}
+.eq i{
+  display:block;
+  width:18px;
+  border-radius:20px;
+  background:linear-gradient(180deg,#e0913e,#d41b66);
+  animation:eq 1s infinite alternate;
+}
+.eq i:nth-child(1){height:20px}
+.eq i:nth-child(2){height:34px;animation-delay:.1s}
+.eq i:nth-child(3){height:48px;animation-delay:.2s}
+.eq i:nth-child(4){height:70px;animation-delay:.3s}
+.eq i:nth-child(5){height:42px;animation-delay:.4s}
+.eq i:nth-child(6){height:28px;animation-delay:.5s}
+.eq i:nth-child(7){height:18px;animation-delay:.6s}
+@keyframes eq{
+  from{transform:scaleY(.45);opacity:.55}
+  to{transform:scaleY(1.1);opacity:1}
+}
+.live-btn{
+  border:0;
+  width:100%;
+  border-radius:999px;
+  padding:24px;
+  color:white;
+  font-size:30px;
+  font-weight:900;
+  background:linear-gradient(90deg,#d41b66,#e0913e);
+  cursor:pointer;
+}
+.volume{
+  margin-top:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+}
+.volume input{
+  width:65%;
+  accent-color:#d41b66;
+}
+.quick{
+  margin:38px 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:22px;
+}
+.quick a{
+  min-height:145px;
+  border-radius:26px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+  font-size:24px;
+  font-weight:900;
+}
+.quick span:first-child{font-size:42px}
+.section{
+  margin:50px 0;
+  padding:42px;
+}
+.section-title{
+  font-size:58px;
+  font-weight:900;
+  margin-bottom:34px;
+  letter-spacing:4px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+.card{
+  background:#060b18;
+  border-radius:32px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+}
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+  background:#120018;
+}
+.card-content{
+  padding:24px;
+}
+.card h3{
+  font-size:36px;
+  margin-bottom:12px;
+}
+.card p{
+  font-size:22px;
+  line-height:1.45;
+  color:#d9d9d9;
+}
+.badge{
+  margin-top:22px;
+  display:inline-block;
+  font-weight:900;
+  font-size:22px;
+  color:#ffb347;
+}
+.schedule{
+  display:grid;
+  gap:22px;
+}
+.slot{
+  padding:28px;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+}
+.slot-time{
+  color:#e0913e;
+  font-size:32px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.slot h3{
+  font-size:42px;
+  margin-bottom:8px;
+}
+.slot p{
+  font-size:24px;
+  line-height:1.45;
+  color:#e2e2e2;
+}
+.chart{
+  display:grid;
+  gap:18px;
+}
+.song{
+  display:grid;
+  grid-template-columns:70px 1fr 50px;
+  align-items:center;
+  gap:20px;
+  padding:22px;
+  border-radius:24px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+.num{
+  color:#e0913e;
+  font-size:46px;
+  font-weight:900;
+}
+.song h3{
+  font-size:34px;
+}
+.song p{
+  color:#cfcfcf;
+  font-size:22px;
+}
+.links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.link-card{
+  background:#111827;
+  padding:24px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.08);
+}
+.link-card h4{
+  font-size:30px;
+  margin-bottom:10px;
+}
+.link-card p{
+  font-size:20px;
+  color:#d5d5d5;
+}
+.news-updated{
+  color:#ffb347;
+  font-weight:900;
+  margin-bottom:24px;
+}
+.news-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:22px;
+}
+.news-item{
+  padding:22px;
+  border-radius:24px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+}
+.news-item a{
+  display:block;
+  color:white;
+  font-size:24px;
+  line-height:1.15;
+  font-weight:900;
+  margin-bottom:14px;
+}
+.news-item .date{
+  color:#ffb347;
+  font-size:18px;
+  margin-bottom:12px;
+}
+.news-item p{
+  font-size:20px;
+  line-height:1.45;
+  color:#d9d9d9;
+}
+.mini{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  width:min(960px,calc(100% - 28px));
+  z-index:80;
+  display:grid;
+  grid-template-columns:70px 1fr 70px;
+  gap:18px;
+  align-items:center;
+  padding:14px 18px;
+  border-radius:26px;
+  background:rgba(5,0,12,.95);
+  border:1px solid rgba(212,27,102,.55);
+  box-shadow:0 0 28px rgba(212,27,102,.35);
+}
+.mini img{
+  width:70px;
+  height:70px;
+  border-radius:18px;
+  object-fit:cover;
+}
+.mini-title{
+  font-size:24px;
+  font-weight:900;
+}
+.mini-sub{
+  color:#e0913e;
+  font-weight:900;
+}
+.mini button{
+  border:0;
+  border-radius:50%;
+  width:58px;
+  height:58px;
+  color:white;
+  font-size:24px;
+  background:linear-gradient(90deg,#d41b66,#e0913e);
+}
+.footer{
+  margin:80px 0 130px;
+  text-align:center;
+  color:#9f9f9f;
+  font-size:18px;
+}
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero{min-height:600px}
+  .logo{font-size:70px}
+  .logo span{font-size:36px}
+  .dj{font-size:58px}
+  .desc{font-size:22px}
+  .section-title{font-size:38px}
+  .header-inner{flex-direction:column;align-items:flex-start}
+  .track{font-size:36px}
+  .live-card{padding:24px}
+  .brand-title{font-size:34px}
+}
+</style>
+</head>
+
 <body>
-<header class="header"><div class="header-inner"><div class="brand"><img src="logo-rfa.png?v=50" alt="Logo"><div><div class="brand-title">PHILAURA</div><div class="brand-sub">STATION</div></div></div><nav class="nav"><a href="#live">🎧 Live</a><a href="#show">🎙 Show</a><a href="#eventi">🎵 Eventi</a><a href="#programmazione">📻 Programmazione</a><a href="#top5">🔥 Top 5</a><a href="#news">🗞 News</a></nav></div></header>
+
+<header class="header">
+<div class="header-inner">
+<div class="brand">
+<img src="logo-rfa.png?v=70" alt="Logo">
+<div>
+<div class="brand-title">PHILAURA</div>
+<div class="brand-sub">STATION</div>
+</div>
+</div>
+<nav class="nav">
+<a href="#live">🎧 Live</a>
+<a href="#show">🎙 Show</a>
+<a href="#eventi">🎵 Eventi</a>
+<a href="#programmazione">📻 Programmazione</a>
+<a href="#top5">🔥 Top 5</a>
+<a href="#news">🗞 News</a>
+</nav>
+</div>
+</header>
+
 <div class="container">
-<section class="hero-grid" id="live"><div class="live-card"><div class="cover"><img id="albumCover" src="https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it/art" alt="Copertina"></div><div class="label">Ora suona</div><div id="trackInfo" class="track">Caricamento...</div><div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button id="onAirBtn" class="live-btn">▶ LIVE NOW</button><div class="volume"><span>🔊</span><input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.85"></div><audio id="radioPlayer" preload="none"><source src="https://a7.asurahosting.com/listen/httpsradio.philaurastation.it/radio.mp3" type="audio/mpeg"></audio></div><section class="hero"><div class="logo">RADIO<span>PHILAURA</span></div><div class="onair">ORA IN ONDA</div><div class="dj">Antonio</div><div class="desc">Musica, podcast, racconti notturni, libri e vibrazioni cyber-vintage. Una radio personale, viva, elegante e in continua evoluzione.</div></section></section>
-<section class="quick"><a href="#show"><span>🎙</span><span>Podcast</span></a><a href="#eventi"><span>🎵</span><span>Eventi</span></a><a href="#programmazione"><span>📻</span><span>Programmazione</span></a><a href="#top5"><span>🔥</span><span>Top 5</span></a><a href="#news"><span>🗞</span><span>News</span></a></section>
-<section class="section" id="show"><h2 class="section-title">🎙 SHOW & PODCAST</h2><div class="grid"><a class="card" href="#anime"><img src="anime_inquiete_cover.jpg?v=50"><div class="card-content"><h3>Anime Inquiete</h3><p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p><span class="badge">Ascolta →</span></div></a><a class="card" href="#back80"><img src="back80mix.jpg?v=50"><div class="card-content"><h3>Back80 Mix</h3><p>Synthwave, retro groove e atmosfere vintage moderne.</p><span class="badge">Apri →</span></div></a><a class="card" href="#eventi"><img src="news_music_live.jpg?v=50"><div class="card-content"><h3>News Musica Live</h3><p>Concerti, festival, tour e nuove uscite da seguire.</p><span class="badge">Scopri →</span></div></a><a class="card" href="#speciali"><img src="podcast_speciali.jpg?v=50"><div class="card-content"><h3>Podcast & Speciali</h3><p>Rubriche, racconti e contenuti originali PhilAura.</p><span class="badge">Apri →</span></div></a></div></section>
-<section class="section" id="programmazione"><h2 class="section-title">📻 PROGRAMMAZIONE</h2><div class="schedule"><div class="slot"><div class="slot-time">01:00 - 06:00</div><h3>Deep Night Flow</h3><p>Notte elettronica morbida, ambient, deep house e suoni da ascolto lento.</p></div><div class="slot"><div class="slot-time">06:00 - 10:00</div><h3>Morning Aura</h3><p>Chill, energia leggera, soft electronic e brani perfetti per iniziare la giornata.</p></div><div class="slot"><div class="slot-time">10:00 - 14:00</div><h3>Daylight Selection</h3><p>Pop elettronico, vocal house, groove elegante e rotazione musicale PhilAura.</p></div><div class="slot"><div class="slot-time">14:00 - 19:00</div><h3>Drive & Groove</h3><p>Ritmo da viaggio, house elegante, urban vibes e suoni per il pomeriggio.</p></div><div class="slot"><div class="slot-time">19:00 - 01:00</div><h3>Night Vibes</h3><p>La vera anima PhilAura: musica, podcast, racconti notturni e atmosfera radio.</p></div></div></section>
-<section class="section" id="eventi"><h2 class="section-title">🎵 EVENTI MUSICALI</h2><div class="links"><a class="link-card" href="https://www.rockol.it/news" target="_blank"><h4>Rockol</h4><p>News musicali, concerti e recensioni.</p></a><a class="link-card" href="https://blog.ticketmaster.it/musica/" target="_blank"><h4>Ticketmaster Blog</h4><p>Festival, tour e concerti in Italia.</p></a><a class="link-card" href="https://www.rollingstone.it/musica/news-musica/" target="_blank"><h4>Rolling Stone Musica</h4><p>Uscite, artisti, tour e cultura musicale.</p></a><a class="link-card" href="https://radiofreccia.rtl.it/notizie/" target="_blank"><h4>Radiofreccia</h4><p>Notizie musicali, artisti e interviste.</p></a><a class="link-card" href="https://www.radioitalia.it/" target="_blank"><h4>Radio Italia</h4><p>Eventi, classifiche e musica italiana.</p></a></div></section>
-<section class="section" id="top5"><h2 class="section-title">🔥 PHILAURA TOP 5</h2><div class="chart"><div class="song"><div class="num">1</div><div><h3>Lividi a Nome</h3><p>PhilAura Rotation</p></div><div>▶</div></div><div class="song"><div class="num">2</div><div><h3>you-and-me</h3><p>Sunset Edition</p></div><div>▶</div></div><div class="song"><div class="num">3</div><div><h3>ravel</h3><p>Night Drive</p></div><div>▶</div></div><div class="song"><div class="num">4</div><div><h3>Deep End</h3><p>Electronic Mood</p></div><div>▶</div></div><div class="song"><div class="num">5</div><div><h3>Costa del Sol</h3><p>Warm Vibes</p></div><div>▶</div></div></div></section>
-<section class="section" id="anime"><h2 class="section-title">🌙 ANIME INQUIETE</h2><div class="grid"><div class="card"><img src="anime_inquiete_cover.jpg?v=50"><div class="card-content"><h3>Podcast notturno</h3><p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p></div></div></div></section>
-<section class="section" id="back80"><h2 class="section-title">📼 BACK80 MIX</h2><div class="grid"><div class="card"><img src="back80mix.jpg?v=50"><div class="card-content"><h3>Vintage moderno</h3><p>Synth anni 80, elettronica morbida, groove notturno e brani perfetti per accompagnare viaggio, lavoro e serate lente.</p></div></div></div></section>
-<section class="section" id="speciali"><h2 class="section-title">🎧 PODCAST & SPECIALI</h2><div class="grid"><div class="card"><img src="podcast_speciali.jpg?v=50"><div class="card-content"><h3>Contenuti originali PhilAura</h3><p>Podcast, racconti, rubriche, backstage, presentazioni dei brani e format speciali della radio.</p></div></div></div></section>
-<section class="section" id="news"><h2 class="section-title">🗞 NEWS</h2><div class="links"><a class="link-card" href="https://www.ansa.it/" target="_blank"><h4>Ultime news</h4><p>Notizie generali aggiornate.</p></a><a class="link-card" href="#eventi"><h4>News musicali</h4><p>Per concerti, tour e musica usa la sezione Eventi Musicali.</p></a></div></section>
-<div class="footer">© 2026 Radio PhilAura Station · v50</div></div>
-<div class="mini"><img id="miniCover" src="logo-rfa.png?v=50"><div><div id="miniTitle" class="mini-title">Radio PhilAura Station</div><div class="mini-sub">LIVE • Music • Podcast • Stories</div></div><button id="miniBtn">▶</button></div>
+<div class="version">Versione sito: v70 - radio completa + programmazione + ultime news dinamiche</div>
+
+<section class="hero-grid" id="live">
+
+<div class="live-card">
+<div class="cover">
+<img id="albumCover" src="https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it/art" alt="Copertina">
+</div>
+<div class="label">Ora suona</div>
+<div id="trackInfo" class="track">Caricamento...</div>
+<div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<button id="onAirBtn" class="live-btn">▶ LIVE NOW</button>
+<div class="volume">
+<span>🔊</span>
+<input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.85">
+</div>
+<audio id="radioPlayer" preload="none">
+<source src="https://a7.asurahosting.com/listen/httpsradio.philaurastation.it/radio.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<section class="hero">
+<div class="logo">RADIO<span>PHILAURA</span></div>
+<div class="onair">ORA IN ONDA</div>
+<div class="dj">Antonio</div>
+<div class="desc">
+Musica, podcast, racconti notturni, libri e vibrazioni cyber-vintage.
+Una radio personale, viva, elegante e in continua evoluzione.
+</div>
+</section>
+
+</section>
+
+<section class="quick">
+<a href="#show"><span>🎙</span><span>Podcast</span></a>
+<a href="#eventi"><span>🎵</span><span>Eventi</span></a>
+<a href="#programmazione"><span>📻</span><span>Programmazione</span></a>
+<a href="#top5"><span>🔥</span><span>Top 5</span></a>
+<a href="#news"><span>🗞</span><span>News</span></a>
+</section>
+
+<section class="section" id="show">
+<h2 class="section-title">🎙 SHOW & PODCAST</h2>
+<div class="grid">
+
+<a class="card" href="#anime">
+<img src="anime_inquiete_cover.jpg?v=70">
+<div class="card-content">
+<h3>Anime Inquiete</h3>
+<p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
+<span class="badge">Ascolta →</span>
+</div>
+</a>
+
+<a class="card" href="#back80">
+<img src="back80mix.jpg?v=70">
+<div class="card-content">
+<h3>Back80 Mix</h3>
+<p>Synthwave, retro groove e atmosfere vintage moderne.</p>
+<span class="badge">Apri →</span>
+</div>
+</a>
+
+<a class="card" href="#eventi">
+<img src="news_music_live.jpg?v=70">
+<div class="card-content">
+<h3>News Musica Live</h3>
+<p>Concerti, festival, tour e nuove uscite da seguire.</p>
+<span class="badge">Scopri →</span>
+</div>
+</a>
+
+<a class="card" href="#speciali">
+<img src="podcast_speciali.jpg?v=70">
+<div class="card-content">
+<h3>Podcast & Speciali</h3>
+<p>Rubriche, racconti e contenuti originali PhilAura.</p>
+<span class="badge">Apri →</span>
+</div>
+</a>
+
+</div>
+</section>
+
+<section class="section" id="programmazione">
+<h2 class="section-title">📻 PROGRAMMAZIONE</h2>
+<div class="schedule">
+
+<div class="slot">
+<div class="slot-time">01:00 - 06:00</div>
+<h3>Deep Night Flow</h3>
+<p>Notte elettronica morbida, ambient, deep house e suoni da ascolto lento.</p>
+</div>
+
+<div class="slot">
+<div class="slot-time">06:00 - 10:00</div>
+<h3>Morning Aura</h3>
+<p>Chill, energia leggera, soft electronic e brani perfetti per iniziare la giornata.</p>
+</div>
+
+<div class="slot">
+<div class="slot-time">10:00 - 14:00</div>
+<h3>Daylight Selection</h3>
+<p>Pop elettronico, vocal house, groove elegante e rotazione musicale PhilAura.</p>
+</div>
+
+<div class="slot">
+<div class="slot-time">14:00 - 19:00</div>
+<h3>Drive & Groove</h3>
+<p>Ritmo da viaggio, house elegante, urban vibes e suoni per il pomeriggio.</p>
+</div>
+
+<div class="slot">
+<div class="slot-time">19:00 - 01:00</div>
+<h3>Night Vibes</h3>
+<p>La vera anima PhilAura: musica, podcast, racconti notturni e atmosfera radio.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="eventi">
+<h2 class="section-title">🎵 EVENTI MUSICALI</h2>
+<div class="links">
+
+<a class="link-card" href="https://www.rockol.it/news" target="_blank">
+<h4>Rockol</h4>
+<p>News musicali, concerti e recensioni.</p>
+</a>
+
+<a class="link-card" href="https://blog.ticketmaster.it/musica/" target="_blank">
+<h4>Ticketmaster Blog</h4>
+<p>Festival, tour e concerti in Italia.</p>
+</a>
+
+<a class="link-card" href="https://www.rollingstone.it/musica/news-musica/" target="_blank">
+<h4>Rolling Stone Musica</h4>
+<p>Uscite, artisti, tour e cultura musicale.</p>
+</a>
+
+<a class="link-card" href="https://radiofreccia.rtl.it/notizie/" target="_blank">
+<h4>Radiofreccia</h4>
+<p>Notizie musicali, artisti e interviste.</p>
+</a>
+
+<a class="link-card" href="https://www.radioitalia.it/" target="_blank">
+<h4>Radio Italia</h4>
+<p>Eventi, classifiche e musica italiana.</p>
+</a>
+
+</div>
+</section>
+
+<section class="section" id="top5">
+<h2 class="section-title">🔥 PHILAURA TOP 5</h2>
+<div class="chart">
+<div class="song"><div class="num">1</div><div><h3>Lividi a Nome</h3><p>PhilAura Rotation</p></div><div>▶</div></div>
+<div class="song"><div class="num">2</div><div><h3>you-and-me</h3><p>Sunset Edition</p></div><div>▶</div></div>
+<div class="song"><div class="num">3</div><div><h3>ravel</h3><p>Night Drive</p></div><div>▶</div></div>
+<div class="song"><div class="num">4</div><div><h3>Deep End</h3><p>Electronic Mood</p></div><div>▶</div></div>
+<div class="song"><div class="num">5</div><div><h3>Costa del Sol</h3><p>Warm Vibes</p></div><div>▶</div></div>
+</div>
+</section>
+
+<section class="section" id="anime">
+<h2 class="section-title">🌙 ANIME INQUIETE</h2>
+<div class="grid">
+<div class="card">
+<img src="anime_inquiete_cover.jpg?v=70">
+<div class="card-content">
+<h3>Podcast notturno</h3>
+<p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="back80">
+<h2 class="section-title">📼 BACK80 MIX</h2>
+<div class="grid">
+<div class="card">
+<img src="back80mix.jpg?v=70">
+<div class="card-content">
+<h3>Vintage moderno</h3>
+<p>Synth anni 80, elettronica morbida, groove notturno e brani perfetti per accompagnare viaggio, lavoro e serate lente.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="speciali">
+<h2 class="section-title">🎧 PODCAST & SPECIALI</h2>
+<div class="grid">
+<div class="card">
+<img src="podcast_speciali.jpg?v=70">
+<div class="card-content">
+<h3>Contenuti originali PhilAura</h3>
+<p>Podcast, racconti, rubriche, backstage, presentazioni dei brani e format speciali della radio.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="news">
+<h2 class="section-title">🗞 ULTIME NEWS</h2>
+<div id="news-updated" class="news-updated">Aggiornamento in corso…</div>
+<div id="news-list" class="news-grid"></div>
+</section>
+
+<div class="footer">© 2026 Radio PhilAura Station · v70</div>
+
+</div>
+
+<div class="mini">
+<img id="miniCover" src="logo-rfa.png?v=70">
+<div>
+<div id="miniTitle" class="mini-title">Radio PhilAura Station</div>
+<div class="mini-sub">LIVE • Music • Podcast • Stories</div>
+</div>
+<button id="miniBtn">▶</button>
+</div>
+
 <script>
-const radio=document.getElementById('radioPlayer'),btn=document.getElementById('onAirBtn'),miniBtn=document.getElementById('miniBtn'),volume=document.getElementById('volumeSlider'),track=document.getElementById('trackInfo'),miniTitle=document.getElementById('miniTitle'),cover=document.getElementById('albumCover'),miniCover=document.getElementById('miniCover'),API='https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it';
-radio.volume=.85;volume.addEventListener('input',()=>radio.volume=Number(volume.value));function setUI(p){btn.textContent=p?'⏸ STOP RADIO':'▶ LIVE NOW';miniBtn.textContent=p?'⏸':'▶'}async function toggle(){try{if(radio.paused){radio.load();await radio.play();setUI(true)}else{radio.pause();setUI(false)}}catch(e){track.textContent='Clicca di nuovo: il browser ha bloccato l’audio.'}}btn.addEventListener('click',toggle);miniBtn.addEventListener('click',toggle);
-async function now(){try{const r=await fetch(API+'?t='+Date.now(),{cache:'no-store'});const d=await r.json();const song=d?.now_playing?.song||{};const title=song.title||'Radio PhilAura Station';const artist=song.artist||'';const txt=artist?artist+' - '+title:title;track.textContent=txt;miniTitle.textContent=txt;const art=song.art||API+'/art';cover.src=art+'?t='+Date.now();miniCover.src=art+'?t='+Date.now()}catch(e){track.textContent='Radio PhilAura Station'}}now();setInterval(now,10000);
-</script></body></html>
+const radio=document.getElementById('radioPlayer');
+const btn=document.getElementById('onAirBtn');
+const miniBtn=document.getElementById('miniBtn');
+const volume=document.getElementById('volumeSlider');
+const track=document.getElementById('trackInfo');
+const miniTitle=document.getElementById('miniTitle');
+const cover=document.getElementById('albumCover');
+const miniCover=document.getElementById('miniCover');
+const API='https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it';
+
+radio.volume=.85;
+volume.addEventListener('input',()=>radio.volume=Number(volume.value));
+
+function setUI(p){
+  btn.textContent=p?'⏸ STOP RADIO':'▶ LIVE NOW';
+  miniBtn.textContent=p?'⏸':'▶';
+}
+
+async function toggle(){
+  try{
+    if(radio.paused){
+      radio.load();
+      await radio.play();
+      setUI(true);
+    }else{
+      radio.pause();
+      setUI(false);
+    }
+  }catch(e){
+    track.textContent='Clicca di nuovo: il browser ha bloccato l’audio.';
+  }
+}
+btn.addEventListener('click',toggle);
+miniBtn.addEventListener('click',toggle);
+
+async function now(){
+  try{
+    const r=await fetch(API+'?t='+Date.now(),{cache:'no-store'});
+    const d=await r.json();
+    const song=d?.now_playing?.song||{};
+    const title=song.title||'Radio PhilAura Station';
+    const artist=song.artist||'';
+    const txt=artist?artist+' - '+title:title;
+    track.textContent=txt;
+    miniTitle.textContent=txt;
+    const art=song.art||API+'/art';
+    cover.src=art+'?t='+Date.now();
+    miniCover.src=art+'?t='+Date.now();
+  }catch(e){
+    track.textContent='Radio PhilAura Station';
+  }
+}
+now();
+setInterval(now,10000);
+</script>
+
+<script>
+const feedUrl="https://www.ansa.it/sito/ansait_rss.xml";
+const MAX_ITEMS=6;
+const REFRESH_MS=5*60*1000;
+const newsList=document.getElementById("news-list");
+const newsUpdated=document.getElementById("news-updated");
+let lastFirstId=null;
+
+function stripHtml(s=""){
+  return s.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+}
+
+async function loadFeed(){
+  const api="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(feedUrl);
+  const res=await fetch(api,{cache:"no-store"});
+  if(!res.ok) throw new Error("Errore rete");
+  const data=await res.json();
+  if(!data || !data.items) throw new Error("Feed non valido");
+  return data.items.slice(0,MAX_ITEMS);
+}
+
+function renderNews(items){
+  newsList.innerHTML="";
+  items.forEach(item=>{
+    const art=document.createElement("article");
+    art.className="news-item";
+
+    const title=document.createElement("a");
+    title.href=item.link;
+    title.target="_blank";
+    title.rel="noopener";
+    title.textContent=item.title||"Senza titolo";
+
+    const date=document.createElement("div");
+    date.className="date";
+    const d=new Date(item.pubDate||Date.now());
+    date.textContent=isNaN(d.getTime())?"":d.toLocaleString("it-IT");
+
+    const p=document.createElement("p");
+    const text=stripHtml(item.description||item.content||"");
+    p.textContent=text.length>150?text.slice(0,150)+"…":text;
+
+    art.appendChild(title);
+    art.appendChild(date);
+    art.appendChild(p);
+    newsList.appendChild(art);
+  });
+}
+
+async function refreshNews(){
+  try{
+    if(!newsList.innerHTML){
+      newsList.innerHTML='<div style="color:#cfc7d8">Carico le ultime notizie…</div>';
+    }
+    const items=await loadFeed();
+    const firstId=items[0]?.link||items[0]?.title||"";
+    if(firstId && firstId===lastFirstId && newsList.children.length>0){
+      newsUpdated.textContent="Aggiornato alle "+new Date().toLocaleTimeString("it-IT");
+      return;
+    }
+    lastFirstId=firstId;
+    renderNews(items);
+    newsUpdated.textContent="Aggiornato alle "+new Date().toLocaleTimeString("it-IT");
+  }catch(e){
+    newsUpdated.textContent="Errore aggiornamento news";
+    newsList.innerHTML='<div style="color:#ff6d6d">Impossibile caricare le news.</div>';
+  }
+}
+
+refreshNews();
+setInterval(refreshNews,REFRESH_MS);
+</script>
+
+</body>
+</html>
