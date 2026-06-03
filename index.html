@@ -2,157 +2,317 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Radio PhilAura Station</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07000f">
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="favicon-philaura.svg?v=20">
+<title>Radio PhilAura Station</title>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;600;700;800;900&display=swap');
-:root{--bg:#06000b;--panel:#101015;--pink:#d41b66;--orange:#e0913e;--muted:#cfc7d8;--line:rgba(212,27,102,.55);--glow:0 0 28px rgba(212,27,102,.35)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:white;background:radial-gradient(circle at 20% 0%,rgba(212,27,102,.30),transparent 30%),radial-gradient(circle at 90% 10%,rgba(123,44,255,.22),transparent 32%),linear-gradient(180deg,#12001e,#050008 55%,#030004)}
-a{color:inherit}.shell{width:min(1180px,100%);margin:auto;padding:18px}header{position:sticky;top:0;z-index:40;background:rgba(5,0,12,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(212,27,102,.25)}.head{width:min(1180px,100%);margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:14px}.brand img{width:58px;height:58px;border-radius:16px;border:1px solid var(--line);box-shadow:var(--glow);background:#111;padding:6px}.brand-title{font-family:Audiowide;font-size:clamp(1.5rem,4vw,2.4rem);letter-spacing:.08em;text-transform:uppercase;line-height:.9}.brand-sub{color:var(--orange);font-weight:900;letter-spacing:.36em;text-transform:uppercase;font-size:.75rem;margin-top:6px}nav{display:flex;gap:9px;flex-wrap:wrap}nav a{text-decoration:none;font-weight:900;font-size:.85rem;padding:10px 13px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}nav a:hover{background:linear-gradient(90deg,var(--pink),var(--orange))}
-.hero{display:grid;grid-template-columns:1.04fr .96fr;gap:24px;padding:32px 0 22px}.card,.section{border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,rgba(20,20,28,.94),rgba(8,8,14,.94));box-shadow:var(--glow);overflow:hidden}.live-card{padding:22px}.live-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.pill{display:inline-flex;align-items:center;gap:9px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;padding:8px 13px;border-radius:999px;background:rgba(212,27,102,.20);border:1px solid var(--line)}.dot{width:12px;height:12px;background:var(--pink);border-radius:50%;box-shadow:0 0 18px var(--pink);animation:pulse 1.1s infinite alternate}@keyframes pulse{from{opacity:.45;transform:scale(.8)}to{opacity:1;transform:scale(1.15)}}.dj{color:var(--orange);font-weight:900}.cover{width:100%;aspect-ratio:1/1;border-radius:26px;overflow:hidden;background:#111;position:relative;margin-bottom:18px;border:1px solid rgba(255,255,255,.1)}.cover img{width:100%;height:100%;object-fit:cover;display:block}.fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;font-weight:900}.cover.no-cover img{opacity:0}.cover.no-cover .fallback{display:flex}.label{color:var(--orange);font-weight:900;text-transform:uppercase;letter-spacing:.09em;font-size:.78rem}#trackInfo{font-size:clamp(1.55rem,4vw,2.25rem);font-weight:950;line-height:1.08;margin:6px 0 14px}.eq{display:flex;align-items:end;gap:7px;height:50px;margin:10px 0 20px}.eq i{width:12px;border-radius:999px;background:linear-gradient(180deg,var(--orange),var(--pink));animation:eq 1s infinite ease-in-out alternate}.eq i:nth-child(1){height:14px}.eq i:nth-child(2){height:25px;animation-delay:.1s}.eq i:nth-child(3){height:39px;animation-delay:.2s}.eq i:nth-child(4){height:48px;animation-delay:.3s}.eq i:nth-child(5){height:31px;animation-delay:.4s}.eq i:nth-child(6){height:20px;animation-delay:.5s}.eq i:nth-child(7){height:12px;animation-delay:.6s}@keyframes eq{from{transform:scaleY(.45);opacity:.55}to{transform:scaleY(1.15);opacity:1}}.btn{width:100%;border:0;border-radius:999px;padding:17px 22px;color:white;font-size:1.2rem;font-weight:950;cursor:pointer;background:linear-gradient(90deg,var(--pink),var(--orange));box-shadow:0 14px 34px rgba(212,27,102,.28)}.vol{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;font-weight:900}.vol input{width:min(290px,72%);accent-color:var(--pink)}.about{min-height:100%;background:linear-gradient(90deg,rgba(7,0,15,.96),rgba(7,0,15,.72),rgba(7,0,15,.18)),url('dj-transparent.png?v=20') right bottom/contain no-repeat;padding:30px}.about h1{font-family:Audiowide;font-size:clamp(2.2rem,6vw,4.7rem);line-height:.88;margin:0;text-transform:uppercase}.about h1 span{display:block;color:var(--pink);font-size:.42em;letter-spacing:.38em;margin-top:12px}.role{margin-top:36px;color:var(--pink);font-weight:950;letter-spacing:.12em;text-transform:uppercase}.name{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:950;margin:5px 0 12px}.about p{max-width:390px;line-height:1.58;color:#f0edf3}
-.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:14px 0 28px}.quick a{text-decoration:none;min-height:116px;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.12);font-weight:950}.quick .ico{font-size:2rem}.section{margin:26px 0;padding:24px}.title{margin:0 0 20px;display:flex;gap:12px;align-items:center;font-size:clamp(1.55rem,4vw,2.3rem);font-weight:950}.title strong{font-family:Audiowide;letter-spacing:.05em}.show-grid,.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.show-card,.event{border-radius:24px;overflow:hidden;background:#0d1015;border:1px solid rgba(255,255,255,.12);text-decoration:none}.show-card img{width:100%;height:190px;object-fit:cover;display:block}.txt,.event{padding:16px}.show-card h3,.event h3{margin:0 0 8px;font-size:1.3rem}.show-card p,.event p{margin:0;color:var(--muted);line-height:1.45}.badge,.event span{display:inline-flex;margin-top:12px;color:var(--orange);font-weight:950}.chart{display:grid;gap:12px}.song{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:14px;padding:14px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10)}.num{font-size:2rem;color:var(--orange);font-weight:950}.song h3{margin:0;font-size:1.25rem}.song p{margin:4px 0 0;color:var(--muted)}.podcast-card{display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:center}.podcast-card img{width:100%;border-radius:24px;border:1px solid rgba(255,255,255,.12);box-shadow:var(--glow)}.podcast-card h3{font-size:clamp(2rem,5vw,3rem);margin:0 0 12px}.podcast-card p{color:var(--muted);line-height:1.6;font-size:1.05rem}audio{width:100%;margin-top:14px}.news-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.news-item{border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:14px;background:rgba(255,255,255,.05)}.news-item a{display:block;font-weight:900;text-decoration:none;color:#fff;margin-bottom:8px}.news-item .date{font-size:.78rem;color:#ffb347;margin-bottom:8px}.news-item p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.45}
-.books-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.book-card{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.11);border-radius:22px;padding:14px;overflow:hidden}.book-cover-wrap{height:320px;border-radius:18px;background:#09090d;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:14px}.book-cover{width:100%;height:100%;object-fit:contain;display:block}.book-card h3{margin:0 0 8px;font-size:1.18rem;color:#fff}.book-card p{margin:0;color:var(--muted);line-height:1.45;font-size:.92rem;min-height:58px}.amazon-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;margin-top:14px;background:linear-gradient(90deg,#ff9900,var(--orange));color:#fff;padding:13px 16px;border-radius:999px;text-decoration:none;font-weight:950}
-.mini{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(860px,calc(100% - 24px));z-index:80;display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:22px;background:rgba(8,7,12,.92);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:var(--glow)}.mini img{width:56px;height:56px;object-fit:cover;border-radius:14px;background:#111}.mini-title{font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini-sub{font-size:.8rem;color:var(--orange);font-weight:900}.mini button{border:0;border-radius:999px;padding:11px 15px;color:#fff;font-weight:950;background:linear-gradient(90deg,var(--pink),var(--orange));cursor:pointer}footer{text-align:center;color:rgba(255,255,255,.62);padding:34px 18px 110px;border-top:1px solid rgba(255,255,255,.08);margin-top:22px}
-@media(max-width:900px){.head{flex-direction:column;align-items:flex-start}nav{width:100%}nav a{flex:1;text-align:center}.hero{grid-template-columns:1fr}.quick{grid-template-columns:repeat(2,1fr)}.books-grid{grid-template-columns:1fr}.podcast-card{grid-template-columns:1fr}}
-@media(max-width:520px){.shell{padding:12px}.show-card img{height:160px}.mini{grid-template-columns:46px 1fr auto}.mini img{width:46px;height:46px}}
-
-.about{position:relative;overflow:hidden;min-height:780px;background:linear-gradient(90deg,rgba(7,0,15,.96),rgba(7,0,15,.70),rgba(7,0,15,.20));}
-.antonio-photo{
-  position:absolute;
-  right:0;
-  top:72px;
-  width:68%;
-  max-width:620px;
-  height:auto;
-  object-fit:contain;
-  opacity:.88;
-  filter:drop-shadow(0 0 22px rgba(212,27,102,.35));
-  z-index:0;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:linear-gradient(180deg,#120018,#05000c);
+font-family:Arial,sans-serif;
+color:white;
+padding:30px;
 }
-.about h1,.about .role,.about .name,.about p,.about-eq{position:relative;z-index:1}
-.about p{font-size:1.05rem;text-shadow:0 2px 12px rgba(0,0,0,.65)}
-.about-eq{display:flex;gap:8px;align-items:end;height:55px;margin-top:34px}
-.about-eq i{width:14px;border-radius:999px;background:linear-gradient(180deg,var(--orange),var(--pink));animation:eq 1s infinite ease-in-out alternate}
-.about-eq i:nth-child(1){height:16px}.about-eq i:nth-child(2){height:24px;animation-delay:.12s}.about-eq i:nth-child(3){height:34px;animation-delay:.22s}.about-eq i:nth-child(4){height:46px;animation-delay:.32s}.about-eq i:nth-child(5){height:60px;animation-delay:.42s}
+.container{
+max-width:1600px;
+margin:auto;
+}
+.hero{
+position:relative;
+overflow:hidden;
+border-radius:40px;
+padding:60px;
+min-height:720px;
+background:
+linear-gradient(90deg,rgba(8,0,15,.95),rgba(15,0,25,.70),rgba(15,0,25,.15)),
+url("dj-transparent.png?v=40") right center/contain no-repeat;
+border:2px solid rgba(212,27,102,.4);
+box-shadow:0 0 35px rgba(212,27,102,.25);
+}
+.logo{
+font-size:110px;
+font-weight:900;
+line-height:.9;
+}
+.logo span{
+display:block;
+font-size:58px;
+letter-spacing:10px;
+color:#ff2d8d;
+margin-top:10px;
+}
+.onair{
+margin-top:70px;
+font-size:26px;
+font-weight:900;
+color:#ff2d8d;
+text-transform:uppercase;
+}
+.dj{
+font-size:92px;
+font-weight:900;
+margin-top:10px;
+}
+.desc{
+max-width:700px;
+font-size:26px;
+line-height:1.5;
+margin-top:30px;
+}
+.section-title{
+font-size:68px;
+font-weight:900;
+margin:80px 0 30px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:28px;
+}
+.card{
+background:#060b18;
+border-radius:32px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.12);
+transition:.25s;
+text-decoration:none;
+color:white;
+}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 25px rgba(255,120,180,.25);
+}
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+display:block;
+background:#120018;
+}
+.card-content{
+padding:24px;
+}
+.card h3{
+font-size:42px;
+margin-bottom:12px;
+}
+.card p{
+font-size:24px;
+line-height:1.45;
+color:#d9d9d9;
+}
+.badge{
+margin-top:22px;
+display:inline-block;
+font-weight:900;
+font-size:24px;
+color:#ffb347;
+}
+.inner{
+margin-top:90px;
+background:#070b18;
+border-radius:40px;
+padding:40px;
+border:1px solid rgba(255,255,255,.1);
+}
+.inner img{
+width:100%;
+max-height:520px;
+object-fit:cover;
+border-radius:25px;
+margin-bottom:30px;
+}
+.inner h2{
+font-size:70px;
+margin-bottom:18px;
+}
+.inner p{
+font-size:28px;
+line-height:1.6;
+max-width:1200px;
+color:#e4e4e4;
+}
+.links{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+margin-top:40px;
+}
+.link-card{
+background:#111827;
+padding:24px;
+border-radius:22px;
+text-decoration:none;
+color:white;
+border:1px solid rgba(255,255,255,.08);
+}
+.link-card:hover{
+background:#1b2335;
+}
+.link-card h4{
+font-size:30px;
+margin-bottom:10px;
+}
+.link-card p{
+font-size:20px;
+color:#d5d5d5;
+}
+.footer{
+margin:80px 0 40px;
+text-align:center;
+color:#9f9f9f;
+font-size:18px;
+}
 @media(max-width:900px){
-  .about{min-height:520px}
-  .antonio-photo{width:82%;top:130px;opacity:.55}
+body{padding:15px}
+.hero{
+padding:35px;
+min-height:560px;
+background:
+linear-gradient(180deg,rgba(8,0,15,.95),rgba(15,0,25,.80)),
+url("dj-transparent.png?v=40") center bottom/95% no-repeat;
 }
-
+.logo{font-size:70px}
+.logo span{font-size:34px}
+.dj{font-size:60px}
+.desc{font-size:22px}
+.section-title{font-size:44px}
+.card h3{font-size:34px}
+.card p{font-size:22px}
+.inner h2{font-size:42px}
+.inner p{font-size:22px}
+}
 </style>
 </head>
 <body>
-<header><div class="head"><div class="brand"><img src="logo-rfa.png?v=20" alt="Logo"><div><div class="brand-title">PhilAura</div><div class="brand-sub">Station</div></div></div><nav><a href="#live">🎧 Live</a><a href="#show">🎙 Show</a><a href="#events">🎵 Eventi</a><a href="#books">📚 Libri</a><a href="#news">🗞 News</a></nav></div></header>
-<div class="shell"><main>
-<section class="hero" id="live">
-<div class="card live-card"><div class="live-row"><div class="pill"><span class="dot"></span> Live On Air</div><div class="dj">Antonio DJ Set</div></div><div id="coverWrap" class="cover no-cover"><img id="albumCover" src="https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it/art" alt="Copertina"><div class="fallback"><div style="font-size:4rem">🎧</div><div>Radio PhilAura Station</div><small>Copertina non disponibile</small></div></div><div class="label">Ora suona</div><div id="trackInfo">Caricamento brano...</div><div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button id="onAirBtn" class="btn">▶ LIVE NOW</button><div class="vol"><span id="volumeIcon">🔊</span><input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.85"></div><audio id="radioPlayer" preload="none"><source src="https://a7.asurahosting.com/listen/httpsradio.philaurastation.it/radio.mp3" type="audio/mpeg"></audio></div>
-<div class="card about">
-      <img class="antonio-photo" src="dj-transparent.png?v=20" alt="Antonio on air">
-      <h1>Radio<span>PhilAura</span></h1>
-      <div class="role">Ora in 🎧</div>
-      <div class="name">Antonio</div>
-      <p>Musica, cyber security, radio e scrittura. Creo, sperimento e trasformo ogni idea in qualcosa di reale.</p>
-      <div class="about-eq"><i></i><i></i><i></i><i></i><i></i></div>
-    </div>
-</section>
-<section class="quick"><a href="#show"><span class="ico">🎙</span><span>Podcast</span></a><a href="#events"><span class="ico">🎵</span><span>Eventi</span></a><a href="#chart"><span class="ico">🔥</span><span>Top 5</span></a><a href="#books"><span class="ico">📚</span><span>Libri</span></a><a href="#news"><span class="ico">🗞</span><span>News</span></a></section>
-<section class="section" id="show"><h2 class="title">🎙 <strong>Show & Podcast</strong></h2><div class="show-grid"><a class="show-card" href="#podcast"><img src="podcast1.jpg?v=20"><div class="txt"><h3>Anime Inquiete</h3><p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p><span class="badge">Ascolta →</span></div></a><a class="show-card" href="#back80"><img src="back80mix.jpg?v=1"><div class="txt"><h3>Back80 Mix</h3><p>Synthwave, retro, soft groove e atmosfere vintage moderne.</p><span class="badge">Vai al live →</span></div></a><a class="show-card" href="#events"><img src="news_music_live.jpg?v=1"><div class="txt"><h3>News Musica Live</h3><p>Concerti, festival, tour e appuntamenti musicali da seguire.</p><span class="badge">Apri eventi musicali →</span></div></a><a class="show-card" href="#speciali"><img src="podcast_speciali.jpg?v=1"><div class="txt"><h3>Podcast & Speciali</h3><p>Rubriche, contenuti originali e speciali PhilAura.</p><span class="badge">Apri →</span></div></a></div></section>
 
-<section class="section" id="back80">
-  <h2 class="title">📼 <strong>Back80 Mix</strong></h2>
-  <div class="podcast-card">
-    <img src="back80mix.jpg?v=2" alt="Back80 Mix">
-    <div>
-      <h3>Vintage moderno, synthwave e night drive</h3>
-      <p>Back80 Mix è la zona calda e nostalgica di PhilAura: suoni anni 80, synthwave, groove morbido, elettronica elegante e atmosfere da viaggio notturno.</p>
-      <p style="color:#ffb347;font-weight:900">Mood: retro • cinematic • soft electronic</p>
-      <a class="event" href="#live" style="display:inline-block;margin-top:10px;text-decoration:none">▶ Vai alla radio live</a>
-    </div>
-  </div>
+<div class="container">
+
+<section class="hero">
+<div class="logo">
+RADIO
+<span>PHILAURA</span>
+</div>
+
+<div class="onair">ORA IN ONDA</div>
+<div class="dj">Antonio</div>
+
+<div class="desc">
+Musica, podcast, racconti notturni, libri e vibrazioni cyber-vintage.
+Una radio personale, viva, elegante e in continua evoluzione.
+</div>
 </section>
 
-<section class="section" id="speciali">
-  <h2 class="title">🎧 <strong>Podcast & Speciali</strong></h2>
-  <div class="podcast-card">
-    <img src="podcast_speciali.jpg?v=2" alt="Podcast e Speciali">
-    <div>
-      <h3>Rubriche, racconti e contenuti originali</h3>
-      <p>Qui entrano gli speciali PhilAura: presentazioni dei brani, racconti, rubriche, backstage, pillole vocali, playlist commentate e contenuti creati per dare identità alla radio.</p>
-      <p style="color:#ffb347;font-weight:900">Prossimi contenuti: Cyber Stories • Night Talk • PhilAura Backstage</p>
-      <a class="event" href="#podcast" style="display:inline-block;margin-top:10px;text-decoration:none">🎙 Vai al podcast principale</a>
-    </div>
-  </div>
+<h2 class="section-title">🎙 Show & Podcast</h2>
+
+<div class="grid">
+
+<a class="card" href="#anime">
+<img src="anime_inquiete_cover.jpg?v=40">
+<div class="card-content">
+<h3>Anime Inquiete</h3>
+<p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
+<span class="badge">Ascolta →</span>
+</div>
+</a>
+
+<a class="card" href="#back80">
+<img src="back80mix.jpg?v=40">
+<div class="card-content">
+<h3>Back80 Mix</h3>
+<p>Synthwave, retro groove e atmosfere vintage moderne.</p>
+<span class="badge">Vai al live →</span>
+</div>
+</a>
+
+<a class="card" href="#eventi">
+<img src="news_music_live.jpg?v=40">
+<div class="card-content">
+<h3>News Musica Live</h3>
+<p>Concerti, festival, tour e nuove uscite da seguire.</p>
+<span class="badge">Scopri →</span>
+</div>
+</a>
+
+<a class="card" href="#speciali">
+<img src="podcast_speciali.jpg?v=40">
+<div class="card-content">
+<h3>Podcast & Speciali</h3>
+<p>Rubriche, racconti e contenuti originali PhilAura.</p>
+<span class="badge">Apri →</span>
+</div>
+</a>
+
+</div>
+
+<section class="inner" id="anime">
+<img src="anime_inquiete_cover.jpg?v=40">
+<h2>Anime Inquiete</h2>
+<p>
+Il podcast notturno di PhilAura: racconti brevi, intensi, emotivi.
+Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.
+</p>
 </section>
 
-<section class="section" id="events"><h2 class="title">🎵 <strong>Eventi Musicali</strong></h2><div class="events"><a class="event" target="_blank" href="https://www.rockol.it/news"><h3>🎤 Concerti in arrivo</h3><p>News musicali, concerti, tour e recensioni.</p><span>Rockol →</span></a><a class="event" target="_blank" href="https://blog.ticketmaster.it/musica/"><h3>☀️ Festival e tour</h3><p>Festival, live e grandi eventi in Italia.</p><span>Ticketmaster Blog →</span></a><a class="event" target="_blank" href="https://www.rollingstone.it/musica/news-musica/"><h3>💿 Nuove uscite</h3><p>Uscite, artisti, album, tour e cultura musicale.</p><span>Rolling Stone →</span></a><a class="event" target="_blank" href="https://www.ticketmaster.it/city/milano-98404/concerts"><h3>🌃 Eventi Milano</h3><p>Concerti e appuntamenti live nell’area milanese.</p><span>Milano Live →</span></a><a class="event" target="_blank" href="https://radiofreccia.rtl.it/notizie/"><h3>📻 Radiofreccia</h3><p>Notizie musicali, artisti, interviste e tour.</p><span>Radiofreccia →</span></a><a class="event" target="_blank" href="https://www.radioitalia.it/"><h3>🇮🇹 Radio Italia</h3><p>Eventi, classifiche e musica italiana.</p><span>Radio Italia →</span></a><a class="event" target="_blank" href="https://mediasetinfinity.mediaset.it/programmi-tv/battitilive_SE000000000210"><h3>🔥 Battiti Live</h3><p>Musica estiva, artisti pop e grandi performance.</p><span>Battiti Live →</span></a><a class="event" target="_blank" href="https://www.ticketone.it/artist/radio-zeta-future-hits/"><h3>🚀 Future Hits</h3><p>Nuove hit, artisti giovani e sonorità contemporanee.</p><span>Future Hits →</span></a></div></section>
-<section class="section" id="chart"><h2 class="title">🔥 <strong>PhilAura Top 5</strong></h2><div class="chart"><div class="song"><div class="num">1</div><div><h3>Lividi a Nome</h3><p>PhilAura Rotation</p></div><div>▶</div></div><div class="song"><div class="num">2</div><div><h3>you-and-me</h3><p>Sunset Edition</p></div><div>▶</div></div><div class="song"><div class="num">3</div><div><h3>ravel</h3><p>Night Drive</p></div><div>▶</div></div><div class="song"><div class="num">4</div><div><h3>Deep End</h3><p>Electronic Mood</p></div><div>▶</div></div><div class="song"><div class="num">5</div><div><h3>Costa del Sol</h3><p>Warm Vibes</p></div><div>▶</div></div></div></section>
-<section class="section" id="podcast"><h2 class="title">🎙 <strong>Podcast PhilAura</strong></h2><article class="podcast-card"><img src="podcast1.jpg?v=20"><div><h3>Anime Inquiete</h3><p>Un racconto breve, intenso e notturno: pensieri sospesi, emozioni che tornano e parole che restano addosso.</p><p style="color:#ffb347;font-weight:900">🌙 Primo episodio • circa 5 minuti</p><audio controls><source src="podcast-anime-inquiete.mp3?v=3" type="audio/mpeg"></audio></div></article></section>
-<section class="section" id="books">
-      <h2 class="section-title">📚 <strong>I Miei Libri</strong></h2>
+<section class="inner" id="back80">
+<img src="back80mix.jpg?v=40">
+<h2>Back80 Mix</h2>
+<p>
+La zona vintage della radio: synth anni 80, elettronica morbida,
+groove notturno e brani perfetti per accompagnare viaggio, lavoro e serate lente.
+</p>
+</section>
 
-      <div class="books-grid">
-        <article class="book-card">
-          <div class="book-cover-wrap">
-            <img src="libro1.jpg?v=4" class="book-cover" alt="L'Ombra del Vate">
-          </div>
-          <h3>L'Ombra del Vate</h3>
-          <p>Misteri, suspense e intrecci ambientati nell’Italia del primo Novecento.</p>
-          <a class="amazon-btn" href="https://www.amazon.it/Lombra-del-Vate-Antonio-Iannucci/dp/B0DQ7795B7/ref=sr_1_1?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3Q8NMN2ICOJAE&dib=eyJ2IjoiMSJ9.0dUdRFvSrTrFCAGh7S-kf9kpIxnd-hu0PwVm9VEnK-I.PbLmN2r7z5yFXCxLK6aPNokmw5TI4HgaemphonaqhSQ&dib_tag=se&keywords=L%27ombra+del+vate&qid=1779696966&sprefix=l%27ombra+del+vate%2Caps%2C132&sr=8-1" target="_blank" rel="noopener">🛒 Acquista su Amazon</a>
-        </article>
+<section class="inner" id="eventi">
+<img src="news_music_live.jpg?v=40">
+<h2>Eventi Musicali</h2>
+<p>
+Concerti, festival, tour, live a Milano, nuove uscite e appuntamenti musicali selezionati per la community PhilAura.
+</p>
 
-        <article class="book-card">
-          <div class="book-cover-wrap">
-            <img src="libro2.jpg?v=4" class="book-cover" alt="L'Ultima Eredità">
-          </div>
-          <h3>L'Ultima Eredità</h3>
-          <p>Il secondo romanzo della collana Le Ombre della Verità.</p>
-          <a class="amazon-btn" href="https://www.amazon.it/Lultima-eredit%C3%A0-antonio-iannucci/dp/B0FVVDVN34/ref=sr_1_30?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3I0PGIHZA87PL&dib=eyJ2IjoiMSJ9.cV4n4jebaVbo9zDJumBpda2eDEt0bhEJIsuu4YLOrkgx_0KE76aIWBljeqNMYvKrozGrnn9CYk_ZcPRQLA-f8dsB0f-_bkugtWVLXQ2bCdtBfTUP1NbjzRjdmar9aoU4oB_XxQWkhaDSsWpAdXFw-hTfA8BMCeB9rkzTZ96bFgO-cAYV1VFCuPicqu49iz7ulyrBqfkoGfgijHS-lrLontMUIghOP3t-fh5-l7cAsVXeikFNl328zHjGbYXhJat8qeUXpEYQLnVj2Zc_yGQ9UJWdBLhkWMfxEORlM52LZCA.kHJHidYRy-y0Z16AvpyWrI7UW2hDxjMSNkcOL7Ob_Yc&dib_tag=se&keywords=L%27ultima+verit%C3%A0&qid=1779697095&sprefix=l%27ultima+verit%C3%A0%2Caps%2C125&sr=8-30" target="_blank" rel="noopener">🛒 Acquista su Amazon</a>
-        </article>
+<div class="links">
 
-        <article class="book-card">
-          <div class="book-cover-wrap">
-            <img src="libro3.jpg?v=4" class="book-cover" alt="Il Protocollo Alfa">
-          </div>
-          <h3>Il Protocollo Alfa</h3>
-          <p>Thriller cyber ricco di colpi di scena, intrighi e hacking reale.</p>
-          <a class="amazon-btn" href="https://www.amazon.it/Protocollo-Alfa-qualcosa-molto-croccante-ebook/dp/B0H22CWSPP/ref=sr_1_1?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=LI46PXYZ3NBZ&dib=eyJ2IjoiMSJ9.49mMFOyxUwW8EK1C0tAuKlko_Sap5pwG_lfA2RjgSgnGjHj071QN20LucGBJIEps.-x06QAii1fcRLs9AM5LRQINvpxFKGGK7RYI4N3Zbc7U&dib_tag=se&keywords=protocollo+alfa&qid=1779697186&sprefix=protocollo+alfa%2Caps%2C128&sr=8-1" target="_blank" rel="noopener">🛒 Acquista su Amazon</a>
-        </article>
-      </div>
-    </section>
-<section class="section" id="news"><h2 class="title">🗞 <strong>Ultime News</strong></h2><div id="news-updated" style="font-size:13px;color:#ffb347;margin:-8px 0 18px 0;">Aggiornamento in corso…</div><div id="news-list" class="news-list"></div></section>
-</main></div>
-<div class="mini"><img id="miniCover" src="logo-rfa.png?v=20"><div><div id="miniTitle" class="mini-title">Radio PhilAura Station</div><div class="mini-sub">LIVE • Music • Podcast • Stories</div></div><button id="miniBtn">▶</button></div>
-<footer>© 2026 Radio PhilAura Station – Music • Podcast • Stories</footer>
-<script>
-const feedUrl="https://www.ansa.it/sito/ansait_rss.xml",MAX_ITEMS=6,REFRESH_MS=300000,container=document.getElementById("news-list"),updatedEl=document.getElementById("news-updated");let lastFirstId=null;
-async function loadFeed(url){const api="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(url);const res=await fetch(api,{cache:"no-store"});if(!res.ok)throw new Error("Errore rete");const data=await res.json();return data.items.slice(0,MAX_ITEMS)}
-function stripHtml(s=""){return s.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim()}
-function renderList(items){container.innerHTML="";items.forEach(item=>{const art=document.createElement("article");art.className="news-item";const title=document.createElement("a");title.href=item.link;title.target="_blank";title.rel="noopener";title.textContent=item.title?.trim()||"Senza titolo";const meta=document.createElement("div");meta.className="date";const d=new Date(item.pubDate||item.created||Date.now());meta.textContent=isNaN(d.getTime())?"":d.toLocaleString("it-IT");const desc=document.createElement("p");const text=stripHtml(item.description||item.content||"");desc.textContent=text.length>150?text.slice(0,150)+"…":text;art.append(title,meta,desc);container.appendChild(art)})}
-async function refresh(){try{if(!container.innerHTML)container.innerHTML="<div style='color:#cfc7d8'>Carico le ultime notizie…</div>";const items=await loadFeed(feedUrl);const firstId=items[0]?.link||items[0]?.title||"";if(firstId&&firstId===lastFirstId&&container.children.length>0){updatedEl.textContent="Aggiornato alle "+new Date().toLocaleTimeString("it-IT");return}lastFirstId=firstId;renderList(items);updatedEl.textContent="Aggiornato alle "+new Date().toLocaleTimeString("it-IT")}catch(e){updatedEl.textContent="Errore aggiornamento.";container.innerHTML="<div style='color:#ff6d6d'>Impossibile caricare il feed.</div>"}}
-refresh();setInterval(refresh,REFRESH_MS);
-</script>
-<script>
-const radio=document.getElementById('radioPlayer'),btn=document.getElementById('onAirBtn'),miniBtn=document.getElementById('miniBtn'),info=document.getElementById('trackInfo'),miniTitle=document.getElementById('miniTitle'),cover=document.getElementById('albumCover'),miniCover=document.getElementById('miniCover'),coverWrap=document.getElementById('coverWrap'),volumeSlider=document.getElementById('volumeSlider'),volumeIcon=document.getElementById('volumeIcon'),AZURA_NOWPLAYING_URL='https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it';
-radio.volume=Number(volumeSlider.value);volumeSlider.addEventListener('input',()=>{radio.volume=Number(volumeSlider.value);volumeIcon.textContent=radio.volume===0?'🔇':(radio.volume<.45?'🔉':'🔊')});
-function setUI(p){btn.textContent=p?'⏸ STOP RADIO':'▶ LIVE NOW';miniBtn.textContent=p?'⏸':'▶'}
-async function toggleRadio(){try{if(radio.paused){radio.load();await radio.play();setUI(true)}else{radio.pause();setUI(false)}}catch(e){info.textContent='Clicca di nuovo: il browser ha bloccato l’audio.'}}
-btn.addEventListener('click',toggleRadio);miniBtn.addEventListener('click',toggleRadio);cover.onerror=()=>{coverWrap.classList.add('no-cover');miniCover.src='logo-rfa.png?v=20'};
-function setCover(url){if(!url){coverWrap.classList.add('no-cover');return}coverWrap.classList.remove('no-cover');const bust=url+(url.includes('?')?'&':'?')+'t='+Date.now();cover.src=bust;miniCover.src=bust}
-let lastArt='';async function updateNowPlaying(){try{const r=await fetch(AZURA_NOWPLAYING_URL+'?t='+Date.now(),{cache:'no-store'});const data=await r.json();const song=data?.now_playing?.song||{};const artist=song.artist||'',title=song.title||'';const text=(artist&&title)?`${artist} - ${title}`:(title||artist||'Radio PhilAura Station');info.textContent=text;miniTitle.textContent=text;const artUrl=song.art||data?.now_playing?.art||(AZURA_NOWPLAYING_URL+'/art');if(artUrl&&artUrl!==lastArt){setCover(artUrl);lastArt=artUrl}}catch(e){info.textContent='Radio PhilAura Station';miniTitle.textContent='Radio PhilAura Station'}}
-updateNowPlaying();setInterval(updateNowPlaying,10000);
-</script>
+<a class="link-card" href="https://www.rockol.it" target="_blank">
+<h4>Rockol</h4>
+<p>News musicali, concerti e recensioni.</p>
+</a>
 
-<script>
-document.querySelectorAll('.show-card img').forEach(img=>{
-  img.addEventListener('error',()=>{
-    img.style.background='linear-gradient(135deg,#12001e,#d41b66)';
-    img.style.minHeight='190px';
-    img.alt='Immagine non caricata';
-  });
-});
-</script>
+<a class="link-card" href="https://www.ticketmaster.it" target="_blank">
+<h4>Ticketmaster</h4>
+<p>Festival, live e concerti in Italia.</p>
+</a>
 
-</body></html>
+<a class="link-card" href="https://www.rollingstone.it" target="_blank">
+<h4>Rolling Stone Italia</h4>
+<p>Tour, artisti e nuove uscite.</p>
+</a>
+
+<a class="link-card" href="https://www.radioitalia.it" target="_blank">
+<h4>Radio Italia</h4>
+<p>Eventi e appuntamenti live.</p>
+</a>
+
+</div>
+</section>
+
+<section class="inner" id="speciali">
+<img src="podcast_speciali.jpg?v=40">
+<h2>Podcast & Speciali</h2>
+<p>
+Contenuti originali PhilAura: podcast, racconti, rubriche, backstage,
+presentazioni dei brani e format speciali della radio.
+</p>
+</section>
+
+<div class="footer">
+© 2026 Radio PhilAura Station · v40
+</div>
+
+</div>
+
+</body>
+</html>
