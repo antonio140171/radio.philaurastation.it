@@ -29,26 +29,34 @@ a{text-decoration:none;color:inherit}
 .header-inner{
   max-width:1600px;
   margin:auto;
-  padding:18px 32px;
+  padding:14px 32px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:20px;
 }
+
 .brand{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:18px;
 }
+
+
+
 .brand img{
-  width:118px;
-  height:118px;
-  object-fit:contain;
-  border-radius:24px;
-  border:1px solid rgba(212,27,102,.5);
-  background:#080812;
-  padding:3px;
+  width:180px !important;
+  height:180px !important;
+  object-fit:contain !important;
+  border-radius:30px !important;
+  background:#070710 !important;
+  padding:3px !important;
+  box-shadow:
+    0 0 18px rgba(255,0,140,.55),
+    0 0 42px rgba(255,0,140,.30) !important;
 }
+
+
 
 .brand-title{
   font-size:52px !important;
@@ -138,7 +146,7 @@ a{text-decoration:none;color:inherit}
   padding:60px;
   background:
     linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),
-    url("dj-transparent.png?v=105") right center/contain no-repeat;
+    url("dj-transparent.png?v=302") right center/contain no-repeat;
 }
 .logo{
   font-size:110px;
@@ -492,11 +500,25 @@ a{text-decoration:none;color:inherit}
 
 }
 
-/* ===== DESKTOP COMPACT FIX v105 ===== */
+/* ===== DESKTOP COMPACT FIX v302 ===== */
 @media(min-width:1001px){
   .container{max-width:1320px;padding:24px}
   .header-inner{max-width:1320px;padding:12px 24px}
-  .brand img{width:92px;height:92px;border-radius:18px}
+  
+
+.brand img{
+  width:180px !important;
+  height:180px !important;
+  object-fit:contain !important;
+  border-radius:30px !important;
+  background:#070710 !important;
+  padding:3px !important;
+  box-shadow:
+    0 0 18px rgba(255,0,140,.55),
+    0 0 42px rgba(255,0,140,.30) !important;
+}
+
+
   
 .brand-title{
   font-size:52px !important;
@@ -712,7 +734,7 @@ a{text-decoration:none;color:inherit}
 }
 
 
-/* ===== QUICK BUTTONS RADIO STYLE v105 ===== */
+/* ===== QUICK BUTTONS RADIO STYLE v302 ===== */
 .quick{
   margin:38px 0;
   display:grid;
@@ -801,8 +823,10 @@ a{text-decoration:none;color:inherit}
 
 </style>
 
-<link rel="icon" type="image/png" href="logo.png">
-<link rel="apple-touch-icon" href="logo.png">
+<link rel="icon" href="/favicon.ico?v=302" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png?v=302">
+<link rel="shortcut icon" href="/favicon.ico?v=302">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=302">
 
 </head>
 
@@ -881,7 +905,7 @@ text-shadow:
 <div class="grid">
 
 <a class="card" href="#anime">
-<img src="anime_inquiete_cover.jpg?v=105">
+<img src="anime_inquiete_cover.jpg?v=302">
 <div class="card-content">
 <h3>Anime Inquiete</h3>
 <p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
@@ -890,7 +914,7 @@ text-shadow:
 </a>
 
 <a class="card" href="#eventi">
-<img src="news_music_live.jpg?v=105">
+<img src="news_music_live.jpg?v=302">
 <div class="card-content">
 <h3>News Musica Live</h3>
 <p>Concerti, festival, tour e nuove uscite da seguire.</p>
@@ -986,7 +1010,7 @@ text-shadow:
 
 <div class="grid">
 <div class="card">
-<img src="anime_inquiete_cover.jpg?v=105" alt="Anime Inquiete">
+<img src="anime_inquiete_cover.jpg?v=302" alt="Anime Inquiete">
 <div class="card-content">
 <h3>Podcast notturno</h3>
 <p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p>
@@ -1012,7 +1036,7 @@ Il tuo browser non supporta il player audio.
 <div id="news-list" class="news-grid"></div>
 </section>
 
-<div class="footer">© 2026 Radio PhilAura Station · v105</div>
+<div class="footer">© 2026 Radio PhilAura Station · v302</div>
 
 </div>
 
