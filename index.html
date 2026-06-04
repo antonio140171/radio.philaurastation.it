@@ -41,23 +41,35 @@ a{text-decoration:none;color:inherit}
   gap:18px;
 }
 .brand img{
-  width:70px;
-  height:70px;
+  width:96px;
+  height:96px;
   object-fit:contain;
-  border-radius:18px;
+  border-radius:22px;
   border:1px solid rgba(212,27,102,.5);
   background:#080812;
-  padding:8px;
+  padding:4px;
 }
 .brand-title{
-  font-size:48px;
+  font-size:52px;
   font-weight:900;
-  letter-spacing:4px;
+  letter-spacing:3px;
+  line-height:.9;
+  text-transform:none;
 }
 .brand-sub{
+  color:#ff2d8d;
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:12px;
+  text-transform:uppercase;
+  margin-top:4px;
+}
+.brand-slogan{
   color:#e0913e;
   font-weight:900;
-  letter-spacing:8px;
+  letter-spacing:3px;
+  font-size:15px;
+  margin-top:6px;
 }
 .nav{
   display:flex;
@@ -100,7 +112,7 @@ a{text-decoration:none;color:inherit}
   padding:60px;
   background:
     linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),
-    url("dj-transparent.png?v=70") right center/contain no-repeat;
+    url("dj-transparent.png?v=103") right center/contain no-repeat;
 }
 .logo{
   font-size:110px;
@@ -426,10 +438,10 @@ a{text-decoration:none;color:inherit}
 @media(max-width:1000px){
   .hero-grid{grid-template-columns:1fr}
   .hero{min-height:600px}
-  .logo{font-size:70px}
-  .logo span{font-size:36px}
+  .logo{display:none}
+  .logo span{display:none}
   .dj{font-size:58px}
-  .desc{font-size:22px}
+  .desc{display:none}
   .section-title{font-size:38px}
   .header-inner{flex-direction:column;align-items:flex-start}
   .track{font-size:36px}
@@ -437,13 +449,14 @@ a{text-decoration:none;color:inherit}
   .brand-title{font-size:34px}
 }
 
-/* ===== DESKTOP COMPACT FIX v72 ===== */
+/* ===== DESKTOP COMPACT FIX v103 ===== */
 @media(min-width:1001px){
   .container{max-width:1320px;padding:24px}
   .header-inner{max-width:1320px;padding:12px 24px}
-  .brand img{width:54px;height:54px;border-radius:14px}
-  .brand-title{font-size:34px}
-  .brand-sub{font-size:13px;letter-spacing:6px}
+  .brand img{width:72px;height:72px;border-radius:16px}
+  .brand-title{font-size:36px}
+  .brand-sub{font-size:18px;letter-spacing:8px}
+  .brand-slogan{font-size:12px;letter-spacing:2px}
   .nav a{padding:9px 16px;font-size:15px}
 
   .hero-grid{
@@ -492,32 +505,22 @@ a{text-decoration:none;color:inherit}
 
   .hero{
     min-height:520px;
-    padding:46px;
+    padding:54px;
     border-radius:28px;
     background:
-      linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.68),rgba(15,0,25,.15)),
-      url("dj-transparent.png?v=72") right center/contain no-repeat;
+      linear-gradient(90deg,rgba(8,0,15,.98) 0%,rgba(15,0,25,.78) 42%,rgba(15,0,25,.10) 100%),
+      radial-gradient(circle at 78% 50%,rgba(212,27,102,.42),transparent 42%),
+      url("dj-transparent.png?v=100") right bottom/auto 112% no-repeat;
   }
 
-  .logo{
-    font-size:78px;
-    line-height:.86;
-  }
-  .logo span{
-    font-size:40px;
-    letter-spacing:8px;
-  }
   .onair{
-    margin-top:52px;
-    font-size:20px;
+    margin-top:120px;
+    font-size:26px;
+    letter-spacing:3px;
   }
   .dj{
-    font-size:60px;
-  }
-  .desc{
-    font-size:20px;
-    max-width:560px;
-    line-height:1.45;
+    font-size:78px;
+    line-height:.95;
   }
 
   .quick{
@@ -620,6 +623,78 @@ a{text-decoration:none;color:inherit}
   }
 }
 
+
+/* ===== QUICK BUTTONS RADIO STYLE v103 ===== */
+.quick{
+  margin:38px 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:22px;
+}
+
+.quick a{
+  min-height:150px;
+  border-radius:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:
+    radial-gradient(circle at top,rgba(212,27,102,.18),transparent 55%),
+    linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  border:1px solid rgba(212,27,102,.75);
+  box-shadow:0 0 24px rgba(212,27,102,.16);
+  font-size:22px;
+  font-weight:900;
+  transition:.25s ease;
+}
+
+.quick a:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 34px rgba(212,27,102,.34);
+  border-color:#ff2d8d;
+}
+
+.quick span:first-child{
+  font-size:44px;
+  width:66px;
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  filter:drop-shadow(0 0 10px rgba(212,27,102,.35));
+}
+
+.quick span:last-child{
+  font-size:22px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+
+@media(min-width:1001px){
+  .quick{
+    margin:28px 0;
+    gap:18px;
+  }
+  .quick a{
+    min-height:118px;
+    font-size:18px;
+    border-radius:24px;
+  }
+  .quick span:first-child{
+    font-size:34px;
+    width:54px;
+    height:54px;
+  }
+  .quick span:last-child{
+    font-size:19px;
+  }
+}
+
 </style>
 </head>
 
@@ -628,20 +703,14 @@ a{text-decoration:none;color:inherit}
 <header class="header">
 <div class="header-inner">
 <div class="brand">
-<img src="logo-rfa.png?v=70" alt="Logo">
+<img src="logo-philaura-app.png?v=100" alt="Logo Radio PhilAura Station">
 <div>
-<div class="brand-title">PHILAURA</div>
-<div class="brand-sub">STATION</div>
+<div class="brand-title">Radio PhilAura</div>
+<div class="brand-sub">Station</div>
+<div class="brand-slogan">Radio libera. Musica originale. Senza confini.</div>
 </div>
 </div>
-<nav class="nav">
-<a href="#live">🎧 Live</a>
-<a href="#show">🎙 Show</a>
-<a href="#eventi">🎵 Eventi</a>
-<a href="#programmazione">📻 Programmazione</a>
-<a href="#top5">🔥 Top 5</a>
-<a href="#news">🗞 News</a>
-</nav>
+
 </div>
 </header>
 
@@ -668,23 +737,18 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <section class="hero">
-<div class="logo">RADIO<span>PHILAURA</span></div>
 <div class="onair">ORA IN ONDA</div>
-<div class="dj">Antonio</div>
-<div class="desc">
-Musica, podcast, racconti notturni, libri e vibrazioni cyber-vintage.
-Una radio personale, viva, elegante e in continua evoluzione.
-</div>
+<div class="dj">DJ Anto</div>
 </section>
 
 </section>
 
 <section class="quick">
-<a href="#show"><span>🎙</span><span>Podcast</span></a>
-<a href="#eventi"><span>🎵</span><span>Eventi</span></a>
-<a href="#programmazione"><span>📻</span><span>Programmazione</span></a>
-<a href="#top5"><span>🔥</span><span>Top 5</span></a>
-<a href="#news"><span>🗞</span><span>News</span></a>
+<a href="#show"><span>🎧</span><span>Podcast</span></a>
+<a href="#eventi"><span>🎚️</span><span>Eventi</span></a>
+<a href="#programmazione"><span>📡</span><span>Programmazione</span></a>
+<a href="#top5"><span>🏆</span><span>Top 5</span></a>
+<a href="#news"><span>📰</span><span>News</span></a>
 </section>
 
 <section class="section" id="show">
@@ -692,7 +756,7 @@ Una radio personale, viva, elegante e in continua evoluzione.
 <div class="grid">
 
 <a class="card" href="#anime">
-<img src="anime_inquiete_cover.jpg?v=70">
+<img src="anime_inquiete_cover.jpg?v=103">
 <div class="card-content">
 <h3>Anime Inquiete</h3>
 <p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
@@ -700,30 +764,12 @@ Una radio personale, viva, elegante e in continua evoluzione.
 </div>
 </a>
 
-<a class="card" href="#back80">
-<img src="back80mix.jpg?v=70">
-<div class="card-content">
-<h3>Back80 Mix</h3>
-<p>Synthwave, retro groove e atmosfere vintage moderne.</p>
-<span class="badge">Apri →</span>
-</div>
-</a>
-
 <a class="card" href="#eventi">
-<img src="news_music_live.jpg?v=70">
+<img src="news_music_live.jpg?v=103">
 <div class="card-content">
 <h3>News Musica Live</h3>
 <p>Concerti, festival, tour e nuove uscite da seguire.</p>
 <span class="badge">Scopri →</span>
-</div>
-</a>
-
-<a class="card" href="#speciali">
-<img src="podcast_speciali.jpg?v=70">
-<div class="card-content">
-<h3>Podcast & Speciali</h3>
-<p>Rubriche, racconti e contenuti originali PhilAura.</p>
-<span class="badge">Apri →</span>
 </div>
 </a>
 
@@ -815,7 +861,7 @@ Una radio personale, viva, elegante e in continua evoluzione.
 
 <div class="grid">
 <div class="card">
-<img src="anime_inquiete_cover.jpg?v=71" alt="Anime Inquiete">
+<img src="anime_inquiete_cover.jpg?v=103" alt="Anime Inquiete">
 <div class="card-content">
 <h3>Podcast notturno</h3>
 <p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p>
@@ -825,41 +871,11 @@ Una radio personale, viva, elegante e in continua evoluzione.
 <p style="font-size:20px;color:#ffb347;margin-bottom:14px;">Durata: circa 5 minuti · Podcast originale PhilAura</p>
 
 <audio controls style="width:100%;margin:12px 0 18px;">
-<source src="podcast-anime-inquiete.mp3?v=71" type="audio/mpeg">
+<source src="podcast-anime-inquiete.mp3" type="audio/mpeg">
 Il tuo browser non supporta il player audio.
 </audio>
-
-<a href="podcast-anime-inquiete.mp3?v=71" target="_blank" style="display:inline-block;margin-top:8px;padding:14px 22px;border-radius:999px;background:linear-gradient(90deg,#d41b66,#e0913e);font-weight:900;color:white;">
-Apri audio diretto →
-</a>
 </div>
 
-</div>
-</div>
-</div>
-</section>
-
-<section class="section" id="back80">
-<h2 class="section-title">📼 BACK80 MIX</h2>
-<div class="grid">
-<div class="card">
-<img src="back80mix.jpg?v=70">
-<div class="card-content">
-<h3>Vintage moderno</h3>
-<p>Synth anni 80, elettronica morbida, groove notturno e brani perfetti per accompagnare viaggio, lavoro e serate lente.</p>
-</div>
-</div>
-</div>
-</section>
-
-<section class="section" id="speciali">
-<h2 class="section-title">🎧 PODCAST & SPECIALI</h2>
-<div class="grid">
-<div class="card">
-<img src="podcast_speciali.jpg?v=70">
-<div class="card-content">
-<h3>Contenuti originali PhilAura</h3>
-<p>Podcast, racconti, rubriche, backstage, presentazioni dei brani e format speciali della radio.</p>
 </div>
 </div>
 </div>
@@ -871,12 +887,12 @@ Apri audio diretto →
 <div id="news-list" class="news-grid"></div>
 </section>
 
-<div class="footer">© 2026 Radio PhilAura Station · v72</div>
+<div class="footer">© 2026 Radio PhilAura Station · v103</div>
 
 </div>
 
 <div class="mini">
-<img id="miniCover" src="logo-rfa.png?v=70">
+<img id="miniCover" src="logo-philaura-app.png?v=100">
 <div>
 <div id="miniTitle" class="mini-title">Radio PhilAura Station</div>
 <div class="mini-sub">LIVE • Music • Podcast • Stories</div>
