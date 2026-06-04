@@ -38,39 +38,65 @@ a{text-decoration:none;color:inherit}
 .brand{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:14px;
 }
 .brand img{
-  width:96px;
-  height:96px;
+  width:118px;
+  height:118px;
   object-fit:contain;
-  border-radius:22px;
+  border-radius:24px;
   border:1px solid rgba(212,27,102,.5);
   background:#080812;
-  padding:4px;
+  padding:3px;
 }
+
 .brand-title{
-  font-size:52px;
-  font-weight:900;
-  letter-spacing:3px;
-  line-height:.9;
-  text-transform:none;
+  font-size:52px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:3px !important;
+  text-transform:uppercase !important;
+  background:linear-gradient(180deg,#ffffff 0%,#ff4dc4 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #ff0080,
+    0 0 40px #ff0080,
+    0 0 70px rgba(255,0,140,.95),
+    0 0 120px rgba(255,0,140,.85) !important;
 }
+
+
 .brand-sub{
-  color:#ff2d8d;
-  font-size:28px;
-  font-weight:900;
-  letter-spacing:12px;
-  text-transform:uppercase;
-  margin-top:4px;
+  color:#ff2f8f !important;
+  font-size:24px !important;
+  font-weight:900 !important;
+  letter-spacing:12px !important;
+  margin-top:6px !important;
+  text-shadow:
+    0 0 10px #ff0080,
+    0 0 26px #ff0080,
+    0 0 52px rgba(255,0,140,.95),
+    0 0 90px rgba(255,0,140,.85) !important;
 }
+
+
 .brand-slogan{
-  color:#e0913e;
-  font-weight:900;
-  letter-spacing:3px;
-  font-size:15px;
-  margin-top:6px;
+  font-size:15px !important;
+  font-weight:800 !important;
+  letter-spacing:2px !important;
+  margin-top:10px !important;
+  background:linear-gradient(90deg,#ff9a00 0%,#ff2f8f 50%,#8a5cff 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-transform:uppercase !important;
+  text-shadow:
+    0 0 8px rgba(255,154,0,.55),
+    0 0 18px rgba(255,47,143,.45),
+    0 0 26px rgba(138,92,255,.35) !important;
 }
+
 .nav{
   display:flex;
   gap:14px;
@@ -112,7 +138,7 @@ a{text-decoration:none;color:inherit}
   padding:60px;
   background:
     linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),
-    url("dj-transparent.png?v=103") right center/contain no-repeat;
+    url("dj-transparent.png?v=105") right center/contain no-repeat;
 }
 .logo{
   font-size:110px;
@@ -446,17 +472,79 @@ a{text-decoration:none;color:inherit}
   .header-inner{flex-direction:column;align-items:flex-start}
   .track{font-size:36px}
   .live-card{padding:24px}
-  .brand-title{font-size:34px}
+  
+.brand-title{
+  font-size:52px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:3px !important;
+  text-transform:uppercase !important;
+  background:linear-gradient(180deg,#ffffff 0%,#ff4dc4 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #ff0080,
+    0 0 40px #ff0080,
+    0 0 70px rgba(255,0,140,.95),
+    0 0 120px rgba(255,0,140,.85) !important;
 }
 
-/* ===== DESKTOP COMPACT FIX v103 ===== */
+}
+
+/* ===== DESKTOP COMPACT FIX v105 ===== */
 @media(min-width:1001px){
   .container{max-width:1320px;padding:24px}
   .header-inner{max-width:1320px;padding:12px 24px}
-  .brand img{width:72px;height:72px;border-radius:16px}
-  .brand-title{font-size:36px}
-  .brand-sub{font-size:18px;letter-spacing:8px}
-  .brand-slogan{font-size:12px;letter-spacing:2px}
+  .brand img{width:92px;height:92px;border-radius:18px}
+  
+.brand-title{
+  font-size:52px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:3px !important;
+  text-transform:uppercase !important;
+  background:linear-gradient(180deg,#ffffff 0%,#ff4dc4 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #ff0080,
+    0 0 40px #ff0080,
+    0 0 70px rgba(255,0,140,.95),
+    0 0 120px rgba(255,0,140,.85) !important;
+}
+
+  
+.brand-sub{
+  color:#ff2f8f !important;
+  font-size:24px !important;
+  font-weight:900 !important;
+  letter-spacing:12px !important;
+  margin-top:6px !important;
+  text-shadow:
+    0 0 10px #ff0080,
+    0 0 26px #ff0080,
+    0 0 52px rgba(255,0,140,.95),
+    0 0 90px rgba(255,0,140,.85) !important;
+}
+
+  
+.brand-slogan{
+  font-size:15px !important;
+  font-weight:800 !important;
+  letter-spacing:2px !important;
+  margin-top:10px !important;
+  background:linear-gradient(90deg,#ff9a00 0%,#ff2f8f 50%,#8a5cff 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-transform:uppercase !important;
+  text-shadow:
+    0 0 8px rgba(255,154,0,.55),
+    0 0 18px rgba(255,47,143,.45),
+    0 0 26px rgba(138,92,255,.35) !important;
+}
+
   .nav a{padding:9px 16px;font-size:15px}
 
   .hero-grid{
@@ -624,7 +712,7 @@ a{text-decoration:none;color:inherit}
 }
 
 
-/* ===== QUICK BUTTONS RADIO STYLE v103 ===== */
+/* ===== QUICK BUTTONS RADIO STYLE v105 ===== */
 .quick{
   margin:38px 0;
   display:grid;
@@ -695,7 +783,27 @@ a{text-decoration:none;color:inherit}
   }
 }
 
+
+.dj-name{
+  font-size:78px !important;
+  font-weight:900 !important;
+  letter-spacing:2px !important;
+  line-height:1 !important;
+  font-family:'Trebuchet MS',Arial,sans-serif !important;
+  background:linear-gradient(90deg,#ffffff 0%,#ffb347 45%,#ff2f8f 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 12px rgba(255,255,255,.6),
+    0 0 24px rgba(255,179,71,.5),
+    0 0 44px rgba(255,47,143,.45) !important;
+}
+
 </style>
+
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
 </head>
 
 <body>
@@ -737,8 +845,25 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <section class="hero">
-<div class="onair">ORA IN ONDA</div>
-<div class="dj">DJ Anto</div>
+<div class="onair">ORA IN ONDA
+<div style="
+font-family:Verdana,sans-serif;
+font-size:82px;
+font-weight:900;
+line-height:1;
+margin-top:12px;
+letter-spacing:1px;
+background:linear-gradient(90deg,#ffffff 0%,#ffcc70 40%,#ff2f8f 100%);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:
+0 0 12px rgba(255,255,255,.6),
+0 0 24px rgba(255,140,0,.45),
+0 0 44px rgba(255,0,120,.35);
+">Dj Anto</div>
+</div>
+
+
 </section>
 
 </section>
@@ -756,7 +881,7 @@ a{text-decoration:none;color:inherit}
 <div class="grid">
 
 <a class="card" href="#anime">
-<img src="anime_inquiete_cover.jpg?v=103">
+<img src="anime_inquiete_cover.jpg?v=105">
 <div class="card-content">
 <h3>Anime Inquiete</h3>
 <p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
@@ -765,7 +890,7 @@ a{text-decoration:none;color:inherit}
 </a>
 
 <a class="card" href="#eventi">
-<img src="news_music_live.jpg?v=103">
+<img src="news_music_live.jpg?v=105">
 <div class="card-content">
 <h3>News Musica Live</h3>
 <p>Concerti, festival, tour e nuove uscite da seguire.</p>
@@ -861,7 +986,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="grid">
 <div class="card">
-<img src="anime_inquiete_cover.jpg?v=103" alt="Anime Inquiete">
+<img src="anime_inquiete_cover.jpg?v=105" alt="Anime Inquiete">
 <div class="card-content">
 <h3>Podcast notturno</h3>
 <p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p>
@@ -887,7 +1012,7 @@ Il tuo browser non supporta il player audio.
 <div id="news-list" class="news-grid"></div>
 </section>
 
-<div class="footer">© 2026 Radio PhilAura Station · v103</div>
+<div class="footer">© 2026 Radio PhilAura Station · v105</div>
 
 </div>
 
