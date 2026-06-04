@@ -146,7 +146,7 @@ a{text-decoration:none;color:inherit}
   padding:60px;
   background:
     linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),
-    url("dj-transparent.png?v=302") right center/contain no-repeat;
+    url("dj-transparent.png?v=400") right center/contain no-repeat;
 }
 .logo{
   font-size:110px;
@@ -500,7 +500,7 @@ a{text-decoration:none;color:inherit}
 
 }
 
-/* ===== DESKTOP COMPACT FIX v302 ===== */
+/* ===== DESKTOP COMPACT FIX v400 ===== */
 @media(min-width:1001px){
   .container{max-width:1320px;padding:24px}
   .header-inner{max-width:1320px;padding:12px 24px}
@@ -734,7 +734,7 @@ a{text-decoration:none;color:inherit}
 }
 
 
-/* ===== QUICK BUTTONS RADIO STYLE v302 ===== */
+/* ===== QUICK BUTTONS RADIO STYLE v400 ===== */
 .quick{
   margin:38px 0;
   display:grid;
@@ -821,11 +821,350 @@ a{text-decoration:none;color:inherit}
     0 0 44px rgba(255,47,143,.45) !important;
 }
 
+
+/* ===== IPHONE / MOBILE FIX v400 ===== */
+@media (max-width: 768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .header{
+    position:relative;
+  }
+
+  .header-inner{
+    padding:16px 14px !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    gap:8px !important;
+  }
+
+  .brand{
+    width:100% !important;
+    justify-content:center !important;
+    align-items:center !important;
+    gap:10px !important;
+  }
+
+  .brand img{
+    width:88px !important;
+    height:88px !important;
+    border-radius:18px !important;
+    padding:2px !important;
+    flex-shrink:0 !important;
+  }
+
+  .brand-title{
+    font-size:28px !important;
+    line-height:1 !important;
+    letter-spacing:1px !important;
+    text-align:left !important;
+    white-space:normal !important;
+  }
+
+  .brand-sub{
+    font-size:15px !important;
+    letter-spacing:6px !important;
+    text-align:left !important;
+  }
+
+  .brand-slogan{
+    font-size:10px !important;
+    letter-spacing:.8px !important;
+    text-align:left !important;
+    max-width:240px !important;
+  }
+
+  .container{
+    padding:14px !important;
+    max-width:100% !important;
+  }
+
+  .hero-grid{
+    display:block !important;
+  }
+
+  .live-card,
+  .hero,
+  .section{
+    border-radius:24px !important;
+    width:100% !important;
+  }
+
+  .live-card{
+    padding:18px !important;
+    margin-bottom:18px !important;
+  }
+
+  .cover{
+    height:auto !important;
+    aspect-ratio:1/1 !important;
+    max-height:330px !important;
+    border-radius:20px !important;
+    margin-bottom:18px !important;
+  }
+
+  .track{
+    font-size:26px !important;
+    line-height:1.1 !important;
+    word-break:break-word !important;
+    margin:8px 0 18px !important;
+  }
+
+  .label{
+    font-size:14px !important;
+  }
+
+  .eq{
+    height:44px !important;
+    gap:7px !important;
+    margin-bottom:22px !important;
+  }
+
+  .eq i{
+    width:10px !important;
+  }
+
+  .live-btn{
+    padding:18px !important;
+    font-size:22px !important;
+  }
+
+  .volume{
+    margin-top:18px !important;
+  }
+
+  .volume input{
+    width:78% !important;
+  }
+
+  .hero{
+    min-height:380px !important;
+    padding:28px !important;
+    background:
+      linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.20)),
+      url("dj-transparent.png?v=400") right bottom/auto 105% no-repeat !important;
+  }
+
+  .onair{
+    margin-top:82px !important;
+    font-size:18px !important;
+    letter-spacing:2px !important;
+  }
+
+  .dj{
+    font-size:48px !important;
+    line-height:.95 !important;
+  }
+
+  .quick{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:12px !important;
+    margin:22px 0 !important;
+  }
+
+  .quick a{
+    min-height:112px !important;
+    border-radius:20px !important;
+    padding:12px 8px !important;
+    font-size:15px !important;
+  }
+
+  .quick span:first-child{
+    font-size:30px !important;
+    width:50px !important;
+    height:50px !important;
+  }
+
+  .quick span:last-child{
+    font-size:15px !important;
+  }
+
+  .section{
+    margin:24px 0 !important;
+    padding:18px !important;
+  }
+
+  .section-title{
+    font-size:28px !important;
+    line-height:1.05 !important;
+    margin-bottom:18px !important;
+    letter-spacing:1px !important;
+  }
+
+  .grid{
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+
+  .card{
+    border-radius:22px !important;
+  }
+
+  .card img{
+    height:auto !important;
+    max-height:310px !important;
+    object-fit:cover !important;
+  }
+
+  .card-content{
+    padding:18px !important;
+  }
+
+  .card h3{
+    font-size:26px !important;
+    line-height:1.1 !important;
+  }
+
+  .card p{
+    font-size:17px !important;
+    line-height:1.45 !important;
+  }
+
+  .badge{
+    font-size:17px !important;
+  }
+
+  .slot{
+    padding:18px !important;
+    border-radius:20px !important;
+  }
+
+  .slot-time{
+    font-size:22px !important;
+  }
+
+  .slot h3{
+    font-size:26px !important;
+  }
+
+  .slot p{
+    font-size:17px !important;
+  }
+
+  .links{
+    grid-template-columns:1fr !important;
+  }
+
+  .link-card h4{
+    font-size:24px !important;
+  }
+
+  .link-card p{
+    font-size:16px !important;
+  }
+
+  .song{
+    grid-template-columns:44px 1fr 32px !important;
+    gap:12px !important;
+    padding:14px !important;
+    border-radius:18px !important;
+  }
+
+  .num{
+    font-size:30px !important;
+  }
+
+  .song h3{
+    font-size:21px !important;
+    line-height:1.1 !important;
+  }
+
+  .song p{
+    font-size:15px !important;
+  }
+
+  .news-grid{
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+
+  .news-item{
+    padding:16px !important;
+    border-radius:18px !important;
+  }
+
+  .news-item a{
+    font-size:19px !important;
+    line-height:1.2 !important;
+  }
+
+  .news-item p{
+    font-size:15px !important;
+  }
+
+  .mini{
+    width:calc(100% - 18px) !important;
+    bottom:8px !important;
+    grid-template-columns:50px 1fr 48px !important;
+    padding:9px 10px !important;
+    gap:10px !important;
+    border-radius:18px !important;
+  }
+
+  .mini img{
+    width:50px !important;
+    height:50px !important;
+    border-radius:12px !important;
+  }
+
+  .mini-title{
+    font-size:15px !important;
+    line-height:1.1 !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .mini-sub{
+    font-size:12px !important;
+  }
+
+  .mini button{
+    width:44px !important;
+    height:44px !important;
+    font-size:18px !important;
+  }
+
+  .footer{
+    margin-bottom:120px !important;
+    font-size:14px !important;
+  }
+}
+
+@media (max-width: 380px){
+  .brand img{
+    width:76px !important;
+    height:76px !important;
+  }
+
+  .brand-title{
+    font-size:24px !important;
+  }
+
+  .brand-sub{
+    font-size:13px !important;
+    letter-spacing:5px !important;
+  }
+
+  .brand-slogan{
+    font-size:9px !important;
+  }
+
+  .quick{
+    grid-template-columns:1fr !important;
+  }
+}
+
 </style>
 
-<link rel="icon" type="image/png" href="logo-philaura-app.png?v=300">
-<link rel="shortcut icon" type="image/png" href="logo-philaura-app.png?v=300">
-<link rel="apple-touch-icon" href="logo-philaura-app.png?v=300">
+<link rel="icon" href="/favicon.ico?v=400" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png?v=400">
+<link rel="shortcut icon" href="/favicon.ico?v=400">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=400">
 
 </head>
 
@@ -904,7 +1243,7 @@ text-shadow:
 <div class="grid">
 
 <a class="card" href="#anime">
-<img src="anime_inquiete_cover.jpg?v=302">
+<img src="anime_inquiete_cover.jpg?v=400">
 <div class="card-content">
 <h3>Anime Inquiete</h3>
 <p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
@@ -913,7 +1252,7 @@ text-shadow:
 </a>
 
 <a class="card" href="#eventi">
-<img src="news_music_live.jpg?v=302">
+<img src="news_music_live.jpg?v=400">
 <div class="card-content">
 <h3>News Musica Live</h3>
 <p>Concerti, festival, tour e nuove uscite da seguire.</p>
@@ -1009,7 +1348,7 @@ text-shadow:
 
 <div class="grid">
 <div class="card">
-<img src="anime_inquiete_cover.jpg?v=302" alt="Anime Inquiete">
+<img src="anime_inquiete_cover.jpg?v=400" alt="Anime Inquiete">
 <div class="card-content">
 <h3>Podcast notturno</h3>
 <p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p>
@@ -1035,7 +1374,7 @@ Il tuo browser non supporta il player audio.
 <div id="news-list" class="news-grid"></div>
 </section>
 
-<div class="footer">© 2026 Radio PhilAura Station · v302</div>
+<div class="footer">© 2026 Radio PhilAura Station · v400</div>
 
 </div>
 
