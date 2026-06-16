@@ -1,0 +1,21 @@
+{
+"radio": "PhilAura Station",
+"aggiornato": "2026-06-16",
+"programmi": [
+{
+"ora": "14:00",
+"titolo": "Anime Inquiete",
+"descrizione": "Storie notturne, dialoghi impossibili, voci AI e racconti originali PhilAura"
+},
+{
+"ora": "18:00",
+"titolo": "PhilAura Top 5",
+"descrizione": "I cinque brani più rappresentativi della programmazione"
+},
+{
+"ora": "22:00",
+"titolo": "Back To The 80s",
+"descrizione": "Neon, synth, grandi classici e atmosfera anni Ottanta"
+}
+]
+}
