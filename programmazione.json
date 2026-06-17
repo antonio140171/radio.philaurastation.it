@@ -1,0 +1,26 @@
+{
+  "radio": "PhilAura Station",
+  "aggiornato": "2026-06-16",
+  "programmi": [
+    {
+      "ora": "06:00 - 10:00",
+      "titolo": "Morning Aura",
+      "descrizione": "Chill, energia leggera, soft electronic e brani perfetti per iniziare la giornata."
+    },
+    {
+      "ora": "10:00 - 14:00",
+      "titolo": "Daylight Selection",
+      "descrizione": "Pop elettronico, vocal house, groove elegante e rotazione musicale PhilAura."
+    },
+    {
+      "ora": "14:00 - 19:00",
+      "titolo": "Drive & Groove",
+      "descrizione": "Ritmo da viaggio, house elegante, urban vibes e suoni per il pomeriggio."
+    },
+    {
+      "ora": "19:00 - 01:00",
+      "titolo": "Night Vibes",
+      "descrizione": "La vera anima PhilAura: musica, podcast, racconti notturni e atmosfera radio."
+    }
+  ]
+}
