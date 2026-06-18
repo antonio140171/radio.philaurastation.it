@@ -1,26 +1,34 @@
 {
-  "radio": "PhilAura Station",
-  "aggiornato": "2026-06-16",
-  "programmi": [
+  "palinsesto": [
     {
-      "ora": "06:00 - 10:00",
-      "titolo": "Morning Aura",
-      "descrizione": "Chill, energia leggera, soft electronic e brani perfetti per iniziare la giornata."
+      "nome": "Morning Aura",
+      "inizio": "06:00",
+      "fine": "10:00"
     },
     {
-      "ora": "10:00 - 14:00",
-      "titolo": "Daylight Selection",
-      "descrizione": "Pop elettronico, vocal house, groove elegante e rotazione musicale PhilAura."
+      "nome": "Daytime Flow",
+      "inizio": "10:00",
+      "fine": "14:00"
     },
     {
-      "ora": "14:00 - 19:00",
-      "titolo": "Drive & Groove",
-      "descrizione": "Ritmo da viaggio, house elegante, urban vibes e suoni per il pomeriggio."
+      "nome": "Drive & Groove",
+      "inizio": "14:00",
+      "fine": "19:00"
     },
     {
-      "ora": "19:00 - 01:00",
-      "titolo": "Night Vibes",
-      "descrizione": "La vera anima PhilAura: musica, podcast, racconti notturni e atmosfera radio."
+      "nome": "Anni 80",
+      "inizio": "19:00",
+      "fine": "23:00"
+    },
+    {
+      "nome": "Night Vibes",
+      "inizio": "23:00",
+      "fine": "03:00"
+    },
+    {
+      "nome": "After Midnight",
+      "inizio": "03:00",
+      "fine": "06:00"
     }
   ]
 }
