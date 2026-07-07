@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radio PhilAura Station</title>
 
+<meta name="description" content="Radio PhilAura Station: radio libera, musica originale, podcast, libri e contenuti indipendenti. Ascolta 24 ore su 24 senza pubblicità.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#120018">
+<meta name="referrer" content="no-referrer">
+<meta property="og:title" content="Radio PhilAura Station">
+<meta property="og:description" content="Radio libera. Musica originale. Senza pubblicità. Sempre con te.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/logo-philaura-app.png">
+<meta property="og:url" content="https://radio.philaurastation.it/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Radio PhilAura Station">
+<meta name="twitter:description" content="Radio libera. Musica originale. Senza pubblicità. Sempre con te.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://api.rss2json.com https://a7.asurahosting.com; img-src 'self' data: blob: https://a7.asurahosting.com; media-src 'self' https://a7.asurahosting.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -146,7 +162,7 @@ a{text-decoration:none;color:inherit}
   padding:60px;
   background:
     linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),
-    url("dj-transparent.png?v=404") right center/contain no-repeat;
+    url("dj-transparent.png?v=20260707") right center/contain no-repeat;
 }
 .logo{
   font-size:110px;
@@ -620,7 +636,7 @@ a{text-decoration:none;color:inherit}
     background:
       linear-gradient(90deg,rgba(8,0,15,.98) 0%,rgba(15,0,25,.78) 42%,rgba(15,0,25,.10) 100%),
       radial-gradient(circle at 78% 50%,rgba(212,27,102,.42),transparent 42%),
-      url("dj-transparent.png?v=100") right bottom/auto 112% no-repeat;
+      url("dj-transparent.png?v=20260707") right bottom/auto 112% no-repeat;
   }
 
   .onair{
@@ -946,7 +962,7 @@ a{text-decoration:none;color:inherit}
     padding:28px !important;
     background:
       linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.20)),
-      url("dj-transparent.png?v=404") right bottom/auto 105% no-repeat !important;
+      url("dj-transparent.png?v=20260707") right bottom/auto 105% no-repeat !important;
   }
 
   .onair{
@@ -1191,12 +1207,36 @@ a{text-decoration:none;color:inherit}
   }
 }
 
+
+.news-item h3{
+  display:block;
+  color:white;
+  font-size:24px;
+  line-height:1.15;
+  font-weight:900;
+  margin-bottom:14px;
+}
+@media(min-width:1001px){
+  .news-item h3{font-size:20px;}
+}
+@media(max-width:768px){
+  .news-item h3{font-size:19px;line-height:1.2;}
+}
+
 </style>
 
-<link rel="icon" href="/favicon.ico?v=404" sizes="any">
-<link rel="icon" type="image/png" href="/favicon.png?v=404">
-<link rel="shortcut icon" href="/favicon.ico?v=404">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=404">
+<link rel="icon" href="/favicon.ico?v=20260707" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png?v=20260707">
+<link rel="shortcut icon" href="/favicon.ico?v=20260707">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260707">
+
+
+<!--
+GITHUB PAGES NOTE:
+Questo file è pronto per hosting statico GitHub Pages.
+I link stream/nowplaying puntano direttamente al provider radio perché GitHub Pages non supporta reverse proxy server-side.
+Per nasconderli serve Cloudflare Worker, Vercel/Netlify Functions o un server Nginx.
+-->
 
 </head>
 
@@ -1205,7 +1245,7 @@ a{text-decoration:none;color:inherit}
 <header class="header">
 <div class="header-inner">
 <div class="brand">
-<img src="logo-philaura-app.png?v=100" alt="Logo Radio PhilAura Station">
+<img loading="lazy" src="logo-philaura-app.png?v=20260707" alt="Logo Radio PhilAura Station">
 <div>
 <div class="brand-title">Radio PhilAura</div>
 <div class="brand-sub">Station</div>
@@ -1223,7 +1263,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="live-card">
 <div class="cover">
-<img id="albumCover" src="https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it/art" alt="Copertina">
+<img loading="lazy" id="albumCover" src="https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it/art" alt="Copertina">
 </div>
 <div class="label">Ora suona</div>
 <div id="trackInfo" class="track">Caricamento...</div>
@@ -1276,7 +1316,7 @@ text-shadow:
 <div class="grid">
 
 <a class="card" href="#anime">
-<img src="anime_inquiete_cover.jpg?v=404">
+<img loading="lazy" src="anime_inquiete_cover.jpg?v=20260707">
 <div class="card-content">
 <h3>Anime Inquiete</h3>
 <p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
@@ -1285,7 +1325,7 @@ text-shadow:
 </a>
 
 <a class="card" href="#eventi">
-<img src="news_music_live.jpg?v=404">
+<img loading="lazy" src="news_music_live.jpg?v=20260707">
 <div class="card-content">
 <h3>News Musica Live</h3>
 <p>Concerti, festival, tour e nuove uscite da seguire.</p>
@@ -1301,8 +1341,8 @@ text-shadow:
 <h2 class="section-title">📚 I MIEI LIBRI</h2>
 <div class="grid">
 
-<a class="card" href="https://www.amazon.it/Ombra-del-Vate-Antonio-Iannucci/dp/B0DQ82DKSW" target="_blank">
-<img src="libro1.jpg?v=404" alt="L'Ombra del Vate">
+<a class="card" href="https://www.amazon.it/Ombra-del-Vate-Antonio-Iannucci/dp/B0DQ82DKSW" target="_blank" rel="noopener noreferrer">
+<img loading="lazy" src="libro1.jpg?v=20260707" alt="L'Ombra del Vate">
 <div class="card-content">
 <h3>L'Ombra del Vate</h3>
 <p>Thriller storico, misteri e suspense nella collana Le Ombre della Verità.</p>
@@ -1310,8 +1350,8 @@ text-shadow:
 </div>
 </a>
 
-<a class="card" href="https://www.amazon.it/Lultima-eredit%C3%A0-antonio-iannucci/dp/B0FVVDVN34" target="_blank">
-<img src="libro2.jpg?v=404" alt="L'Ultima Eredità">
+<a class="card" href="https://www.amazon.it/Lultima-eredit%C3%A0-antonio-iannucci/dp/B0FVVDVN34" target="_blank" rel="noopener noreferrer">
+<img loading="lazy" src="libro2.jpg?v=20260707" alt="L'Ultima Eredità">
 <div class="card-content">
 <h3>L'Ultima Eredità</h3>
 <p>Il secondo romanzo della collana, tra segreti, eredità e colpi di scena.</p>
@@ -1319,8 +1359,8 @@ text-shadow:
 </div>
 </a>
 
-<a class="card" href="https://www.amazon.it/s?k=Protocollo+Alfa+Antonio+Iannucci" target="_blank">
-<img src="libro3.jpg?v=404" alt="Il Protocollo Alfa">
+<a class="card" href="https://www.amazon.it/s?k=Protocollo+Alfa+Antonio+Iannucci" target="_blank" rel="noopener noreferrer">
+<img loading="lazy" src="libro3.jpg?v=20260707" alt="Il Protocollo Alfa">
 <div class="card-content">
 <h3>Il Protocollo Alfa</h3>
 <p>Cyber thriller, hacking, intrighi e una storia davvero molto croccante.</p>
@@ -1346,27 +1386,27 @@ text-shadow:
 <h2 class="section-title">🎵 EVENTI MUSICALI</h2>
 <div class="links">
 
-<a class="link-card" href="https://www.rockol.it/news" target="_blank">
+<a class="link-card" href="https://www.rockol.it/news" target="_blank" rel="noopener noreferrer">
 <h4>Rockol</h4>
 <p>News musicali, concerti e recensioni.</p>
 </a>
 
-<a class="link-card" href="https://blog.ticketmaster.it/musica/" target="_blank">
+<a class="link-card" href="https://blog.ticketmaster.it/musica/" target="_blank" rel="noopener noreferrer">
 <h4>Ticketmaster Blog</h4>
 <p>Festival, tour e concerti in Italia.</p>
 </a>
 
-<a class="link-card" href="https://www.rollingstone.it/musica/news-musica/" target="_blank">
+<a class="link-card" href="https://www.rollingstone.it/musica/news-musica/" target="_blank" rel="noopener noreferrer">
 <h4>Rolling Stone Musica</h4>
 <p>Uscite, artisti, tour e cultura musicale.</p>
 </a>
 
-<a class="link-card" href="https://radiofreccia.rtl.it/notizie/" target="_blank">
+<a class="link-card" href="https://radiofreccia.rtl.it/notizie/" target="_blank" rel="noopener noreferrer">
 <h4>Radiofreccia</h4>
 <p>Notizie musicali, artisti e interviste.</p>
 </a>
 
-<a class="link-card" href="https://www.radioitalia.it/" target="_blank">
+<a class="link-card" href="https://www.radioitalia.it/" target="_blank" rel="noopener noreferrer">
 <h4>Radio Italia</h4>
 <p>Eventi, classifiche e musica italiana.</p>
 </a>
@@ -1390,7 +1430,7 @@ text-shadow:
 
 <div class="grid">
 <div class="card">
-<img src="anime_inquiete_cover.jpg?v=404" alt="Anime Inquiete">
+<img loading="lazy" src="anime_inquiete_cover.jpg?v=20260707" alt="Anime Inquiete">
 <div class="card-content">
 <h3>Podcast notturno</h3>
 <p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p>
@@ -1412,16 +1452,16 @@ Il tuo browser non supporta il player audio.
 
 <section class="section" id="news">
 <h2 class="section-title">🗞 ULTIME NEWS</h2>
-<div id="news-updated" class="news-updated">Aggiornamento in corso…</div>
+<div id="news-updated" class="news-updated">Aggiornamento in corso…</div><div class="news-updated" style="opacity:.75">Sintesi automatica da feed RSS pubblico. Link esterni disabilitati.</div>
 <div id="news-list" class="news-grid"></div>
 </section>
 
-<div class="footer">© 2026 Radio PhilAura Station · v4.04</div>
+<div class="footer">© 2026 Radio PhilAura Station</div>
 
 </div>
 
 <div class="mini">
-<img id="miniCover" src="logo-philaura-app.png?v=100">
+<img loading="lazy" id="miniCover" src="logo-philaura-app.png?v=20260707">
 <div>
 <div id="miniTitle" class="mini-title">Radio PhilAura Station</div>
 <div class="mini-sub">LIVE • Music • Podcast • Stories</div>
@@ -1513,10 +1553,7 @@ function renderNews(items){
     const art=document.createElement("article");
     art.className="news-item";
 
-    const title=document.createElement("a");
-    title.href=item.link;
-    title.target="_blank";
-    title.rel="noopener";
+    const title=document.createElement("h3");
     title.textContent=item.title||"Senza titolo";
 
     const date=document.createElement("div");
@@ -1526,7 +1563,7 @@ function renderNews(items){
 
     const p=document.createElement("p");
     const text=stripHtml(item.description||item.content||"");
-    p.textContent=text.length>150?text.slice(0,150)+"…":text;
+    p.textContent=text.length>110?text.slice(0,110)+"…":text;
 
     art.appendChild(title);
     art.appendChild(date);
@@ -1561,6 +1598,16 @@ setInterval(refreshNews,REFRESH_MS);
 
 
 <script>
+
+function escapeHtml(value=""){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
 async function loadProgrammazionePhilAura(){
   try{
     const res = await fetch('programmazione.json?t=' + Date.now(), {cache:'no-store'});
@@ -1593,7 +1640,7 @@ async function loadProgrammazionePhilAura(){
         html += `
           <div class="slot">
             <div class="slot-time"></div>
-            <h3>${p}</h3>
+            <h3>${escapeHtml(p)}</h3>
             <p></p>
           </div>
         `;
@@ -1608,9 +1655,9 @@ async function loadProgrammazionePhilAura(){
 
       html += `
         <div class="slot">
-          <div class="slot-time">${orario}</div>
-          <h3>${titolo}</h3>
-          <p>${descrizione}</p>
+          <div class="slot-time">${escapeHtml(orario)}</div>
+          <h3>${escapeHtml(titolo)}</h3>
+          <p>${escapeHtml(descrizione)}</p>
         </div>
       `;
     });
