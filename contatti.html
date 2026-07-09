@@ -7,27 +7,258 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https://a7.asurahosting.com https://formspree.io; media-src 'self' https://a7.asurahosting.com; frame-src 'self' https://a7.asurahosting.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests;">
 
   <title>Contatti - PhilAura Station</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #1b2b55 0%, #080b14 55%, #05060a 100%);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-wrap img {
+      max-width: 150px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 38px;
+      margin: 10px 0 8px;
+      letter-spacing: 1px;
+    }
+
+    .claim {
+      text-align: center;
+      color: #d7defa;
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 26px;
+      line-height: 1.6;
+      color: #eef2ff;
+    }
+
+    .info-box strong {
+      color: #ffffff;
+    }
+
+    form {
+      margin-top: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 14px;
+      padding: 14px 15px;
+      margin-bottom: 18px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #111827;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 15px 22px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #05060a;
+      background: linear-gradient(135deg, #ffffff, #b9c9ff);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #risultato {
+      margin-top: 18px;
+      text-align: center;
+      font-weight: bold;
+      min-height: 24px;
+      color: #d7defa;
+    }
+
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      opacity: 0.9;
+    }
+
+    .back-home:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .claim {
+        font-size: 15px;
+      }
+
+      .logo-wrap img {
+        max-width: 120px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Contatti</h1>
+  <main class="page">
+    <section class="card">
 
-  <p>Radio PhilAura Station</p>
-  <p>Sito: https://radio.philaurastation.it</p>
+      <div class="logo-wrap">
+        <img src="logo-rfa.png" alt="Logo PhilAura Station">
+      </div>
 
-  <h2>Scrivimi</h2>
+      <h1>Contatti</h1>
 
-  <form action="https://formspree.io/f/mlgyyveb" method="POST">
-    <label for="nome">Nome</label><br>
-    <input type="text" id="nome" name="nome" required><br><br>
+      <p class="claim">
+        PhilAura Station<br>
+        Radio libera: brani propri o royalty-free.
+      </p>
 
-    <label for="email">La tua email</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+      <div class="info-box">
+        <p><strong>Vuoi contattarmi?</strong></p>
+        <p>
+          Scrivimi da qui. Il messaggio arriverà direttamente alla mia email,
+          senza mostrare pubblicamente il mio indirizzo sul sito.
+        </p>
+      </div>
 
-    <label for="messaggio">Messaggio</label><br>
-    <textarea id="messaggio" name="messaggio" rows="6" required></textarea><br><br>
+      <form id="contactForm">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required>
 
-    <button type="submit">Invia messaggio</button>
-  </form>
+        <label for="email">La tua email</label>
+        <input type="email" id="email" name="email" placeholder="La tua email" required>
+
+        <label for="messaggio">Messaggio</label>
+        <textarea id="messaggio" name="messaggio" placeholder="Scrivi qui il tuo messaggio..." required></textarea>
+
+        <button id="submitBtn" type="submit">Invia messaggio</button>
+      </form>
+
+      <p id="risultato"></p>
+
+      <a class="back-home" href="index.html">← Torna alla Home</a>
+
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const risultato = document.getElementById("risultato");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      risultato.textContent = "Invio in corso...";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Invio...";
+
+      const dati = new FormData(form);
+
+      try {
+        const risposta = await fetch("https://formspree.io/f/mlgyyveb", {
+          method: "POST",
+          body: dati,
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (risposta.ok) {
+          risultato.textContent = "Messaggio inviato correttamente. Ti risponderò appena possibile.";
+          form.reset();
+        } else {
+          risultato.textContent = "Errore durante l'invio. Riprova tra poco.";
+        }
+      } catch (errore) {
+        risultato.textContent = "Errore di connessione. Riprova più tardi.";
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Invia messaggio";
+    });
+  </script>
 </body>
 </html>
