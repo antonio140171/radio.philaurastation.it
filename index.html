@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio PhilAura Station</title>
+
+<meta name="description" content="Radio PhilAura Station: radio libera, musica originale, podcast, libri e contenuti indipendenti. Ascolta 24 ore su 24 senza pubblicità.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#120018">
+<meta name="referrer" content="no-referrer">
+<meta property="og:title" content="Radio PhilAura Station">
+<meta property="og:description" content="Radio libera. Musica originale. Senza pubblicità. Sempre con te.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/logo-philaura-app.png">
+<meta property="og:url" content="https://radio.philaurastation.it/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Radio PhilAura Station">
+<meta name="twitter:description" content="Radio libera. Musica originale. Senza pubblicità. Sempre con te.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://api.rss2json.com https://a7.asurahosting.com; img-src 'self' data: blob: https://a7.asurahosting.com; media-src 'self' https://a7.asurahosting.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:linear-gradient(180deg,#120018,#05000c);
+  font-family:Arial,sans-serif;
+  color:white;
+}
+a{text-decoration:none;color:inherit}
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(8,0,15,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(212,27,102,.35);
+}
+.header-inner{
+  max-width:1600px;
+  margin:auto;
+  padding:14px 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+
+
+.brand img{
+  width:180px !important;
+  height:180px !important;
+  object-fit:contain !important;
+  border-radius:30px !important;
+  background:#070710 !important;
+  padding:3px !important;
+  box-shadow:
+    0 0 18px rgba(255,0,140,.55),
+    0 0 42px rgba(255,0,140,.30) !important;
+}
+
+
+
+.brand-title{
+  font-size:52px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:3px !important;
+  text-transform:uppercase !important;
+  background:linear-gradient(180deg,#ffffff 0%,#ff4dc4 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #ff0080,
+    0 0 40px #ff0080,
+    0 0 70px rgba(255,0,140,.95),
+    0 0 120px rgba(255,0,140,.85) !important;
+}
+
+
+.brand-sub{
+  color:#ff2f8f !important;
+  font-size:24px !important;
+  font-weight:900 !important;
+  letter-spacing:12px !important;
+  margin-top:6px !important;
+  text-shadow:
+    0 0 10px #ff0080,
+    0 0 26px #ff0080,
+    0 0 52px rgba(255,0,140,.95),
+    0 0 90px rgba(255,0,140,.85) !important;
+}
+
+
+.brand-slogan{
+  font-size:15px !important;
+  font-weight:800 !important;
+  letter-spacing:2px !important;
+  margin-top:10px !important;
+  background:linear-gradient(90deg,#ff9a00 0%,#ff2f8f 50%,#8a5cff 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-transform:uppercase !important;
+  text-shadow:
+    0 0 8px rgba(255,154,0,.55),
+    0 0 18px rgba(255,47,143,.45),
+    0 0 26px rgba(138,92,255,.35) !important;
+}
+
+.nav{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.nav a{
+  padding:12px 20px;
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  font-weight:900;
+}
+.container{
+  max-width:1600px;
+  margin:auto;
+  padding:30px;
+}
+.version{
+  color:#e0913e;
+  font-weight:900;
+  margin:10px 0 20px;
+  opacity:.85;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+.live-card,.hero,.section{
+  border-radius:40px;
+  background:linear-gradient(180deg,#0b0e16,#05050b);
+  border:1px solid rgba(212,27,102,.55);
+  box-shadow:0 0 35px rgba(212,27,102,.25);
+  overflow:hidden;
+}
+.hero{
+  position:relative;
+  min-height:720px;
+  padding:60px;
+  background:
+    linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.15)),
+    url("dj-transparent.png?v=20260707") right center/contain no-repeat;
+}
+.logo{
+  font-size:110px;
+  font-weight:900;
+  line-height:.9;
+}
+.logo span{
+  display:block;
+  font-size:58px;
+  letter-spacing:10px;
+  color:#ff2d8d;
+  margin-top:10px;
+}
+.onair{
+  margin-top:70px;
+  font-size:26px;
+  font-weight:900;
+  color:#ff2d8d;
+  text-transform:uppercase;
+}
+.dj{
+  font-size:92px;
+  font-weight:900;
+  margin-top:10px;
+}
+.desc{
+  max-width:720px;
+  font-size:26px;
+  line-height:1.5;
+  margin-top:30px;
+}
+.live-card{
+  padding:44px;
+}
+.cover{
+  width:100%;
+  height:360px;
+  border-radius:30px;
+  background:#111;
+  overflow:hidden;
+  margin-bottom:28px;
+}
+.cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.label{
+  color:#e0913e;
+  font-size:20px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.track{
+  font-size:52px;
+  font-weight:900;
+  margin:10px 0 30px;
+}
+.eq{
+  height:70px;
+  display:flex;
+  align-items:end;
+  gap:12px;
+  margin-bottom:34px;
+}
+.eq i{
+  display:block;
+  width:18px;
+  border-radius:20px;
+  background:linear-gradient(180deg,#e0913e,#d41b66);
+  animation:eq 1s infinite alternate;
+}
+.eq i:nth-child(1){height:20px}
+.eq i:nth-child(2){height:34px;animation-delay:.1s}
+.eq i:nth-child(3){height:48px;animation-delay:.2s}
+.eq i:nth-child(4){height:70px;animation-delay:.3s}
+.eq i:nth-child(5){height:42px;animation-delay:.4s}
+.eq i:nth-child(6){height:28px;animation-delay:.5s}
+.eq i:nth-child(7){height:18px;animation-delay:.6s}
+@keyframes eq{
+  from{transform:scaleY(.45);opacity:.55}
+  to{transform:scaleY(1.1);opacity:1}
+}
+.live-btn{
+  border:0;
+  width:100%;
+  border-radius:999px;
+  padding:24px;
+  color:white;
+  font-size:30px;
+  font-weight:900;
+  background:linear-gradient(90deg,#d41b66,#e0913e);
+  cursor:pointer;
+}
+.volume{
+  margin-top:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+}
+.volume input{
+  width:65%;
+  accent-color:#d41b66;
+}
+.quick{
+  margin:38px 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:22px;
+}
+.quick a{
+  min-height:145px;
+  border-radius:26px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+  font-size:24px;
+  font-weight:900;
+}
+.quick span:first-child{font-size:42px}
+.section{
+  margin:50px 0;
+  padding:42px;
+}
+.section-title{
+  font-size:58px;
+  font-weight:900;
+  margin-bottom:34px;
+  letter-spacing:4px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+.card{
+  background:#060b18;
+  border-radius:32px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+}
+.card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+  background:#120018;
+}
+.card-content{
+  padding:24px;
+}
+.card h3{
+  font-size:36px;
+  margin-bottom:12px;
+}
+.card p{
+  font-size:22px;
+  line-height:1.45;
+  color:#d9d9d9;
+}
+.badge{
+  margin-top:22px;
+  display:inline-block;
+  font-weight:900;
+  font-size:22px;
+  color:#ffb347;
+}
+.schedule{
+  display:grid;
+  gap:22px;
+}
+.slot{
+  padding:28px;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+}
+.slot-time{
+  color:#e0913e;
+  font-size:32px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.slot h3{
+  font-size:42px;
+  margin-bottom:8px;
+}
+.slot p{
+  font-size:24px;
+  line-height:1.45;
+  color:#e2e2e2;
+}
+.chart{
+  display:grid;
+  gap:18px;
+}
+.song{
+  display:grid;
+  grid-template-columns:70px 1fr 50px;
+  align-items:center;
+  gap:20px;
+  padding:22px;
+  border-radius:24px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+.num{
+  color:#e0913e;
+  font-size:46px;
+  font-weight:900;
+}
+.song h3{
+  font-size:34px;
+}
+.song p{
+  color:#cfcfcf;
+  font-size:22px;
+}
+.links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.link-card{
+  background:#111827;
+  padding:24px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.08);
+}
+.link-card h4{
+  font-size:30px;
+  margin-bottom:10px;
+}
+.link-card p{
+  font-size:20px;
+  color:#d5d5d5;
+}
+.news-updated{
+  color:#ffb347;
+  font-weight:900;
+  margin-bottom:24px;
+}
+.news-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:22px;
+}
+.news-item{
+  padding:22px;
+  border-radius:24px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.12);
+}
+.news-item a{
+  display:block;
+  color:white;
+  font-size:24px;
+  line-height:1.15;
+  font-weight:900;
+  margin-bottom:14px;
+}
+.news-item .date{
+  color:#ffb347;
+  font-size:18px;
+  margin-bottom:12px;
+}
+.news-item p{
+  font-size:20px;
+  line-height:1.45;
+  color:#d9d9d9;
+}
+.mini{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  width:min(960px,calc(100% - 28px));
+  z-index:80;
+  display:grid;
+  grid-template-columns:70px 1fr 70px;
+  gap:18px;
+  align-items:center;
+  padding:14px 18px;
+  border-radius:26px;
+  background:rgba(5,0,12,.95);
+  border:1px solid rgba(212,27,102,.55);
+  box-shadow:0 0 28px rgba(212,27,102,.35);
+}
+.mini img{
+  width:70px;
+  height:70px;
+  border-radius:18px;
+  object-fit:cover;
+}
+.mini-title{
+  font-size:24px;
+  font-weight:900;
+}
+.mini-sub{
+  color:#e0913e;
+  font-weight:900;
+}
+.mini button{
+  border:0;
+  border-radius:50%;
+  width:58px;
+  height:58px;
+  color:white;
+  font-size:24px;
+  background:linear-gradient(90deg,#d41b66,#e0913e);
+}
+.footer{
+  margin:80px 0 130px;
+  text-align:center;
+  color:#9f9f9f;
+  font-size:18px;
+}
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero{min-height:600px}
+  .logo{display:none}
+  .logo span{display:none}
+  .dj{font-size:58px}
+  .desc{display:none}
+  .section-title{font-size:38px}
+  .header-inner{flex-direction:column;align-items:flex-start}
+  .track{font-size:36px}
+  .live-card{padding:24px}
+  
+.brand-title{
+  font-size:52px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:3px !important;
+  text-transform:uppercase !important;
+  background:linear-gradient(180deg,#ffffff 0%,#ff4dc4 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #ff0080,
+    0 0 40px #ff0080,
+    0 0 70px rgba(255,0,140,.95),
+    0 0 120px rgba(255,0,140,.85) !important;
+}
+
+}
+
+/* ===== DESKTOP COMPACT FIX v404 ===== */
+@media(min-width:1001px){
+  .container{max-width:1320px;padding:24px}
+  .header-inner{max-width:1320px;padding:12px 24px}
+  
+
+.brand img{
+  width:180px !important;
+  height:180px !important;
+  object-fit:contain !important;
+  border-radius:30px !important;
+  background:#070710 !important;
+  padding:3px !important;
+  box-shadow:
+    0 0 18px rgba(255,0,140,.55),
+    0 0 42px rgba(255,0,140,.30) !important;
+}
+
+
+  
+.brand-title{
+  font-size:52px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:3px !important;
+  text-transform:uppercase !important;
+  background:linear-gradient(180deg,#ffffff 0%,#ff4dc4 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #ff0080,
+    0 0 40px #ff0080,
+    0 0 70px rgba(255,0,140,.95),
+    0 0 120px rgba(255,0,140,.85) !important;
+}
+
+  
+.brand-sub{
+  color:#ff2f8f !important;
+  font-size:24px !important;
+  font-weight:900 !important;
+  letter-spacing:12px !important;
+  margin-top:6px !important;
+  text-shadow:
+    0 0 10px #ff0080,
+    0 0 26px #ff0080,
+    0 0 52px rgba(255,0,140,.95),
+    0 0 90px rgba(255,0,140,.85) !important;
+}
+
+  
+.brand-slogan{
+  font-size:15px !important;
+  font-weight:800 !important;
+  letter-spacing:2px !important;
+  margin-top:10px !important;
+  background:linear-gradient(90deg,#ff9a00 0%,#ff2f8f 50%,#8a5cff 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-transform:uppercase !important;
+  text-shadow:
+    0 0 8px rgba(255,154,0,.55),
+    0 0 18px rgba(255,47,143,.45),
+    0 0 26px rgba(138,92,255,.35) !important;
+}
+
+  .nav a{padding:9px 16px;font-size:15px}
+
+  .hero-grid{
+    grid-template-columns:0.95fr 1.05fr;
+    gap:24px;
+    align-items:stretch;
+  }
+
+  .live-card{
+    padding:28px;
+    border-radius:28px;
+  }
+
+  .cover{
+    height:260px;
+    border-radius:24px;
+    margin-bottom:22px;
+  }
+
+  .label{font-size:15px}
+  .track{
+    font-size:34px;
+    margin:8px 0 22px;
+  }
+
+  .eq{
+    height:44px;
+    gap:8px;
+    margin-bottom:24px;
+  }
+  .eq i{width:12px}
+  .eq i:nth-child(1){height:12px}
+  .eq i:nth-child(2){height:22px}
+  .eq i:nth-child(3){height:32px}
+  .eq i:nth-child(4){height:44px}
+  .eq i:nth-child(5){height:30px}
+  .eq i:nth-child(6){height:18px}
+  .eq i:nth-child(7){height:10px}
+
+  .live-btn{
+    padding:18px;
+    font-size:22px;
+  }
+
+  .volume{margin-top:18px}
+
+  .hero{
+    min-height:520px;
+    padding:54px;
+    border-radius:28px;
+    background:
+      linear-gradient(90deg,rgba(8,0,15,.98) 0%,rgba(15,0,25,.78) 42%,rgba(15,0,25,.10) 100%),
+      radial-gradient(circle at 78% 50%,rgba(212,27,102,.42),transparent 42%),
+      url("dj-transparent.png?v=20260707") right bottom/auto 112% no-repeat;
+  }
+
+  .onair{
+    margin-top:120px;
+    font-size:26px;
+    letter-spacing:3px;
+  }
+  .dj{
+    font-size:78px;
+    line-height:.95;
+  }
+
+  .quick{
+    margin:28px 0;
+    gap:16px;
+  }
+  .quick a{
+    min-height:96px;
+    font-size:18px;
+    border-radius:22px;
+  }
+  .quick span:first-child{font-size:28px}
+
+  .section{
+    margin:34px 0;
+    padding:30px;
+    border-radius:28px;
+  }
+  .section-title{
+    font-size:36px;
+    margin-bottom:24px;
+    letter-spacing:2px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .card{
+    border-radius:24px;
+  }
+  .card img{
+    height:180px;
+  }
+  .card-content{
+    padding:18px;
+  }
+  .card h3{
+    font-size:25px;
+  }
+  .card p{
+    font-size:17px;
+  }
+  .badge{
+    font-size:17px;
+  }
+
+  .slot{
+    padding:22px;
+    border-radius:22px;
+  }
+  .slot-time{font-size:24px}
+  .slot h3{font-size:30px}
+  .slot p{font-size:19px}
+
+  .song{
+    padding:16px;
+    grid-template-columns:50px 1fr 36px;
+  }
+  .num{font-size:34px}
+  .song h3{font-size:25px}
+  .song p{font-size:18px}
+
+  .link-card{
+    padding:20px;
+  }
+  .link-card h4{font-size:24px}
+  .link-card p{font-size:17px}
+
+  .news-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+  .news-item{
+    padding:18px;
+  }
+  .news-item a{
+    font-size:20px;
+  }
+  .news-item p{
+    font-size:16px;
+  }
+
+  .mini{
+    width:min(720px,calc(100% - 28px));
+    grid-template-columns:52px 1fr 52px;
+    padding:10px 14px;
+    border-radius:20px;
+  }
+  .mini img{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+  }
+  .mini-title{font-size:18px}
+  .mini-sub{font-size:14px}
+  .mini button{
+    width:46px;
+    height:46px;
+    font-size:18px;
+  }
+}
+
+
+/* ===== QUICK BUTTONS RADIO STYLE v404 ===== */
+.quick{
+  margin:38px 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:22px;
+}
+
+.quick a{
+  min-height:150px;
+  border-radius:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  background:
+    radial-gradient(circle at top,rgba(212,27,102,.18),transparent 55%),
+    linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  border:1px solid rgba(212,27,102,.75);
+  box-shadow:0 0 24px rgba(212,27,102,.16);
+  font-size:22px;
+  font-weight:900;
+  transition:.25s ease;
+}
+
+.quick a:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 34px rgba(212,27,102,.34);
+  border-color:#ff2d8d;
+}
+
+.quick span:first-child{
+  font-size:44px;
+  width:66px;
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  filter:drop-shadow(0 0 10px rgba(212,27,102,.35));
+}
+
+.quick span:last-child{
+  font-size:22px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+
+@media(min-width:1001px){
+  .quick{
+    margin:28px 0;
+    gap:18px;
+  }
+  .quick a{
+    min-height:118px;
+    font-size:18px;
+    border-radius:24px;
+  }
+  .quick span:first-child{
+    font-size:34px;
+    width:54px;
+    height:54px;
+  }
+  .quick span:last-child{
+    font-size:19px;
+  }
+}
+
+
+.dj-name{
+  font-size:78px !important;
+  font-weight:900 !important;
+  letter-spacing:2px !important;
+  line-height:1 !important;
+  font-family:'Trebuchet MS',Arial,sans-serif !important;
+  background:linear-gradient(90deg,#ffffff 0%,#ffb347 45%,#ff2f8f 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  text-shadow:
+    0 0 12px rgba(255,255,255,.6),
+    0 0 24px rgba(255,179,71,.5),
+    0 0 44px rgba(255,47,143,.45) !important;
+}
+
+
+/* ===== IPHONE / MOBILE FIX v404 ===== */
+@media (max-width: 768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .header{
+    position:relative;
+  }
+
+  .header-inner{
+    padding:16px 14px !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    gap:8px !important;
+  }
+
+  .brand{
+    width:100% !important;
+    justify-content:center !important;
+    align-items:center !important;
+    gap:10px !important;
+  }
+
+  .brand img{
+    width:88px !important;
+    height:88px !important;
+    border-radius:18px !important;
+    padding:2px !important;
+    flex-shrink:0 !important;
+  }
+
+  .brand-title{
+    font-size:28px !important;
+    line-height:1 !important;
+    letter-spacing:1px !important;
+    text-align:left !important;
+    white-space:normal !important;
+  }
+
+  .brand-sub{
+    font-size:15px !important;
+    letter-spacing:6px !important;
+    text-align:left !important;
+  }
+
+  .brand-slogan{
+    font-size:10px !important;
+    letter-spacing:.8px !important;
+    text-align:left !important;
+    max-width:240px !important;
+  }
+
+  .container{
+    padding:14px !important;
+    max-width:100% !important;
+  }
+
+  .hero-grid{
+    display:block !important;
+  }
+
+  .live-card,
+  .hero,
+  .section{
+    border-radius:24px !important;
+    width:100% !important;
+  }
+
+  .live-card{
+    padding:18px !important;
+    margin-bottom:18px !important;
+  }
+
+  .cover{
+    height:auto !important;
+    aspect-ratio:1/1 !important;
+    max-height:330px !important;
+    border-radius:20px !important;
+    margin-bottom:18px !important;
+  }
+
+  .track{
+    font-size:26px !important;
+    line-height:1.1 !important;
+    word-break:break-word !important;
+    margin:8px 0 18px !important;
+  }
+
+  .label{
+    font-size:14px !important;
+  }
+
+  .eq{
+    height:44px !important;
+    gap:7px !important;
+    margin-bottom:22px !important;
+  }
+
+  .eq i{
+    width:10px !important;
+  }
+
+  .live-btn{
+    padding:18px !important;
+    font-size:22px !important;
+  }
+
+  .volume{
+    margin-top:18px !important;
+  }
+
+  .volume input{
+    width:78% !important;
+  }
+
+  .hero{
+    min-height:380px !important;
+    padding:28px !important;
+    background:
+      linear-gradient(90deg,rgba(8,0,15,.98),rgba(15,0,25,.70),rgba(15,0,25,.20)),
+      url("dj-transparent.png?v=20260707") right bottom/auto 105% no-repeat !important;
+  }
+
+  .onair{
+    margin-top:82px !important;
+    font-size:18px !important;
+    letter-spacing:2px !important;
+  }
+
+  .dj{
+    font-size:48px !important;
+    line-height:.95 !important;
+  }
+
+  .quick{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:12px !important;
+    margin:22px 0 !important;
+  }
+
+  .quick a{
+    min-height:112px !important;
+    border-radius:20px !important;
+    padding:12px 8px !important;
+    font-size:15px !important;
+  }
+
+  .quick span:first-child{
+    font-size:30px !important;
+    width:50px !important;
+    height:50px !important;
+  }
+
+  .quick span:last-child{
+    font-size:15px !important;
+  }
+
+  .section{
+    margin:24px 0 !important;
+    padding:18px !important;
+  }
+
+  .section-title{
+    font-size:28px !important;
+    line-height:1.05 !important;
+    margin-bottom:18px !important;
+    letter-spacing:1px !important;
+  }
+
+  .grid{
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+
+  .card{
+    border-radius:22px !important;
+  }
+
+  .card img{
+    height:auto !important;
+    max-height:310px !important;
+    object-fit:cover !important;
+  }
+
+  .card-content{
+    padding:18px !important;
+  }
+
+  .card h3{
+    font-size:26px !important;
+    line-height:1.1 !important;
+  }
+
+  .card p{
+    font-size:17px !important;
+    line-height:1.45 !important;
+  }
+
+  .badge{
+    font-size:17px !important;
+  }
+
+  .slot{
+    padding:18px !important;
+    border-radius:20px !important;
+  }
+
+  .slot-time{
+    font-size:22px !important;
+  }
+
+  .slot h3{
+    font-size:26px !important;
+  }
+
+  .slot p{
+    font-size:17px !important;
+  }
+
+  .links{
+    grid-template-columns:1fr !important;
+  }
+
+  .link-card h4{
+    font-size:24px !important;
+  }
+
+  .link-card p{
+    font-size:16px !important;
+  }
+
+  .song{
+    grid-template-columns:44px 1fr 32px !important;
+    gap:12px !important;
+    padding:14px !important;
+    border-radius:18px !important;
+  }
+
+  .num{
+    font-size:30px !important;
+  }
+
+  .song h3{
+    font-size:21px !important;
+    line-height:1.1 !important;
+  }
+
+  .song p{
+    font-size:15px !important;
+  }
+
+  .news-grid{
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+
+  .news-item{
+    padding:16px !important;
+    border-radius:18px !important;
+  }
+
+  .news-item a{
+    font-size:19px !important;
+    line-height:1.2 !important;
+  }
+
+  .news-item p{
+    font-size:15px !important;
+  }
+
+  .mini{
+    width:calc(100% - 18px) !important;
+    bottom:8px !important;
+    grid-template-columns:50px 1fr 48px !important;
+    padding:9px 10px !important;
+    gap:10px !important;
+    border-radius:18px !important;
+  }
+
+  .mini img{
+    width:50px !important;
+    height:50px !important;
+    border-radius:12px !important;
+  }
+
+  .mini-title{
+    font-size:15px !important;
+    line-height:1.1 !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .mini-sub{
+    font-size:12px !important;
+  }
+
+  .mini button{
+    width:44px !important;
+    height:44px !important;
+    font-size:18px !important;
+  }
+
+  .footer{
+    margin-bottom:120px !important;
+    font-size:14px !important;
+  }
+}
+
+@media (max-width: 380px){
+  .brand img{
+    width:76px !important;
+    height:76px !important;
+  }
+
+  .brand-title{
+    font-size:24px !important;
+  }
+
+  .brand-sub{
+    font-size:13px !important;
+    letter-spacing:5px !important;
+  }
+
+  .brand-slogan{
+    font-size:9px !important;
+  }
+
+  .quick{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+/* ===== FIX COPERTINE LIBRI v404 ===== */
+#libri .card img{
+  width:100%;
+  height:360px;
+  object-fit:contain !important;
+  object-position:center center !important;
+  background:#05040c;
+  padding:14px;
+  border-bottom:1px solid rgba(212,27,102,.35);
+}
+
+#libri .card{
+  overflow:hidden;
+}
+
+@media (max-width:768px){
+  #libri .card img{
+    height:420px !important;
+    max-height:420px !important;
+    object-fit:contain !important;
+    padding:12px !important;
+  }
+}
+
+@media (max-width:420px){
+  #libri .card img{
+    height:360px !important;
+    max-height:360px !important;
+  }
+}
+
+
+.news-item h3{
+  display:block;
+  color:white;
+  font-size:24px;
+  line-height:1.15;
+  font-weight:900;
+  margin-bottom:14px;
+}
+@media(min-width:1001px){
+  .news-item h3{font-size:20px;}
+}
+@media(max-width:768px){
+  .news-item h3{font-size:19px;line-height:1.2;}
+}
+
+</style>
+
+<link rel="icon" href="/favicon.ico?v=20260707" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png?v=20260707">
+<link rel="shortcut icon" href="/favicon.ico?v=20260707">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260707">
+
+
+<!--
+GITHUB PAGES NOTE:
+Questo file è pronto per hosting statico GitHub Pages.
+I link stream/nowplaying puntano direttamente al provider radio perché GitHub Pages non supporta reverse proxy server-side.
+Per nasconderli serve Cloudflare Worker, Vercel/Netlify Functions o un server Nginx.
+-->
+
+</head>
+
+<body>
+
+<header class="header">
+<div class="header-inner">
+<div class="brand">
+<img loading="lazy" src="logo-philaura-app.png?v=20260707" alt="Logo Radio PhilAura Station">
+<div>
+<div class="brand-title">Radio PhilAura</div>
+<div class="brand-sub">Station</div>
+<div class="brand-slogan">Radio libera. Musica originale. Senza confini.</div>
+</div>
+</div>
+
+</div>
+</header>
+
+<div class="container">
+<div class="version"></div>
+
+<section class="hero-grid" id="live">
+
+<div class="live-card">
+<div class="cover">
+<img loading="lazy" id="albumCover" src="https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it/art" alt="Copertina">
+</div>
+<div class="label">Ora suona</div>
+<div id="trackInfo" class="track">Caricamento...</div>
+<div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<button id="onAirBtn" class="live-btn">▶ LIVE NOW</button>
+<div class="volume">
+<span>🔊</span>
+<input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.85">
+</div>
+<audio id="radioPlayer" preload="none">
+<source src="https://a7.asurahosting.com/listen/httpsradio.philaurastation.it/radio.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<section class="hero">
+<div class="onair">ORA IN ONDA
+<div style="
+font-family:Verdana,sans-serif;
+font-size:82px;
+font-weight:900;
+line-height:1;
+margin-top:12px;
+letter-spacing:1px;
+background:linear-gradient(90deg,#ffffff 0%,#ffcc70 40%,#ff2f8f 100%);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:
+0 0 12px rgba(255,255,255,.6),
+0 0 24px rgba(255,140,0,.45),
+0 0 44px rgba(255,0,120,.35);
+">Dj Anto</div>
+</div>
+
+
+</section>
+
+</section>
+
+<section class="quick">
+<a href="#show"><span>🎧</span><span>Podcast</span></a>
+<a href="#eventi"><span>🎚️</span><span>Eventi</span></a>
+<a href="#libri"><span>📚</span><span>Libri</span></a>
+<a href="#programmazione"><span>📡</span><span>Programmazione</span></a>
+<a href="#top5"><span>🏆</span><span>Top 5</span></a>
+<a href="#news"><span>📰</span><span>News</span></a>
+</section>
+
+<section class="section" id="show">
+<h2 class="section-title">🎙 SHOW & PODCAST</h2>
+<div class="grid">
+
+<a class="card" href="#anime">
+<img loading="lazy" src="anime_inquiete_cover.jpg?v=20260707">
+<div class="card-content">
+<h3>Anime Inquiete</h3>
+<p>Racconti notturni, emozioni sospese e parole che fanno rumore.</p>
+<span class="badge">Ascolta →</span>
+</div>
+</a>
+
+<a class="card" href="#podcast-dannunzio">
+<img loading="lazy" src="dannunzio_cover.jpg?v=20260716" alt="Una notte con D'Annunzio">
+<div class="card-content">
+<h3>Una notte con D'Annunzio</h3>
+<p><strong>"Comandante, può l'Amore sopravvivere?"</strong><br><br>
+La seconda puntata di Anime Inquiete. Un dialogo impossibile tra Dj Anto e Gabriele D'Annunzio.</p>
+<span class="badge">Ascolta →</span>
+</div>
+</a>
+
+<a class="card" href="#eventi">
+<img loading="lazy" src="news_music_live.jpg?v=20260707">
+<div class="card-content">
+<h3>News Musica Live</h3>
+<p>Concerti, festival, tour e nuove uscite da seguire.</p>
+<span class="badge">Scopri →</span>
+</div>
+</a>
+
+</div>
+</section>
+
+
+<section class="section" id="libri">
+<h2 class="section-title">📚 I MIEI LIBRI</h2>
+<div class="grid">
+
+<a class="card" href="https://www.amazon.it/Ombra-del-Vate-Antonio-Iannucci/dp/B0DQ82DKSW" target="_blank" rel="noopener noreferrer">
+<img loading="lazy" src="libro1.jpg?v=20260707" alt="L'Ombra del Vate">
+<div class="card-content">
+<h3>L'Ombra del Vate</h3>
+<p>Thriller storico, misteri e suspense nella collana Le Ombre della Verità.</p>
+<span class="badge">🛒 Acquista su Amazon →</span>
+</div>
+</a>
+
+<a class="card" href="https://www.amazon.it/Lultima-eredit%C3%A0-antonio-iannucci/dp/B0FVVDVN34" target="_blank" rel="noopener noreferrer">
+<img loading="lazy" src="libro2.jpg?v=20260707" alt="L'Ultima Eredità">
+<div class="card-content">
+<h3>L'Ultima Eredità</h3>
+<p>Il secondo romanzo della collana, tra segreti, eredità e colpi di scena.</p>
+<span class="badge">🛒 Acquista su Amazon →</span>
+</div>
+</a>
+
+<a class="card" href="https://www.amazon.it/s?k=Protocollo+Alfa+Antonio+Iannucci" target="_blank" rel="noopener noreferrer">
+<img loading="lazy" src="libro3.jpg?v=20260707" alt="Il Protocollo Alfa">
+<div class="card-content">
+<h3>Il Protocollo Alfa</h3>
+<p>Cyber thriller, hacking, intrighi e una storia davvero molto croccante.</p>
+<span class="badge">🛒 Acquista su Amazon →</span>
+</div>
+</a>
+
+</div>
+</section>
+
+<section class="section" id="programmazione">
+<h2 class="section-title">📻 PROGRAMMAZIONE</h2>
+<div class="schedule" id="programmazione-list">
+<div class="slot">
+<div class="slot-time">Caricamento...</div>
+<h3>Programmazione PhilAura</h3>
+<p>Sto caricando il palinsesto aggiornato.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="eventi">
+<h2 class="section-title">🎵 EVENTI MUSICALI</h2>
+<div class="links">
+
+<a class="link-card" href="https://www.rockol.it/news" target="_blank" rel="noopener noreferrer">
+<h4>Rockol</h4>
+<p>News musicali, concerti e recensioni.</p>
+</a>
+
+<a class="link-card" href="https://blog.ticketmaster.it/musica/" target="_blank" rel="noopener noreferrer">
+<h4>Ticketmaster Blog</h4>
+<p>Festival, tour e concerti in Italia.</p>
+</a>
+
+<a class="link-card" href="https://www.rollingstone.it/musica/news-musica/" target="_blank" rel="noopener noreferrer">
+<h4>Rolling Stone Musica</h4>
+<p>Uscite, artisti, tour e cultura musicale.</p>
+</a>
+
+<a class="link-card" href="https://radiofreccia.rtl.it/notizie/" target="_blank" rel="noopener noreferrer">
+<h4>Radiofreccia</h4>
+<p>Notizie musicali, artisti e interviste.</p>
+</a>
+
+<a class="link-card" href="https://www.radioitalia.it/" target="_blank" rel="noopener noreferrer">
+<h4>Radio Italia</h4>
+<p>Eventi, classifiche e musica italiana.</p>
+</a>
+
+</div>
+</section>
+
+<section class="section" id="top5">
+<h2 class="section-title">🔥 PHILAURA TOP 5</h2>
+<div class="chart">
+<div class="song"><div class="num">1</div><div><h3>Lividi a Nome</h3><p>PhilAura Rotation</p></div><div>▶</div></div>
+<div class="song"><div class="num">2</div><div><h3>you-and-me</h3><p>Sunset Edition</p></div><div>▶</div></div>
+<div class="song"><div class="num">3</div><div><h3>ravel</h3><p>Night Drive</p></div><div>▶</div></div>
+<div class="song"><div class="num">4</div><div><h3>Deep End</h3><p>Electronic Mood</p></div><div>▶</div></div>
+<div class="song"><div class="num">5</div><div><h3>Costa del Sol</h3><p>Warm Vibes</p></div><div>▶</div></div>
+</div>
+</section>
+
+<section class="section" id="anime">
+<h2 class="section-title">🌙 ANIME INQUIETE</h2>
+
+<div class="grid">
+<div class="card">
+<img loading="lazy" src="anime_inquiete_cover.jpg?v=20260707" alt="Anime Inquiete">
+<div class="card-content">
+<h3>Podcast notturno</h3>
+<p>Racconti brevi, intensi, emotivi. Pensieri sospesi, parole che restano addosso e atmosfere da ascoltare al buio.</p>
+
+<div style="margin-top:24px;padding:22px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);">
+<h3 style="font-size:30px;margin-bottom:12px;">▶ Ascolta il 1° episodio</h3>
+<p style="font-size:20px;color:#ffb347;margin-bottom:14px;">Durata: circa 5 minuti · Podcast originale PhilAura</p>
+
+<audio controls style="width:100%;margin:12px 0 18px;">
+<source src="podcast-anime-inquiete.mp3" type="audio/mpeg">
+Il tuo browser non supporta il player audio.
+</audio>
+</div>
+
+</div>
+</div>
+
+<div class="card" id="podcast-dannunzio" style="scroll-margin-top:220px;">
+<img loading="lazy" src="dannunzio_cover.jpg?v=20260716" alt="Una notte con D'Annunzio">
+<div class="card-content">
+<h3>Una notte con D'Annunzio</h3>
+<p><strong>"Comandante... può l'Amore sopravvivere?"</strong><br><br>
+Una conversazione impossibile tra Dj Anto e Gabriele D'Annunzio.</p>
+
+<div style="margin-top:24px;padding:22px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);">
+<h3 style="font-size:30px;margin-bottom:12px;">▶ Ascolta il 2° episodio</h3>
+<p style="font-size:20px;color:#ffb347;margin-bottom:14px;">Durata: circa 5 minuti · Speciale AI PhilAura</p>
+
+<audio controls style="width:100%;margin:12px 0 18px;">
+<source src="podcast-dannunzio-amore.mp3" type="audio/mpeg">
+Il tuo browser non supporta il player audio.
+</audio>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="news">
+<h2 class="section-title">🗞 ULTIME NEWS</h2>
+<div id="news-updated" class="news-updated">Aggiornamento in corso…</div><div class="news-updated" style="opacity:.75">Sintesi automatica da feed RSS pubblico. Link esterni disabilitati.</div>
+<div id="news-list" class="news-grid"></div>
+</section>
+
+<div class="footer">
+© 2026 Radio PhilAura Station<br><br>
+<a href="privacy.html">Privacy Policy</a> |
+<a href="cookie.html">Cookie Policy</a> |
+<a href="contatti.html">Contatti</a>
+</div>
+
+</div>
+
+<div class="mini">
+<img loading="lazy" id="miniCover" src="logo-philaura-app.png?v=20260707">
+<div>
+<div id="miniTitle" class="mini-title">Radio PhilAura Station</div>
+<div class="mini-sub">LIVE • Music • Podcast • Stories</div>
+</div>
+<button id="miniBtn">▶</button>
+</div>
+
+<script>
+const radio=document.getElementById('radioPlayer');
+const btn=document.getElementById('onAirBtn');
+const miniBtn=document.getElementById('miniBtn');
+const volume=document.getElementById('volumeSlider');
+const track=document.getElementById('trackInfo');
+const miniTitle=document.getElementById('miniTitle');
+const cover=document.getElementById('albumCover');
+const miniCover=document.getElementById('miniCover');
+const API='https://a7.asurahosting.com/api/nowplaying/httpsradio.philaurastation.it';
+
+radio.volume=.85;
+volume.addEventListener('input',()=>radio.volume=Number(volume.value));
+
+function setUI(p){
+  btn.textContent=p?'⏸ STOP RADIO':'▶ LIVE NOW';
+  miniBtn.textContent=p?'⏸':'▶';
+}
+
+async function toggle(){
+  try{
+    if(radio.paused){
+      radio.load();
+      await radio.play();
+      setUI(true);
+    }else{
+      radio.pause();
+      setUI(false);
+    }
+  }catch(e){
+    track.textContent='Clicca di nuovo: il browser ha bloccato l’audio.';
+  }
+}
+btn.addEventListener('click',toggle);
+miniBtn.addEventListener('click',toggle);
+
+async function now(){
+  try{
+    const r=await fetch(API+'?t='+Date.now(),{cache:'no-store'});
+    const d=await r.json();
+    const song=d?.now_playing?.song||{};
+    const title=song.title||'Radio PhilAura Station';
+    const artist=song.artist||'';
+    const txt=artist?artist+' - '+title:title;
+    track.textContent=txt;
+    miniTitle.textContent=txt;
+    const art=song.art||API+'/art';
+    cover.src=art+'?t='+Date.now();
+    miniCover.src=art+'?t='+Date.now();
+  }catch(e){
+    track.textContent='Radio PhilAura Station';
+  }
+}
+now();
+setInterval(now,10000);
+</script>
+
+<script>
+const feedUrl="https://www.ansa.it/sito/ansait_rss.xml";
+const MAX_ITEMS=6;
+const REFRESH_MS=5*60*1000;
+const newsList=document.getElementById("news-list");
+const newsUpdated=document.getElementById("news-updated");
+let lastFirstId=null;
+
+function stripHtml(s=""){
+  return s.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+}
+
+async function loadFeed(){
+  const api="https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(feedUrl);
+  const res=await fetch(api,{cache:"no-store"});
+  if(!res.ok) throw new Error("Errore rete");
+  const data=await res.json();
+  if(!data || !data.items) throw new Error("Feed non valido");
+  return data.items.slice(0,MAX_ITEMS);
+}
+
+function renderNews(items){
+  newsList.innerHTML="";
+  items.forEach(item=>{
+    const art=document.createElement("article");
+    art.className="news-item";
+
+    const title=document.createElement("h3");
+    title.textContent=item.title||"Senza titolo";
+
+    const date=document.createElement("div");
+    date.className="date";
+    const d=new Date(item.pubDate||Date.now());
+    date.textContent=isNaN(d.getTime())?"":d.toLocaleString("it-IT");
+
+    const p=document.createElement("p");
+    const text=stripHtml(item.description||item.content||"");
+    p.textContent=text.length>110?text.slice(0,110)+"…":text;
+
+    art.appendChild(title);
+    art.appendChild(date);
+    art.appendChild(p);
+    newsList.appendChild(art);
+  });
+}
+
+async function refreshNews(){
+  try{
+    if(!newsList.innerHTML){
+      newsList.innerHTML='<div style="color:#cfc7d8">Carico le ultime notizie…</div>';
+    }
+    const items=await loadFeed();
+    const firstId=items[0]?.link||items[0]?.title||"";
+    if(firstId && firstId===lastFirstId && newsList.children.length>0){
+      newsUpdated.textContent="Aggiornato alle "+new Date().toLocaleTimeString("it-IT");
+      return;
+    }
+    lastFirstId=firstId;
+    renderNews(items);
+    newsUpdated.textContent="Aggiornato alle "+new Date().toLocaleTimeString("it-IT");
+  }catch(e){
+    newsUpdated.textContent="Errore aggiornamento news";
+    newsList.innerHTML='<div style="color:#ff6d6d">Impossibile caricare le news.</div>';
+  }
+}
+
+refreshNews();
+setInterval(refreshNews,REFRESH_MS);
+</script>
+
+
+<script>
+
+function escapeHtml(value=""){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+async function loadProgrammazionePhilAura(){
+  try{
+    const res = await fetch('programmazione.json?t=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+
+    const lista = document.getElementById('programmazione-list');
+
+    let programmi = [];
+    if(Array.isArray(data)) programmi = data;
+    else if(Array.isArray(data.palinsesto)) programmi = data.palinsesto;
+    else if(Array.isArray(data.programmi)) programmi = data.programmi;
+    else if(Array.isArray(data.programmazione)) programmi = data.programmazione;
+    else if(Array.isArray(data.schedule)) programmi = data.schedule;
+
+    if(!programmi.length){
+      lista.innerHTML = `
+        <div class="slot">
+          <div class="slot-time">Programmazione</div>
+          <h3>Palinsesto non disponibile</h3>
+          <p>Il file programmazione.json non contiene programmi leggibili.</p>
+        </div>
+      `;
+      return;
+    }
+
+    let html = '';
+    programmi.forEach(p => {
+      if(typeof p === 'string'){
+        html += `
+          <div class="slot">
+            <div class="slot-time"></div>
+            <h3>${escapeHtml(p)}</h3>
+            <p></p>
+          </div>
+        `;
+        return;
+      }
+
+      const inizio = p.inizio || p.start || p.da || p.from || '';
+      const fine = p.fine || p.end || p.a || p.to || '';
+      const orario = p.ora || p.orario || p.time || p.fascia || (inizio && fine ? `${inizio} - ${fine}` : inizio || fine || '');
+      const titolo = p.titolo || p.nome || p.programma || p.name || p.title || 'PhilAura Station';
+      const descrizione = p.descrizione || p.description || p.desc || p.stile || '';
+
+      html += `
+        <div class="slot">
+          <div class="slot-time">${escapeHtml(orario)}</div>
+          <h3>${escapeHtml(titolo)}</h3>
+          <p>${escapeHtml(descrizione)}</p>
+        </div>
+      `;
+    });
+
+    lista.innerHTML = html;
+
+  }catch(e){
+    document.getElementById('programmazione-list').innerHTML = `
+      <div class="slot">
+        <div class="slot-time">Errore</div>
+        <h3>Programmazione non caricata</h3>
+        <p>Controlla che programmazione.json sia online nella stessa cartella dell'index.</p>
+      </div>
+    `;
+  }
+}
+loadProgrammazionePhilAura();
+</script>
+
+</body>
+</html>
